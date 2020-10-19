@@ -1,0 +1,4 @@
+export const ContactPopupActionTypes = {
+  TOGGLE_POPUP_HIDDEN: "TOGGLE_POPUP_HIDDEN",
+  TOGGLE_POPUP_POSITION: "TOGGLE_POPUP_POSITION",
+};
