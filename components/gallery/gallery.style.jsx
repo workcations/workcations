@@ -75,24 +75,39 @@ export const HeroImage = styled.div`
     height: 100%;
     border-radius: 10px;
     background-color: white;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img {
+      max-height: 30vw;
+      max-width: 50vw;
+      filter: grayscale(100%);
+      z-index: -2;
+      opacity: 0;
+
+      @media only screen and (max-width: 900px) {
+        max-height: 50vw;
+        max-width: 90vw;
+      }
+    }
 
     span {
-      font-size: 1.5vw;
+      font-size: 1vw;
       color: white;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.6);
       margin: 0px 10px 10px 0px;
       border-radius: 5px;
       padding: 0.3vw 1vw;
+      position: absolute;
+      bottom: 0%;
 
       @media only screen and (max-width: 900px) {
-        font-size: 3.5vw;
-        font-weight: 600;
+        font-size: 2.5vw;
         border-radius: 3px;
         padding: 1vw 3vw;
       }
@@ -123,18 +138,25 @@ export const ThumbnailImage = styled.div`
 `;
 
 export const GalleryArrow = styled.div`
-  width: 100%;
+  width: 94%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  top: 45%;
+  left: 3%;
+  z-index: 1;
 
   svg {
-    height: 3vw;
+    height: 2vw;
     fill: white;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 200px;
 
     @media only screen and (max-width: 900px) {
-      height: 7vw;
+      height: 5vw;
     }
 
     :hover {

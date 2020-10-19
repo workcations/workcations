@@ -15,7 +15,6 @@ import Faqs from "../../components/faq/faq";
 import ImportantInformation from "../../components/important-information/important-information";
 import BookNow from "../../components/book-now/book-now";
 import Maps from "../../components/maps/maps";
-import Calendar from "../../components/calendar/calendar";
 
 import PropertyDetailsContainer from "../../style-components/property-page-container/property-page-container.style";
 

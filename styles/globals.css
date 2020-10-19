@@ -1619,11 +1619,11 @@ img {
   top: calc(100% + 20px);
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 10px;
 }
 
 .DatePicker__calendarContainer.-top {
   top: auto;
-  bottom: calc(100% + 20px);
 }
 
 .Calendar,
@@ -2195,6 +2195,7 @@ img {
   color: var(--cl-color-disabled) !important;
   background: transparent !important;
   cursor: default !important;
+  text-decoration: line-through #ff6c6b solid;
 }
 
 .Calendar__day.-selected {
@@ -2270,4 +2271,17 @@ img {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.calendarInputCustom {
+  width: 26vw;
+  left: -13vw;
+  position: absolute;
+  top: -6vw;
+  color: transparent;
+  border: none;
+  outline: none;
+  height: 3vw;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 0px;
 }
