@@ -74,24 +74,13 @@ export const getStaticPaths = async () => {
 
   const properties = await getPropertiesListExcel();
 
-  const pathArray = properties
-    .map((property) => {
-      return {
-        params: {
-          slug: property.slug,
-        },
-      };
-    })
-    .filter(
-      (item) =>
-        item.params.slug !== "1342-resort-in-manali" &&
-        item.params.slug !== "4401-hostel-in-varkala" &&
-        item.params.slug !== "1130-apartment-in-shimla" &&
-        item.params.slug !== "1150-2bhk-apartment-in-kasauli" &&
-        item.params.slug !== "2342-hotel-in-mukteshwar" &&
-        item.params.slug !== "2341-cottages-in-bhimtal" &&
-        item.params.slug !== "2134-1bhk-2bhk-3bhk-apartment-in-bhimtal"
-    );
+  const pathArray = properties.map((property) => {
+    return {
+      params: {
+        slug: property.slug,
+      },
+    };
+  });
 
   return {
     paths: pathArray,
