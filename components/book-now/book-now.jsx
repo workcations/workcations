@@ -246,46 +246,6 @@ const BookNow = ({
     setEndDate(selectedDate);
   };
 
-  /*useEffect(() => {
-    let selectedDate = new Date(startDate);
-
-    if (
-      duration === "short" &&
-      Math.round(getNoOfDays(startDate, endDate)) > 6
-    ) {
-      if (minDuration > 1) {
-        selectedDate.setDate(selectedDate.getDate() + minDuration);
-      } else {
-        selectedDate.setDate(selectedDate.getDate() + 1);
-      }
-    }
-
-    if (
-      duration === "week" &&
-      (Math.round(getNoOfDays(startDate, endDate)) < 7 ||
-        Math.round(getNoOfDays(startDate, endDate)) > 20)
-    ) {
-      if (minDuration > 7) {
-        selectedDate.setDate(selectedDate.getDate() + minDuration);
-      } else {
-        selectedDate.setDate(selectedDate.getDate() + 7);
-      }
-    }
-
-    if (
-      duration === "month" &&
-      Math.round(getNoOfDays(startDate, endDate)) < 21
-    ) {
-      if (minDuration > 21) {
-        selectedDate.setDate(selectedDate.getDate() + minDuration);
-      } else {
-        selectedDate.setDate(selectedDate.getDate() + 21);
-      }
-    }
-
-    setEndDate(selectedDate);
-  }, [duration]);*/
-
   const [emptyCartAlert, setEmptyCartAlert] = useState(false);
 
   const addRoom = (roomIndex, sharingIndex) => {
@@ -364,7 +324,7 @@ const BookNow = ({
                 type: roomType.type,
                 image: roomType.image,
                 max: roomType.max,
-                isMaxed: roomType.isMaxed,
+                isMaxed: false,
                 rooms: roomType.rooms.map((roomSharing, j) =>
                   j === sharingIndex
                     ? {

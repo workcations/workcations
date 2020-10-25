@@ -120,7 +120,7 @@ export const FormSubmitAlert = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 900;
   color: green;
   background-color: white;
   border-radius: 5px;

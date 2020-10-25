@@ -92,36 +92,37 @@ export const ContainerMobile = styled.a`
 `;
 
 export const PopupMobile = styled.div`
-position: fixed;
-right: 30px;
-bottom: ${props => props.isActive ? "100px" : "-800px"};
-width: 70vw;
-background-color: white;
-border-radius: 5px;
-display: flex;
-flex-direction: column;
-box-shadow: 0px 0px 5px #999999;
-transition: bottom 0.5s ease-in-out;
+  position: fixed;
+  right: 30px;
+  bottom: ${(props) => (props.isActive ? "100px" : "-800px")};
+  width: 70vw;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 5px #999999;
+  transition: bottom 0.5s ease-in-out;
 `;
 
 export const PopupItem = styled.a`
-display: flex;
-align-items: center;
-padding: 15px 10px;
-border-top: 1px solid #cccccc;
-border-bottom: 1px solid #cccccc;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
 
-&&:first-child {
-  margin-top: 0px;
-  border: none;
-}
+  &&:first-child {
+    margin-top: 0px;
+    border: none;
+  }
 
-&&:last-child {
-  margin-bottom: 0px;
-  border: none;
-}
+  &&:last-child {
+    margin-bottom: 0px;
+    border: none;
+  }
 
-img {
-  height: 30px;
-  margin-right: 10px;
-}`;
+  img {
+    height: 30px;
+    margin-right: 10px;
+  }
+`;

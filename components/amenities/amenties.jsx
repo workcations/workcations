@@ -104,11 +104,6 @@ const Amenities = (value) => {
       image: "/amenities/bonfire.svg",
     },
     {
-      title: "bonfire request",
-      text: "Bonfire (on Request)",
-      image: "/amenities/bonfire.svg",
-    },
-    {
       title: "lawn",
       text: "Lawn",
       image: "/amenities/lawn.svg",

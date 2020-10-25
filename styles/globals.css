@@ -907,7 +907,7 @@ img {
   justify-content: center;
   align-items: center;
   display: flex;
-  z-index: 2147483647;
+  z-index: 900;
 }
 
 .react-datepicker__portal .react-datepicker__day-name,
@@ -1619,11 +1619,11 @@ img {
   top: calc(100% + 20px);
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 10px;
 }
 
 .DatePicker__calendarContainer.-top {
   top: auto;
+  bottom: calc(100% + 20px);
 }
 
 .Calendar,
@@ -2195,7 +2195,7 @@ img {
   color: var(--cl-color-disabled) !important;
   background: transparent !important;
   cursor: default !important;
-  text-decoration: line-through #ff6c6b solid;
+  text-decoration: solid line-through var(--cl-color-disabled);
 }
 
 .Calendar__day.-selected {
@@ -2274,14 +2274,22 @@ img {
 }
 
 .calendarInputCustom {
+  background-color: #ff6c6b20;
   width: 26vw;
-  left: -13vw;
   position: absolute;
-  top: -6vw;
-  color: transparent;
-  border: none;
-  outline: none;
-  height: 3vw;
-  background-color: rgba(0, 0, 0, 0.2);
+  left: -13vw;
+  top: -6.2vw;
+  height: 3.6vw;
+  opacity: 0;
   margin: 0px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  .calendarInputCustom {
+    width: 76vw;
+    left: -38vw;
+    height: 12vw;
+    top: -14vw;
+  }
 }

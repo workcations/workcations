@@ -156,7 +156,7 @@ export const SearchItem = styled.a`
   }
 `;
 
-export const Button = styled.input`
+export const Button = styled.div`
   /* button */
   width: 25vw;
   display: flex;
@@ -169,6 +169,7 @@ export const Button = styled.input`
   padding: 0.5vw 0vw;
   border-radius: 5px;
   margin-top: 20px;
+  cursor: pointer;
 
   @media only screen and (max-width: 769px) {
     width: 70vw;

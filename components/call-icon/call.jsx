@@ -43,7 +43,7 @@ const CallIcon = () => {
     };
   }, [handleScroll]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     let showPopup;
     showPopup = setTimeout(() => {
       dispatch(toggleContactPopupHidden());
@@ -64,7 +64,7 @@ const CallIcon = () => {
           });
         });
     }, 300000);
-  }, []);
+  }, []);*/
 
   const sendWhatsAppEvent = () => {
     gtag.event({

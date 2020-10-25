@@ -7,47 +7,18 @@ import {
   CheckInDate,
 } from "./calendar.style";
 
-const CalendarComponent = ({ selectedDayRange, setSelectedDayRange }) => {
-  console.log(selectedDayRange.from);
-  console.log(selectedDayRange.to);
-
-  const maximumDate = {
-    year: 2021,
-    month: 3,
-    day: 31,
-  };
-
-  const disabledDays = [
-    {
-      year: 2020,
-      month: 11,
-      day: 20,
-    },
-    {
-      year: 2020,
-      month: 12,
-      day: 21,
-    },
-    {
-      year: 2021,
-      month: 1,
-      day: 7,
-    },
-  ];
-
+const CalendarComponent = ({
+  selectedDayRange,
+  setSelectedDayRange,
+  disabledDays,
+  maximumDate,
+}) => {
   const CheckInCheckOut = ({ ref }) => (
     <input
       readOnly
       ref={ref} // necessary
       placeholder="I'm a custom input"
-      value={
-        selectedDayRange.from
-          ? `${selectedDayRange.from.day} -
-              ${selectedDayRange.from.month} -
-              ${selectedDayRange.from.year}
-            }`
-          : ""
-      }
+      value={""}
       className="calendarInputCustom"
     />
   );
@@ -82,8 +53,8 @@ const CalendarComponent = ({ selectedDayRange, setSelectedDayRange }) => {
         maximumDate={maximumDate}
         disabledDays={disabledDays}
         shouldHighlightWeekends
-        colorPrimary="#000000"
-        colorPrimaryLight="rgba(0, 0, 0, 0.2)"
+        colorPrimary="#ff6c6b"
+        colorPrimaryLight="rgba(255, 108, 107, 0.2)"
         renderFooter={() => (
           <div
             style={{
@@ -104,12 +75,12 @@ const CalendarComponent = ({ selectedDayRange, setSelectedDayRange }) => {
                 backgroundColor: "#ff6c6b",
                 border: "#0fbcf9",
                 color: "#fff",
-                borderRadius: "5px",
+                borderRadius: "0.5rem",
                 padding: "1rem 2rem",
                 cursor: "pointer",
               }}
             >
-              Reset Dates
+              Reset Values!
             </button>
           </div>
         )}

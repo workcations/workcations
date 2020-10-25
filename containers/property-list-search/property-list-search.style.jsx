@@ -150,16 +150,16 @@ export const Button = styled.input`
 `;
 
 export const Duration = styled.div`
-margin-top: 0px;
-    width: calc(100% + 20px);
-    padding: 10px;
-    background-color: #fbfbfb;
-    margin: 0px -10px 0px -10px;
-    position: sticky;
-    top: 50px;
-    z-index: 102;
+  margin-top: 0px;
+  width: calc(100% + 20px);
+  padding: 10px;
+  background-color: #fbfbfb;
+  margin: 0px -10px 0px -10px;
+  position: sticky;
+  top: 50px;
+  z-index: 102;
 
-    @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 900px) {
     width: 100vw;
     margin: 0px;
   }
@@ -228,4 +228,3 @@ export const DurationItem = styled.div`
     }
   }
 `;
-

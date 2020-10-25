@@ -6,7 +6,9 @@ const About = ({ about }) => (
   <Container>
     <h2>About</h2>
     <Content>
-      <p>{about}</p>
+      {about.split("***").map((item, i) => (
+        <p key={`about {i+1}`}>{item}</p>
+      ))}
     </Content>
   </Container>
 );

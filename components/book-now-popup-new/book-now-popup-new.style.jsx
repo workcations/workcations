@@ -10,6 +10,7 @@ export const Container = styled.div`
   background-color: #f5f5f5;
   z-index: 150;
   font-size: 16px;
+  display: grid;
 
   @media only screen and (max-width: 450px) {
     font-size: 12px;
@@ -265,6 +266,7 @@ export const FormSubmitAlert = styled.div`
   position: fixed;
   bottom: ${(props) => (props.active ? "50px" : "-50px")};
   left: 25px;
+  max-width: calc(100vw - 50px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -280,5 +282,11 @@ export const FormSubmitAlert = styled.div`
     border: 1px dotted green;
     background-color: rgba(0, 255, 0, 0.2);
     padding: 20px 30px;
+    font-size: 1vw;
+
+    @media only screen and (max-width: 900px) {
+      font-size: 3.5vw;
+      padding: 10px 15px;
+    }
   }
 `;

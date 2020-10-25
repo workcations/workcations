@@ -164,10 +164,10 @@ export const SearchContainer = styled.div`
   grid-area: search;
   width: 100%;
   height: 50px;
-  display: ${props => props.searchPos ? "flex" : "none"};
+  display: ${(props) => (props.searchPos ? "flex" : "none")};
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 900;
 
   @media only screen and (max-width: 768px) {
   }

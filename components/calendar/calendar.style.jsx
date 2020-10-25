@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   text-align: center;
   margin: 0px;
+  padding: 0px;
+  max-height: 5vw;
+
+  @media only screen and (max-width: 768px) {
+    max-height: unset;
+  }
 `;
 
 export const CheckInCheckOutContainer = styled.div`

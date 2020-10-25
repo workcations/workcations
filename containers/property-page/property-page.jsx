@@ -15,6 +15,7 @@ import Faqs from "../../components/faq/faq";
 import ImportantInformation from "../../components/important-information/important-information";
 import BookNow from "../../components/book-now/book-now";
 import Maps from "../../components/maps/maps";
+//import Calendar from "../../components/calendar/calendar";
 
 import PropertyDetailsContainer from "../../style-components/property-page-container/property-page-container.style";
 
@@ -22,8 +23,8 @@ import {
   MegaContainer,
   Title,
   Container,
-  Details,
   BookNowContainer,
+  Details,
   Content,
   About,
   Heading,
@@ -107,7 +108,9 @@ const PropertyPage = ({
                 <Content>
                   <About>
                     <Heading>About</Heading>
-                    <p>{about}</p>
+                    {about.split("***").map((item, i) => (
+                      <p key={`about {i+1}`}>{item}</p>
+                    ))}
                   </About>
                   {upload !== -1 ? (
                     <Fragment>

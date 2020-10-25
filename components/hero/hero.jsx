@@ -68,7 +68,7 @@ const Hero = () => {
               }}
               searchError={searchError}
             />
-            <Button type="submit" value="Search" />
+            <Button onClick={searchFunction}>Search</Button>
           </SearchContainer>
         </SearchBox>
         <Typing />

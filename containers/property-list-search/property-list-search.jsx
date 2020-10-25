@@ -51,6 +51,16 @@ const PropertyListSearch = ({ list, loadElements, pattern }) => {
       : setDurationActive([false, false, true]);
   }, [duration]);
 
+  const [durationDays, setDurationDays] = useState(7);
+
+  useEffect(() => {
+    duration === "short"
+      ? setDurationDays(6)
+      : duration === "week"
+      ? setDurationDays(20)
+      : setDurationDays(21);
+  }, [duration]);
+
   return (
     <Container>
       <Duration>
@@ -93,6 +103,7 @@ const PropertyListSearch = ({ list, loadElements, pattern }) => {
             <PropertyListContainer>
               {list.map((property, i) =>
                 property.item.visibility === "TRUE" &&
+                property.item.minDuration <= durationDays &&
                 (loadElements || i < 6) ? (
                   <PropertyItem
                     duration={duration}
