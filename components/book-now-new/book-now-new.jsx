@@ -5,6 +5,7 @@ import AddToCart from "../add-to-cart/add-to-cart";
 import { CheckBox } from "../checkbox/checkbox";
 import FormInput from "../form-input-book-now/form-input-book-now";
 import BookNowPopup from "../book-now-popup-new/book-now-popup-new";
+import RoomPopup from "../room-popup/room-popup";
 
 import {
   Container,
@@ -767,6 +768,17 @@ const BookNowNew = ({
     }
   };
 
+  const [roomPopup, setRoomPopup] = useState({
+    size: "-1",
+    balcony: "-1",
+    view: "-1",
+    features: ["-1"],
+    images: [],
+    isOpen: false,
+    closePopup: () => {},
+    start: false,
+  });
+
   return (
     <Fragment>
       <Container>
@@ -829,6 +841,29 @@ const BookNowNew = ({
                       style={{
                         backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${room.images[0]}.jpg)`,
                       }}
+                      onClick={() => {
+                        setRoomPopup({
+                          size: room.size,
+                          balcony: room.balcony,
+                          view: typesOfViews[room.view[0]],
+                          features: room.features,
+                          images: room.images,
+                          isOpen: true,
+                          closePopup: () => {
+                            setRoomPopup({
+                              size: "-1",
+                              balcony: "-1",
+                              view: "-1",
+                              features: ["-1"],
+                              images: [],
+                              isOpen: false,
+                              closePopup: () => {},
+                              start: false,
+                            });
+                          },
+                          start: true,
+                        });
+                      }}
                     />
                     <RoomFeatures>
                       {!!cartDetails && cartDetails.length > 0 ? (
@@ -854,6 +889,38 @@ const BookNowNew = ({
                         </span>
                       ) : null}
                       {room.kitchen ? <span>• {room.kitchen}</span> : null}
+                      <span
+                        style={{
+                          color: "#ff6b6c",
+                          fontWeight: "bold",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          setRoomPopup({
+                            size: room.size,
+                            balcony: room.balcony,
+                            view: typesOfViews[room.view[0]],
+                            features: room.features,
+                            images: room.images,
+                            isOpen: true,
+                            closePopup: () => {
+                              setRoomPopup({
+                                size: "-1",
+                                balcony: "-1",
+                                view: "-1",
+                                features: ["-1"],
+                                images: [],
+                                isOpen: false,
+                                closePopup: () => {},
+                                start: false,
+                              });
+                            },
+                            start: true,
+                          });
+                        }}
+                      >
+                        View More Details
+                      </span>
                     </RoomFeatures>
                   </ImageContainer>
                   <Details>
@@ -1091,6 +1158,7 @@ const BookNowNew = ({
         pricingDuration={pricingDuration}
         totalPrice={totalPrice}
       />
+      <RoomPopup {...roomPopup} slug={slug} />
     </Fragment>
   );
 };

@@ -220,12 +220,13 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
     type,
     inventory,
   } = property;
-  const { breakfast, lunch, dinner } = meals;
+  const { breakfast, lunchVeg, lunchNonVeg, dinnerVeg, dinnerNonVeg } = meals;
   const {
     amenities,
     internet,
     cinCout,
     houseRules,
+    houseRulesExtra,
     inclusions,
     exclusions,
     nearby,
@@ -258,8 +259,8 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
           <Gallery loadElements={loadElements} images={images} slug={slug} />
           <Facilities
             breakfast={breakfast}
-            lunch={lunch}
-            dinner={dinner}
+            lunch={lunchVeg}
+            dinner={dinnerVeg}
             facilities={amenities.map((item) =>
               item !== -1 ? amenitiesTypes[item].slug : ""
             )}
@@ -271,8 +272,8 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
               title={`Workcations ${id} - ${shortTitle}`}
               minDuration={Number(minDuration)}
               breakfast={breakfast}
-              lunch={lunch}
-              dinner={dinner}
+              lunch={lunchVeg}
+              dinner={dinnerVeg}
               type={propertyTypes[type]}
               isServer={isServer}
             />
@@ -282,7 +283,9 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
               <Content>
                 <About>
                   <Heading>About</Heading>
-                  <p>{description.about.value}</p>
+                  {description.about.value.split("***").map((item, i) => (
+                    <p key={`about ${i + 1}`}>{item}</p>
+                  ))}
                   {description.location.available ? (
                     <p>
                       <strong>Location: </strong>
@@ -317,7 +320,7 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
                     </InternetNote>
                   </Fragment>
                 ) : null}
-                {checkIn !== "-1" || isHouseRules ? (
+                {checkIn !== "-1" || !isHouseRules ? (
                   <Fragment>
                     <Heading>House Rules</Heading>
                     {checkIn !== "-1" ? (
@@ -326,6 +329,9 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
                         <p> Check-Out: </p> <b> {checkOut} </b>
                       </Internet>
                     ) : null}
+                    {houseRulesExtra.map((item, i) => (
+                      <p key={`rule${i + 1}`}>&bull; {item}</p>
+                    ))}
                     {isHouseRules
                       ? houseRules.map((rule, i) =>
                           rule ? (

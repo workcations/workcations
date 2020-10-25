@@ -214,6 +214,7 @@ export const Image = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
+  cursor: pointer;
 
   @media only screen and (max-width: 900px) {
     height: 16vw;
