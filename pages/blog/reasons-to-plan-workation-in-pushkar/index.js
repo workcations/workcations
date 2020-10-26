@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -100,6 +102,18 @@ const BlogItem = () => {
             Pushkar.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/work-from-mountain-destinations-with-good-wifi"
+              passHref
+            >
+              <a target="_blank">
+                Perfect Workcations Spots With The Most Reliable WiFi
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Ghats of Pushkar</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -135,6 +149,16 @@ const BlogItem = () => {
             the food that's served here. You can opt for traditional dishes or
             try out some Israeli food at the unique cafes in Pushkar.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-setup-remote-office" passHref>
+              <a target="_blank">
+                How Setting Up A Workplace At Remote Location With Employees Is
+                A Good Idea?
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Evening Aarti</SubHeading>
           {loadElements ? (

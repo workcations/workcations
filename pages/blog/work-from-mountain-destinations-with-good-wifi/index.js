@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -98,6 +100,13 @@ const BlogItem = () => {
             destination. <br />
             <br />
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-manali-for-workation" passHref>
+              <a target="_blank">Why Manali Is Our Fave Workcation Spot?</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Mussoorie, Uttarakhand</SubHeading>
           {loadElements ? (
@@ -237,6 +246,16 @@ const BlogItem = () => {
             environment.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-bir-for-workcation" passHref>
+              <a target="_blank">
+                Pristine Paradise: Here’s Why You Should Go For A Workcation To
+                Bir
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Kasol, Himachal</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -259,6 +278,18 @@ const BlogItem = () => {
             Israel and live once in a lifetime opportunity to work from
             mountains.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/make-the-most-of-your-workcation-in-kasol"
+              passHref
+            >
+              <a target="_blank">Make The Most Of Your Workcation In Kasol</a>
+            </Link>
+          </SuggestedRead>
+
+          <div style={{ height: "20px" }}></div>
 
           <SocialShare
             slug={"work-from-mountain-destinations-with-good-wifi"}

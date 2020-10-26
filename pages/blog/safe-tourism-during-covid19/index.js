@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -99,6 +101,15 @@ const BlogItem = () => {
             Here’s how communities can promote safe touring during COVID times:
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/why-travel-should-resume" passHref>
+              <a target="_blank">
+                To Travel, Or Not To Travel: Why Travel Should Resume?
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Following State Guidelines</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -139,6 +150,13 @@ const BlogItem = () => {
             state governments. Without it, admission of any tourist should not
             be allowed.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/tips-to-travel-safely-during-covid19" passHref>
+              <a target="_blank">How To Travel Safe During COVID19 Times?</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Contactless Check-In, Sanitized Cabs & Hotels</SubHeading>
           {loadElements ? (
@@ -183,6 +201,15 @@ const BlogItem = () => {
             offering amazing deals for long workcations and staycation. Go, grab
             them all!
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/the-travel-trend-of-2020-2021" passHref>
+              <a target="_blank">
+                Old Wine, New Bottle: The Travel Trend Of 2020-2021
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Promoting Remote Locations for Stay</SubHeading>
           {loadElements ? (

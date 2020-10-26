@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -131,6 +133,16 @@ const BlogItem = () => {
             other spots.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-setup-remote-office" passHref>
+              <a target="_blank">
+                How Setting Up A Workplace At Remote Location With Employees Is
+                A Good Idea?
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Picnics By The Salter Lake</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -166,6 +178,15 @@ const BlogItem = () => {
             popular among people are Bushi Dam, Valvan Dam, and the one on
             Tungarli lake.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/workcations-the-new-normal-of-work-life" passHref>
+              <a target="_blank">
+                Workcations: The New Trend That Brings Travel And Work Together
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Cascade Magic</SubHeading>
           {loadElements ? (
@@ -224,6 +245,16 @@ const BlogItem = () => {
             a chai enthusiast, try 20 types of amazing hot piping teas from Jai
             Shiv Shankar Chaiwala. They even have a German Bakery in Lonavala!
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-plan-workcation-in-gokarna" passHref>
+              <a target="_blank">
+                Bangalore Techies, Reasons Why You Should Have A Workcation In
+                Gokarna
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Buy Chikkis & Fudge</SubHeading>
           {loadElements ? (

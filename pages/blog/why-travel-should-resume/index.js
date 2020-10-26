@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -90,6 +92,15 @@ const BlogItem = () => {
             that everyone is dealing with is whether travel should resume? While
             the country is in dual-thoughts, here’s why we think it should
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/the-travel-trend-of-2020-2021" passHref>
+              <a target="_blank">
+                Old Wine, New Bottle: The Travel Trend Of 2020-2021
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>
             Travel Industry’s Massive Contribution To India’s GDP
@@ -176,6 +187,16 @@ const BlogItem = () => {
             and give an impetus to remote economy.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/safe-tourism-during-covid19" passHref>
+              <a target="_blank">
+                Step Out With CARE: Here’s How Communities Can Promote Safe
+                Tourism During COVID19
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Travel — A Panacea for Mental Health </SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -219,6 +240,13 @@ const BlogItem = () => {
             impact on your very life. Once travel resumes, you can take a
             breather from your life indoors and soak in the local culture.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/tips-to-travel-safely-during-covid19" passHref>
+              <a target="_blank">How To Travel Safe During COVID19 Times?</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>So, We’re Saying</SubHeading>
           <Text>

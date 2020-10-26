@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -113,6 +115,18 @@ const BlogItem = () => {
             other, Manali has surprises for everyone.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/work-from-mountain-destinations-with-good-wifi"
+              passHref
+            >
+              <a target="_blank">
+                Perfect Workcations Spots With The Most Reliable WiFi
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Eat & Chill at Local Pahadi Cafes</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -153,6 +167,15 @@ const BlogItem = () => {
             Manali. You can enjoy being a tourist and mingle with friendly
             locals.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/panoramic-treks-around-kasol" passHref>
+              <a target="_blank">
+                Workcation In Kasol? Unwind With Some Nearby Trek
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Sightseeing & Market Tours</SubHeading>
           {loadElements ? (
@@ -201,6 +224,16 @@ const BlogItem = () => {
             and rooms with the best views. Work, relax and enjoy to your
             fullest.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-bir-for-workcation" passHref>
+              <a target="_blank">
+                Pristine Paradise: Here’s Why You Should Go For A Workcation To
+                Bir
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>
             Weekend Adventure Activities at Solang & Rohtang

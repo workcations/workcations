@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -101,7 +103,17 @@ const BlogItem = () => {
             a vacation. Before you make your mind to plan a workcation, here are
             few valuable benefits of working from mountains.
           </Text>
-
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/work-from-mountain-destinations-with-good-wifi"
+              passHref
+            >
+              <a target="_blank">
+                Perfect Workcations Spots With The Most Reliable WiFi
+              </a>
+            </Link>
+          </SuggestedRead>
           <SubHeading>
             A chance to live surrounded by a natural paradise
           </SubHeading>
@@ -145,6 +157,15 @@ const BlogItem = () => {
             intruding neighbours in eyesight. This is one of the most desirable
             benefits of working from mountains.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/panoramic-treks-around-kasol" passHref>
+              <a target="_blank">
+                Workcation In Kasol? Unwind With Some Nearby Treks
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>
             Unbeatable views for you to set up your work desk
@@ -191,6 +212,13 @@ const BlogItem = () => {
             interesting. It is like you can take a short vacation whenever you
             want, all you have to do is step out of your temporary home.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-manali-for-workation" passHref>
+              <a target="_blank">Why Manali Is Our Fave Workcation Spot?</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Inspiration to Be Active</SubHeading>
           {loadElements ? (

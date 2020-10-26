@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -111,6 +113,14 @@ const BlogItem = () => {
           ) : (
             <ImageCon></ImageCon>
           )}
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/benefits-from-working-from-mountains" passHref>
+              <a target="_blank">
+                Million Dollar Benefits Of Working From Mountains
+              </a>
+            </Link>
+          </SuggestedRead>
           <SubHeading>
             Key points from the travel guidelines issued by government
             authorities.
@@ -173,6 +183,15 @@ const BlogItem = () => {
           ) : (
             <ImageCon></ImageCon>
           )}
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-setup-remote-office" passHref>
+              <a target="_blank">
+                How Setting Up A Workplace At Remote Location With Employees Is
+                A Good Idea?
+              </a>
+            </Link>
+          </SuggestedRead>
           <Text>
             Work and Vacation (Workcations) is dreamy and fascinating as it
             sounds, waking up to breathtaking sunrise vistas, sipping a cup of
@@ -194,6 +213,17 @@ const BlogItem = () => {
           ) : (
             <ImageCon></ImageCon>
           )}
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/work-from-mountain-destinations-with-good-wifi"
+              passHref
+            >
+              <a target="_blank">
+                Perfect Workcations Spots With The Most Reliable WiFi
+              </a>
+            </Link>
+          </SuggestedRead>
           <SubHeading>How can you plan your Workcations?</SubHeading>
           <Text>
             It is as simple as booking a movie ticket! We at Workcations

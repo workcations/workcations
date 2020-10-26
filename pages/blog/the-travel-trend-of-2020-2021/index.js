@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -91,6 +93,15 @@ const BlogItem = () => {
             norms and also help in kick starting the GDP growth.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/why-travel-should-resume" passHref>
+              <a target="_blank">
+                To Travel, Or Not To Travel: Why Travel Should Resume?
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>The Answer To This Is Long Stays</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -139,6 +150,13 @@ const BlogItem = () => {
               </li>
             </ul>
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/tips-to-travel-safely-during-covid19" passHref>
+              <a target="_blank">How To Travel Safe During COVID19 Times?</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>It’s Hygienic & Clean</SubHeading>
           {loadElements ? (
@@ -191,6 +209,16 @@ const BlogItem = () => {
               </li>
             </ul>
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/safe-tourism-during-covid19" passHref>
+              <a target="_blank">
+                Step Out With CARE: Here’s How Communities Can Promote Safe
+                Tourism During COVID19
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>
             Spend Quality Time with Fam Members On These Long Vacays

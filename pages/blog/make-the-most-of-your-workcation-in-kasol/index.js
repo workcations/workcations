@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -112,6 +114,16 @@ const BlogItem = () => {
             lace and soak in the local culture
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-bir-for-workcation" passHref>
+              <a target="_blank">
+                Pristine Paradise: Here’s Why You Should Go For A Workcation To
+                Bir
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Unwind From Work With Trekking</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -149,6 +161,16 @@ const BlogItem = () => {
             spree and explorethe hidden gems whilst trying yummy food and hot
             beverages.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-setup-remote-office" passHref>
+              <a target="_blank">
+                How Setting Up A Workplace At Remote Location With Employees Is
+                A Good Idea?
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Safe For Solo-Travel</SubHeading>
           {loadElements ? (
@@ -188,6 +210,13 @@ const BlogItem = () => {
             that flows through the region and you can find a number of water
             sport tours. Get your adrenaline pumping already.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-manali-for-workation" passHref>
+              <a target="_blank">Why Manali Is Our Fave Workcation Spot?</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Get In Touch With Your Spiritual Side</SubHeading>
           {loadElements ? (

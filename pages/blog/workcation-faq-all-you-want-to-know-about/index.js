@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -108,6 +110,16 @@ const BlogItem = () => {
             without having to take a break from work! So it's work plus
             vacation! Yay!
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/workcations-the-new-normal-of-work-life" passHref>
+              <a target="_blank">
+                Workcations: The New Trend That Brings Travel And Work Together{" "}
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>How can someone plan a workcation?</SubHeading>
           <Text>
             WanderOn has started a new venture to plan hassle-free and
@@ -150,6 +162,17 @@ const BlogItem = () => {
           ) : (
             <ImageCon></ImageCon>
           )}
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-setup-remote-office" passHref>
+              <a target="_blank">
+                How Setting Up A Workplace At Remote Location With Employees Is
+                A Good Idea?
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>
             What are the necessary documents required to travel?
           </SubHeading>
@@ -210,6 +233,16 @@ const BlogItem = () => {
           ) : (
             <ImageCon></ImageCon>
           )}
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/impact-of-remote-working-in-india" passHref>
+              <a target="_blank">
+                How The World Will Change When Everyone Opt For Remote Working
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>
             How will the team help assist with COVID testing?
           </SubHeading>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -141,6 +143,15 @@ const BlogItem = () => {
             is popular among the devotees.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/guide-for-workcation-at-lonavala" passHref>
+              <a target="_blank">
+                Pack Your Bags & Have A Workcation At Lonavala
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>
             Enjoy Staycation at Rustic Beach Shack Resorts
           </SubHeading>
@@ -181,6 +192,18 @@ const BlogItem = () => {
             Café 1987, Rock Namaste Café etc.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/work-from-mountain-destinations-with-good-wifi"
+              passHref
+            >
+              <a target="_blank">
+                Perfect Workcations Spots With The Most Reliable WiFi
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Enjoy Water Sports</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -218,6 +241,16 @@ const BlogItem = () => {
             wave sounds. There are several beach trek tour operators and it is
             one the best trekking destination.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-setup-remote-office" passHref>
+              <a target="_blank">
+                How Setting Up A Workplace At Remote Location With Employees Is
+                A Good Idea?
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Workcations At Gokarna</SubHeading>
           {loadElements ? (

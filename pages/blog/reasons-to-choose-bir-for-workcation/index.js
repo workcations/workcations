@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -116,6 +118,18 @@ const BlogItem = () => {
             pumps up.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/work-from-mountain-destinations-with-good-wifi"
+              passHref
+            >
+              <a target="_blank">
+                Perfect Workcations Spots With The Most Reliable WiFi
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Explore Quaint Local Cafes</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -156,6 +170,13 @@ const BlogItem = () => {
             Palpong monastery, Chokling, Dzongsar, Palyul etc.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-manali-for-workation" passHref>
+              <a target="_blank">Why Manali Is Our Fave Workcation Spot?</a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Go On Cycling Treks</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -192,6 +213,15 @@ const BlogItem = () => {
             walk. There is nothing more exhilarating than walking across cold,
             crystal-clear and fresh water rivers.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/panoramic-treks-around-kasol" passHref>
+              <a target="_blank">
+                Workcation In Kasol? Unwind With Some Nearby Trek
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Scenic Picnics To Take A Break From Work</SubHeading>
           {loadElements ? (

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -92,6 +94,16 @@ const BlogItem = () => {
             work with a peaceful surrounding.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-bir-for-workcation" passHref>
+              <a target="_blank">
+                Pristine Paradise: Here’s Why You Should Go For A Workcation To
+                Bir
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>The Country Life</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -131,6 +143,16 @@ const BlogItem = () => {
             not one but Many Himalayan Peaks including Chaukhamba, Nanda Devi,
             Hathi Parvat, and Even Kedarnath to name a few!
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/make-the-most-of-your-workcation-in-kasol"
+              passHref
+            >
+              <a target="_blank">Make The Most Of Your Workcation In Kasol</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>The Blessings of Almighty!</SubHeading>
           {loadElements ? (
@@ -172,6 +194,18 @@ const BlogItem = () => {
             various fishing areas to have a relaxing activity to look forward
             to!
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/work-from-mountain-destinations-with-good-wifi"
+              passHref
+            >
+              <a target="_blank">
+                Perfect Workcations Spots With The Most Reliable WiFi
+              </a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Picnic in Khirsu</SubHeading>
           {loadElements ? (

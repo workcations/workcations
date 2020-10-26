@@ -133,5 +133,27 @@ export const SubHeading = styled.div`
 
   @media screen and (max-width: 650px) {
     margin-left: 5%;
+    margin-right: 5%;
+  }
+`;
+
+export const SuggestedRead = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+
+  a {
+    font-weight: 600;
+    color: #ff6c6b;
+    text-decoration: underline solid #ff6c6b;
+  }
+
+  ::before {
+    content: "Suggested Read: ";
+  }
+
+  @media screen and (max-width: 650px) {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 `;

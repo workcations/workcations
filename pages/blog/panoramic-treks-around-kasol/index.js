@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
@@ -16,6 +17,7 @@ import {
   Source,
   Caption,
   SubHeading,
+  SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
@@ -116,6 +118,16 @@ const BlogItem = () => {
             destination for you.
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-bir-for-workcation" passHref>
+              <a target="_blank">
+                Pristine Paradise: Here’s Why You Should Go For A Workcation To
+                Bir
+              </a>
+            </Link>
+          </SuggestedRead>
+
           <SubHeading>Rasol</SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -155,6 +167,16 @@ const BlogItem = () => {
             get to the Barshaini village from Kasol, you can simply walk to
             Kalga!
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link
+              href="/blog/make-the-most-of-your-workcation-in-kasol"
+              passHref
+            >
+              <a target="_blank">Make The Most Of Your Workcation In Kasol</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Pulga</SubHeading>
           {loadElements ? (
@@ -206,6 +228,13 @@ const BlogItem = () => {
             novels. The location is such that there are many other attractions
             in the vicinity.
           </Text>
+
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <Link href="/blog/reasons-to-choose-manali-for-workation" passHref>
+              <a target="_blank">Why Manali Is Our Fave Workcation Spot?</a>
+            </Link>
+          </SuggestedRead>
 
           <SubHeading>Tosh</SubHeading>
           {loadElements ? (
