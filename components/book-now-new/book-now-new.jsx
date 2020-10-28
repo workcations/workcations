@@ -149,6 +149,8 @@ const BookNowNew = ({
   dinner,
   type,
   isServer,
+  disabledDatesArray,
+  finalDisabledDatesArray,
 }) => {
   const maximumDate = {
     year: 2021,
@@ -209,7 +211,19 @@ const BookNowNew = ({
       };
     });
 
-  const disabledDates = allDatesData.filter((item) => item.availability <= 0);
+  let disabledDates = allDatesData.filter((item) => item.availability <= 0);
+
+  const disabledDatesDates = disabledDates.map((item) => item.date);
+
+  for (let i = 0; i < finalDisabledDatesArray.length; i++) {
+    if (disabledDatesDates.indexOf(finalDisabledDatesArray[i]) === -1) {
+      disabledDates.push({
+        date: finalDisabledDatesArray[i],
+        availability: 0,
+        pricing: [],
+      });
+    }
+  }
 
   const disabledDays = disabledDates.map((item) => {
     return {

@@ -239,6 +239,35 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
   const { coordinates } = location;
   const { latitude, longitude } = coordinates;
 
+  const disabledDatesArray = inventory.map(
+    (item, i) => property[`disabledDates${i}`]
+  );
+
+  let finalDisabledDatesArray = [];
+
+  const lengthOfDisabledDatesArray = disabledDatesArray.length;
+
+  for (let i = 0; i < lengthOfDisabledDatesArray; i++) {
+    const n = disabledDatesArray[i].length;
+
+    for (let j = 0; j < n; j++) {
+      let count = 0;
+
+      for (let k = 0; k < lengthOfDisabledDatesArray; k++) {
+        if (disabledDatesArray[k].indexOf(disabledDatesArray[i][j]) === -1) {
+          count++;
+        }
+      }
+
+      if (
+        count === 0 &&
+        finalDisabledDatesArray.indexOf(disabledDatesArray[i][j]) === -1
+      ) {
+        finalDisabledDatesArray.push(disabledDatesArray[i][j]);
+      }
+    }
+  }
+
   return (
     <Fragment>
       <Head>
@@ -276,6 +305,8 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
               dinner={dinnerVeg}
               type={propertyTypes[type]}
               isServer={isServer}
+              disabledDatesArray={disabledDatesArray}
+              finalDisabledDatesArray={finalDisabledDatesArray}
             />
           </BookNowContainer>
           <Details>

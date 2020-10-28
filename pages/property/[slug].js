@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 
 import Layout from "../../components/layout/layout";
-import PropertyPage from "../../containers/property-page/property-page";
+import PropertyPage from "../../containers/property-page-new/property-page-new";
 import Spinner from "../../components/spinner/spinner";
 
 const Property = ({ property }) => {
@@ -43,7 +43,11 @@ const Property = ({ property }) => {
       {router.isFallback ? (
         <Spinner />
       ) : (
-        <PropertyPage {...property} loadElements={loadElements} />
+        <PropertyPage
+          property={property}
+          loadElements={loadElements}
+          isServer={isServer}
+        />
       )}
     </Layout>
   );
@@ -77,6 +81,7 @@ export const getStaticPaths = async () => {
       },
     };
   });
+  //.filter(item => item.params.slug !== "4401-hostel-in-varkala");
 
   return {
     paths: pathArray,
@@ -89,8 +94,8 @@ export const getStaticProps = async ({ params }) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const url =
-      "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/property/" +
-      slug;
+      "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/propertyData/" +
+      slug.split("-")[0];
 
     var requestOptions = {
       method: "GET",
@@ -107,7 +112,7 @@ export const getStaticProps = async ({ params }) => {
   const propertyData = await getPropertyExcel(params.slug);
 
   return {
-    props: { property: propertyData[0] },
+    props: { property: propertyData },
     revalidate: 1,
   };
 };
