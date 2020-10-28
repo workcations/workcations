@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
+import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-sidebar-content";
 
 import {
   BlogContainer,
@@ -228,7 +229,9 @@ const BlogItem = () => {
             slug={"himachal-to-allow-interstate-travel-without-e-passes"}
           />
         </BlogContent>
-        <BlogSidebar></BlogSidebar>
+        <BlogSidebar>
+          <BlogSidebarContent />
+        </BlogSidebar>
       </BlogContainer>
     </Layout>
   );

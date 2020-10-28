@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
+import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-sidebar-content";
 
 import {
   BlogContainer,
@@ -255,7 +256,9 @@ const BlogItem = () => {
 
           <SocialShare slug={"impact-of-remote-working-in-india"} />
         </BlogContent>
-        <BlogSidebar></BlogSidebar>
+        <BlogSidebar>
+          <BlogSidebarContent />
+        </BlogSidebar>
       </BlogContainer>
     </Layout>
   );

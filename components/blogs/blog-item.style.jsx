@@ -4,6 +4,9 @@ export const BlogContainer = styled.div`
   width: 88vw;
   margin: 50px auto;
   padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   @media screen and (max-width: 650px) {
     width: 100vw;
@@ -11,7 +14,7 @@ export const BlogContainer = styled.div`
 `;
 
 export const BlogContent = styled.div`
-  width: 80%;
+  width: 70%;
   margin: 0px auto;
 
   @media screen and (max-width: 650px) {
@@ -20,14 +23,12 @@ export const BlogContent = styled.div`
 `;
 
 export const BlogSidebar = styled.div`
-  background-color: #ff6b6c;
-  width: 100%;
-  display: none;
+  width: 25%;
   padding: 0px;
-  display: flex;
-  flex-direction: column;
-  height: 0px;
-  margin: 0px;
+
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
 `;
 
 export const BlogTitle = styled.div`

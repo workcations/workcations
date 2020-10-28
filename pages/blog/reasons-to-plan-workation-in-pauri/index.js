@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import Layout from "../../../components/layout/layout";
 import SocialShare from "../../../components/social-share/social-share";
+import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-sidebar-content";
 
 import {
   BlogContainer,
@@ -228,7 +229,9 @@ const BlogItem = () => {
 
           <SocialShare slug={"reasons-to-plan-workation-in-pauri"} />
         </BlogContent>
-        <BlogSidebar></BlogSidebar>
+        <BlogSidebar>
+          <BlogSidebarContent />
+        </BlogSidebar>
       </BlogContainer>
     </Layout>
   );
