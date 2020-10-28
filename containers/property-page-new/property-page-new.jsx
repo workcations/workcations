@@ -249,22 +249,28 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
     const lengthOfDisabledDatesArray = disabledDatesArray.length;
 
     for (let i = 0; i < lengthOfDisabledDatesArray; i++) {
-      const n = disabledDatesArray[i].length;
+      if (disabledDatesArray[i]) {
+        const n = disabledDatesArray[i].length;
 
-      for (let j = 0; j < n; j++) {
-        let count = 0;
+        for (let j = 0; j < n; j++) {
+          let count = 0;
 
-        for (let k = 0; k < lengthOfDisabledDatesArray; k++) {
-          if (disabledDatesArray[k].indexOf(disabledDatesArray[i][j]) === -1) {
-            count++;
+          for (let k = 0; k < lengthOfDisabledDatesArray; k++) {
+            if (disabledDatesArray[k]) {
+              if (
+                disabledDatesArray[k].indexOf(disabledDatesArray[i][j]) === -1
+              ) {
+                count++;
+              }
+            }
           }
-        }
 
-        if (
-          count === 0 &&
-          finalDisabledDatesArray.indexOf(disabledDatesArray[i][j]) === -1
-        ) {
-          finalDisabledDatesArray.push(disabledDatesArray[i][j]);
+          if (
+            count === 0 &&
+            finalDisabledDatesArray.indexOf(disabledDatesArray[i][j]) === -1
+          ) {
+            finalDisabledDatesArray.push(disabledDatesArray[i][j]);
+          }
         }
       }
     }
