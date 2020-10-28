@@ -80,8 +80,8 @@ export const getStaticPaths = async () => {
         slug: property.slug,
       },
     };
-  })
-  .filter(item => item.params.slug !== "4401-hostel-in-varkala");
+  });
+  //.filter(item => item.params.slug !== "4401-hostel-in-varkala");
 
   return {
     paths: pathArray,
