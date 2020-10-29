@@ -5,7 +5,6 @@ export const Container = styled.div`
   margin: 0px;
   padding: 0px;
   max-height: 5vw;
-  z-index: 999;
 
   @media only screen and (max-width: 768px) {
     max-height: unset;
