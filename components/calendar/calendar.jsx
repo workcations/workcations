@@ -55,7 +55,16 @@ const CalendarComponent = ({
         shouldHighlightWeekends
         colorPrimary="#ff6c6b"
         colorPrimaryLight="rgba(255, 108, 107, 0.2)"
-        renderFooter={() => (
+      />
+    </Container>
+  );
+};
+
+export default CalendarComponent;
+
+/*
+
+renderFooter={() => (
           <div
             style={{
               display: "flex",
@@ -84,9 +93,5 @@ const CalendarComponent = ({
             </button>
           </div>
         )}
-      />
-    </Container>
-  );
-};
 
-export default CalendarComponent;
+        */
