@@ -344,12 +344,6 @@ const BookNowNew = ({
   const startingRangeWeekly = getStartingRangeWeekly();
   const startingRangeMonthly = getStartingRangeMonthly();
 
-  console.log(startingRangeShort);
-  console.log(startingRangeWeekly);
-  console.log(startingRangeMonthly);
-  console.log(allDatesData);
-  console.log(disabledDates);
-
   const [startingRange, setStartingRange] = useState(
     duration === 0
       ? startingRangeShort
