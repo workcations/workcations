@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -71,22 +72,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/reasons-to-plan-workation-in-pushkar/reasons-to-plan-workation-in-pushkar.jpg)`,
+          }}
+        >
+          Workcation in Pushkar - A Rejuvenating Option for Work and Vacay
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"reasons-to-plan-workation-in-pushkar"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            Workcation in Pushkar - A Rejuvenating Option for Work and Vacay
-          </BlogTitle>
-          <SocialShare slug={"reasons-to-plan-workation-in-pushkar"} />
-          <ImageCon>
-            <Image
-              src="/reasons-to-plan-workation-in-pushkar/reasons-to-plan-workation-in-pushkar.jpg"
-              alt="Workcation in Pushkar - A Rejuvenating Option for Work and Vacay"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             The glory, history, and rich culture of Pushkar do not need any
             introduction. This ancient town located in Rajasthan has been
@@ -219,9 +217,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"reasons-to-plan-workation-in-pushkar"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

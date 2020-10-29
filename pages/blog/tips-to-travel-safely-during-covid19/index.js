@@ -7,6 +7,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -67,20 +68,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/tips-to-travel-safely-during-covid19/tips-to-travel-safely-during-covid19.jpg)`,
+          }}
+        >
+          How To Travel Safe During COVID19 Times?
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"tips-to-travel-safely-during-covid19"} />
           <Tags>
             <span>COVID Safety</span>
             <span>Travel Tips</span>
           </Tags>
-          <BlogTitle>How To Travel Safe During COVID19 Times?</BlogTitle>
-          <SocialShare slug={"tips-to-travel-safely-during-covid19"} />
-          <ImageCon>
-            <Image
-              src="/tips-to-travel-safely-during-covid19/tips-to-travel-safely-during-covid19.jpg"
-              alt="How To Travel Safe During COVID19 Times?"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             The times are tough and mental health of people as well as our
             economy graph is on a downward spiral. Resuming travel can be
@@ -252,9 +252,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"tips-to-travel-safely-during-covid19"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

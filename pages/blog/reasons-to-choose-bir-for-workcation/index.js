@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -71,22 +72,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/reasons-to-choose-bir-for-workcation/reasons-to-choose-bir-for-workcation.jpg)`,
+          }}
+        >
+          Pristine Paradise: Here’s Why You Should Go For A Workcation To Bir
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"reasons-to-choose-bir-for-workcation"} />
           <Tags>
             <span>Bir Billing</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            Pristine Paradise: Here’s Why You Should Go For A Workcation To Bir
-          </BlogTitle>
-          <SocialShare slug={"reasons-to-choose-bir-for-workcation"} />
-          <ImageCon>
-            <Image
-              src="/reasons-to-choose-bir-for-workcation/reasons-to-choose-bir-for-workcation.jpg"
-              alt="Pristine Paradise: Here’s Why You Should Go For A Workcation To Bir"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Beautiful mountains, lush green foliage, authentic cuisine, awesome
             weather, outdoorsy activities – don’t these factors make for a
@@ -252,9 +250,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"reasons-to-choose-bir-for-workcation"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

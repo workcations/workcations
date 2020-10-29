@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -66,22 +67,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/benefits-from-working-from-mountains/benefits-from-working-from-mountains.jpg)`,
+          }}
+        >
+          Million Dollar Benefits of Working from Mountains
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"workation-to-workcation"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            Million Dollar Benefits of Working from Mountains
-          </BlogTitle>
-          <SocialShare slug={"benefits-from-working-from-mountains"} />
-          <ImageCon>
-            <Image
-              src="/benefits-from-working-from-mountains/benefits-from-working-from-mountains.jpg"
-              alt="Million Dollar Benefits of Working from Mountains"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Mountains always give a homely feeling or warmth to every human. The
             cool breeze touching your face while standing on the edge of a cliff
@@ -250,9 +248,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"benefits-from-working-from-mountains"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

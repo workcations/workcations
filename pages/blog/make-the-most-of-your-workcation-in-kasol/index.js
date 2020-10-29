@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,20 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/make-the-most-of-your-workcation-in-kasol/make-the-most-of-your-workcation-in-kasol.jpg)`,
+          }}
+        >
+          Make The Most Of Your Workcation In Kasol
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"make-the-most-of-your-workcation-in-kasol"} />
           <Tags>
             <span>Kasol</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>Make The Most Of Your Workcation In Kasol</BlogTitle>
-          <SocialShare slug={"make-the-most-of-your-workcation-in-kasol"} />
-          <ImageCon>
-            <Image
-              src="/make-the-most-of-your-workcation-in-kasol/make-the-most-of-your-workcation-in-kasol.jpg"
-              alt="Make The Most Of Your Workcation In Kasol"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             We have discussed it quite a few times that Kasol is the numero uno
             choice for workcations ( a long staycation combining work and
@@ -288,9 +288,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"make-the-most-of-your-workcation-in-kasol"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

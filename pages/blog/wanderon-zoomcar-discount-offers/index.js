@@ -7,6 +7,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -67,22 +68,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/wanderon-zoomcar-discount-offers/wanderon-zoomcar-discount-offers.jpg)`,
+          }}
+        >
+          WanderOn X Zoomcar: Discount Offers Which You Cannot Miss
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"wanderon-zoomcar-discount-offers"} />
           <Tags>
             <span>Zoom Car</span>
             <span>Discount Offer</span>
           </Tags>
-          <BlogTitle>
-            WanderOn X Zoomcar: Discount Offers Which You Cannot Miss
-          </BlogTitle>
-          <SocialShare slug={"wanderon-zoomcar-discount-offers"} />
-          <ImageCon>
-            <Image
-              src="/wanderon-zoomcar-discount-offers/wanderon-zoomcar-discount-offers.jpg"
-              alt="WanderOn X Zoomcar: Discount Offers Which You Cannot Miss"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Good news for all the Wanderers, Team{" "}
             <a href="https://www.wanderon.in/" target="_blank">
@@ -228,9 +226,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"wanderon-zoomcar-discount-offers"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

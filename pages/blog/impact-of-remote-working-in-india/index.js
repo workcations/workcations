@@ -7,6 +7,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -66,22 +67,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/impact-of-remote-working-in-india/impact-of-remote-working-in-india.jpg)`,
+          }}
+        >
+          How the World Will Change When Everyone Opt for Remote Working
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"impact-of-remote-working-in-india"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            How the World Will Change When Everyone Opt for Remote Working
-          </BlogTitle>
-          <SocialShare slug={"impact-of-remote-working-in-india"} />
-          <ImageCon>
-            <Image
-              src="/impact-of-remote-working-in-india/impact-of-remote-working-in-india.jpg"
-              alt="Perfect Workcations Spots with the most reliable WiFi"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             COVID-19 hit us fast and hard. Each one of us has been struggling to
             accommodate our mindset and habits so that we could start working
@@ -256,9 +254,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"impact-of-remote-working-in-india"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

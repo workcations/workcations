@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -72,15 +73,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(https://www.wanderon.in/wp-content/uploads/2020/08/workcations.jpg)`,
+          }}
+        >
+          Workcations : The New Trend that Brings Travel and Work Together
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"workcations-the-new-normal-of-work-life"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            Workcations : The New Trend that Brings Travel and Work Together
-          </BlogTitle>
-          <SocialShare slug={"workcations-the-new-normal-of-work-life"} />
           <Text>
             Once upon a time, Travel was all we needed to break the humdrum
             affair of our boring work life. Unfortunately, due to the COVID-19
@@ -89,13 +94,6 @@ const BlogItem = () => {
             the fear of Coronavirus has forced us to stay at home for the last
             three-four months.
           </Text>
-          <ImageCon>
-            <Image
-              src="https://www.wanderon.in/wp-content/uploads/2020/08/workcations.jpg"
-              alt="Workcations : The New Trend that Brings Travel and Work Together"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Now when state governments of Himachal Pradesh, Uttarakhand, Goa,
             and several other states have announced preventive guidelines to

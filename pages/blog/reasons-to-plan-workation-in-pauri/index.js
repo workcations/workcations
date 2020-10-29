@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,20 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/reasons-to-plan-workation-in-pauri/reasons-to-plan-workation-in-pauri.jpg)`,
+          }}
+        >
+          Five Reasons to Work and Vacay in Pauri
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"reasons-to-plan-workation-in-pauri"} />
           <Tags>
             <span>Pauri</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>Five Reasons to Work and Vacay in Pauri</BlogTitle>
-          <SocialShare slug={"reasons-to-plan-workation-in-pauri"} />
-          <ImageCon>
-            <Image
-              src="/reasons-to-plan-workation-in-pauri/reasons-to-plan-workation-in-pauri.jpg"
-              alt="Five Reasons to Work and Vacay in Pauri"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Not only Pauri's pristine beauty but the breathtaking view of dusks
             enchants tourists. Situated at the height of 1814 m in the Garhwal
@@ -229,9 +229,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"reasons-to-plan-workation-in-pauri"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

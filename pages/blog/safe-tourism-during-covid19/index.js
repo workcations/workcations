@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -72,23 +73,20 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/safe-tourism-during-covid19/safe-tourism-during-covid19.jpg)`,
+          }}
+        >
+          Step Out With CARE: Here’s How Communities Can Promote Safe Tourism
+          During COVID19
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"safe-tourism-during-covid19"} />
           <Tags>
             <span>Covid19 Precautions</span>
             <span>Safety Tips</span>
           </Tags>
-          <BlogTitle>
-            Step Out With CARE: Here’s How Communities Can Promote Safe Tourism
-            During COVID19
-          </BlogTitle>
-          <SocialShare slug={"safe-tourism-during-covid19"} />
-          <ImageCon>
-            <Image
-              src="/safe-tourism-during-covid19/safe-tourism-during-covid19.jpg"
-              alt="Step Out With CARE: Here’s How Communities Can Promote Safe Tourism During COVID19"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             To travel or not to travel is the big question looming. However, the
             answer is an eternal YES if safety measures are taken. The thing of
@@ -246,9 +244,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"safe-tourism-during-covid19"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

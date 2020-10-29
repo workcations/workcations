@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -71,27 +72,24 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/himachal-to-allow-interstate-travel-without-e-passes/himachal-to-allow-interstate-travel-without-e-passes.jpg)`,
+          }}
+        >
+          Confirmed: Himachal Pradesh To Allow Inter-State Travel Without E-pass
+          and COVID Report!
+        </Cover>
         <BlogContent>
+          <SocialShare
+            slug={"himachal-to-allow-interstate-travel-without-e-passes"}
+          />
           <Tags>
             <span>Himachal Guidelines</span>
             <span>E-Pass</span>
           </Tags>
-          <BlogTitle>
-            Confirmed: Himachal Pradesh To Allow Inter-State Travel Without
-            E-pass and COVID Report!
-          </BlogTitle>
-          <SocialShare
-            slug={"himachal-to-allow-interstate-travel-without-e-passes"}
-          />
-          <ImageCon>
-            <Image
-              src="/himachal-to-allow-interstate-travel-without-e-passes/himachal-to-allow-interstate-travel-without-e-passes.jpg"
-              alt="Big News: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report?"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
-            <strong>Edit:</strong>2 days after the news of E -Pass cancellation
+            <strong>Edit:</strong> 2 days after the news of E -Pass cancellation
             for Inter-State Movement to Himachal came out, the travel process
             has seemed to ease out. As per our ground reports, the checkpoints
             at Swaarghat, Bajaura, and Parmanu have been removed. The vehicles
@@ -229,9 +227,13 @@ const BlogItem = () => {
             slug={"himachal-to-allow-interstate-travel-without-e-passes"}
           />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

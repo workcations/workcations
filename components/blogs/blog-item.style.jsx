@@ -1,30 +1,56 @@
 import styled from "styled-components";
 
 export const BlogContainer = styled.div`
-  width: 88vw;
-  margin: 50px auto;
-  padding-top: 20px;
-  display: flex;
+  width: 100%;
+  margin: 0px auto 50px auto;
+  display: grid;
+  grid-template-columns: 6vw 70fr 5fr 25fr 6vw;
+  grid-template-areas:
+    "cover cover cover cover cover"
+    ". content . sidebar .";
   flex-direction: row;
   justify-content: space-between;
+  grid-row-gap: 40px;
 
   @media screen and (max-width: 650px) {
-    width: 100vw;
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const Cover = styled.div`
+  grid-area: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+  padding: 0px 10vw;
+  text-align: center;
+
+  @media screen and (max-width: 650px) {
+    height: 50vh;
+    font-size: 6vw;
+    background-attachment: unset;
   }
 `;
 
 export const BlogContent = styled.div`
-  width: 70%;
+  width: 100%;
   margin: 0px auto;
-
-  @media screen and (max-width: 650px) {
-    width: 100%;
-  }
+  grid-area: content;
 `;
 
 export const BlogSidebar = styled.div`
-  width: 25%;
+  width: 100%;
   padding: 0px;
+  grid-area: sidebar;
 
   @media screen and (max-width: 650px) {
     display: none;
@@ -71,8 +97,8 @@ export const Tags = styled.div`
 `;
 
 export const Text = styled.div`
-  font-size: 0.9em;
-  line-height: 1.7em;
+  font-size: 1em;
+  line-height: 1.9em;
   text-align: justify;
   padding: 0px;
   margin: 20px auto;
@@ -89,15 +115,11 @@ export const Text = styled.div`
 `;
 
 export const ImageCon = styled.div`
-  width: 75%;
+  width: 100%;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 5px #bbbbbb;
-
-  @media screen and (max-width: 650px) {
-    width: 100%;
-  }
 `;
 
 export const Image = styled.img`
@@ -131,6 +153,7 @@ export const SubHeading = styled.div`
   margin-top: 40px;
   font-weight: 600;
   text-transform: capitalize;
+  font-size: 1.1em;
 
   @media screen and (max-width: 650px) {
     margin-left: 5%;

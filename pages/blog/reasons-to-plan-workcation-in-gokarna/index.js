@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -71,23 +72,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/reasons-to-plan-workcation-in-gokarna/reasons-to-plan-workcation-in-gokarna.jpg)`,
+          }}
+        >
+          Bangalore Techies, Reasons Why You Should Have A Workcation In Gokarna
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"reasons-to-plan-workcation-in-gokarna"} />
           <Tags>
             <span>Workcations</span>
             <span>Gokarna</span>
           </Tags>
-          <BlogTitle>
-            Bangalore Techies, Reasons Why You Should Have A Workcation In
-            Gokarna
-          </BlogTitle>
-          <SocialShare slug={"reasons-to-plan-workcation-in-gokarna"} />
-          <ImageCon>
-            <Image
-              src="/reasons-to-plan-workcation-in-gokarna/reasons-to-plan-workcation-in-gokarna.jpg"
-              alt="Bangalore Techies, Reasons Why You Should Have A Workcation In Gokarna"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Idyllic beaches, picturesque temples, serene surroundings —Gokarna
             is all these things. A small and quiet temple town in Karnataka,
@@ -283,9 +280,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"reasons-to-plan-workcation-in-gokarna"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

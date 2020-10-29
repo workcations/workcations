@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,20 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/reasons-to-choose-manali-for-workation/reasons-to-choose-manali-for-workation.jpg)`,
+          }}
+        >
+          Why Manali Is Our Fave Workcation Spot?
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"reasons-to-choose-manali-for-workation"} />
           <Tags>
             <span>Manali</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>Why Manali Is Our Fave Workcation Spot?</BlogTitle>
-          <SocialShare slug={"reasons-to-choose-manali-for-workation"} />
-          <ImageCon>
-            <Image
-              src="/reasons-to-choose-manali-for-workation/reasons-to-choose-manali-for-workation.jpg"
-              alt="Why Manali Is Our Fave Workcation Spot?"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             We’re stuck in a pandemic and good news once in a while certainly
             lights our life up. Here’s one for you — Come October and Manali is
@@ -267,9 +267,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"reasons-to-choose-manali-for-workation"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

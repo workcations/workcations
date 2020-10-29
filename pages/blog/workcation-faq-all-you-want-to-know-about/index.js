@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -68,23 +69,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/workcation-faq-all-you-want-to-know-about/workcation-faq-all-you-want-to-know-about.jpg)`,
+          }}
+        >
+          Everything you should know about the new face of Travel - Workcations
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"workcation-faq-all-you-want-to-know-about"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            Everything you should know about the new face of Travel -
-            Workcations
-          </BlogTitle>
-          <SocialShare slug={"workcation-faq-all-you-want-to-know-about"} />
-          <ImageCon>
-            <Image
-              src="/workcation-faq-all-you-want-to-know-about/workcation-faq-all-you-want-to-know-about.jpg"
-              alt="Everything you should know about the new face of Travel - Workcations"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Pandemic has hit all the business sectors to a great extent, but the
             tourism sector has been hit the worst. Due to initial restrictions

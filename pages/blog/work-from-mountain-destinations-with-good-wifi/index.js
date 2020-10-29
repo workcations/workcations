@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -66,24 +67,21 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/work-from-mountain-destinations-with-good-wifi/work-from-mountain-destinations-with-good-wifi.jpg)`,
+          }}
+        >
+          Perfect Workcations Spots with the most reliable WiFi
+        </Cover>
         <BlogContent>
+          <SocialShare
+            slug={"work-from-mountain-destinations-with-good-wifi"}
+          />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            Perfect Workcations Spots with the most reliable WiFi
-          </BlogTitle>
-          <SocialShare
-            slug={"work-from-mountain-destinations-with-good-wifi"}
-          />
-          <ImageCon>
-            <Image
-              src="/work-from-mountain-destinations-with-good-wifi/work-from-mountain-destinations-with-good-wifi.jpg"
-              alt="Perfect Workcations Spots with the most reliable WiFi"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             The future of remote working in India is very bright, and it is
             evolving at a quick pace. A ton of companies permitted their
@@ -98,10 +96,8 @@ const BlogItem = () => {
             Well, we have compiled a list of some beautiful places in the
             mountains with super stable internet connectivity where you can
             fulfill your dream of living and working from an extraordinary
-            destination. <br />
-            <br />
+            destination.
           </Text>
-
           <SuggestedRead>
             &nbsp;&nbsp;
             <Link href="/blog/reasons-to-choose-manali-for-workation" passHref>
@@ -296,9 +292,13 @@ const BlogItem = () => {
             slug={"work-from-mountain-destinations-with-good-wifi"}
           />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

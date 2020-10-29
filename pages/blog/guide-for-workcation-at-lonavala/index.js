@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,20 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/guide-for-workcation-at-lonavala/guide-for-workcation-at-lonavala.jpg)`,
+          }}
+        >
+          Pack Your Bags & Have A Workcation At Lonavala
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"guide-for-workcation-at-lonavala"} />
           <Tags>
             <span>Lonavala</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>Pack Your Bags & Have A Workcation At Lonavala</BlogTitle>
-          <SocialShare slug={"guide-for-workcation-at-lonavala"} />
-          <ImageCon>
-            <Image
-              src="/guide-for-workcation-at-lonavala/guide-for-workcation-at-lonavala.jpg"
-              alt="Pack Your Bags & Have A Workcation At Lonavala"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Lonavala to Punekars and Mumbaikars is what Hamptons to New Yorkers!
             Who doesn’t like the lush green mountains, hillocks, cascades, dams,
@@ -298,9 +298,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"guide-for-workcation-at-lonavala"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

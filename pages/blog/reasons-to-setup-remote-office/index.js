@@ -7,6 +7,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -70,23 +71,20 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/reasons-to-setup-remote-office/reasons-to-setup-remote-office.jpg)`,
+          }}
+        >
+          How Setting Up A Workplace at Remote Location with Employees Is A Good
+          Idea?
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"reasons-to-setup-remote-office"} />
           <Tags>
             <span>Remote Office</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            How Setting Up A Workplace at Remote Location with Employees Is A
-            Good Idea?
-          </BlogTitle>
-          <SocialShare slug={"reasons-to-setup-remote-office"} />
-          <ImageCon>
-            <Image
-              src="/reasons-to-setup-remote-office/reasons-to-setup-remote-office.jpg"
-              alt="How Setting Up A Workplace at Remote Location with Employees Is A Good Idea?"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Regular is boring. One of the best ways to increase productivity
             amongst your employees is to provide them with an environment that
@@ -207,9 +205,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"reasons-to-setup-remote-office"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

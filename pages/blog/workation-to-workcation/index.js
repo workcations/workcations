@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,20 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/workation-to-workcation/workation-to-workcation.jpg)`,
+          }}
+        >
+          Upgrade from Workation to WorkCation
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"workation-to-workcation"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>Upgrade from Workation to WorkCation</BlogTitle>
-          <SocialShare slug={"workation-to-workcation"} />
-          <ImageCon>
-            <Image
-              src="/workation-to-workcation/workation-to-workcation.jpg"
-              alt="Upgrade from Workation to WorkCation"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             There are many things that can make life quite unbearable and living
             in a city during a pandemic sure does top the list. If you're caught
@@ -91,7 +91,7 @@ const BlogItem = () => {
             got you covered.
             <br />
             <br />
-            The Covid pandemic shattered many plans we made in 2020- especially
+            The Covid pandemic shattered many plans we made in 2020 - especially
             our travel plans. Work from home became the new normal for almost
             every working professional, but this whole scenario became chaos
             more than comfort.
@@ -99,7 +99,7 @@ const BlogItem = () => {
             <br />
             That's why we came up with the concept of Workcations. We, now, not
             only take you on trips but are also offering a stay in the mountains
-            on a long term basis. We have named this concept- Workcation. We
+            on a long term basis. We have named this concept - Workcation. We
             focus on the significance of the letter C.
           </Text>
 
@@ -228,9 +228,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"workation-to-workcation"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

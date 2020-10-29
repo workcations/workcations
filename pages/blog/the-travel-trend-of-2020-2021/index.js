@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,22 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/the-travel-trend-of-2020-2021/the-travel-trend-of-2020-2021.jpg)`,
+          }}
+        >
+          Old Wine, New Bottle: The Travel Trend Of 2020-2021
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"the-travel-trend-of-2020-2021"} />
           <Tags>
             <span>Travel Trends</span>
             <span>Future of Travel</span>
           </Tags>
-          <BlogTitle>
-            Old Wine, New Bottle: The Travel Trend Of 2020-2021
-          </BlogTitle>
-          <SocialShare slug={"the-travel-trend-of-2020-2021"} />
-          <ImageCon>
-            <Image
-              src="/the-travel-trend-of-2020-2021/the-travel-trend-of-2020-2021.jpg"
-              alt="Old Wine, New Bottle: The Travel Trend Of 2020-2021"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             Remember the good old days when we simply packed our bags and
             embarked on impromptu trips? Well, the onset on new normal has
@@ -250,9 +248,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"the-travel-trend-of-2020-2021"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

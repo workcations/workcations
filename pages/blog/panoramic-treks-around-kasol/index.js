@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,22 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/panoramic-treks-around-kasol/panoramic-treks-around-kasol.jpg)`,
+          }}
+        >
+          Workcation In Kasol? Unwind with Some Nearby Treks
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"panoramic-treks-around-kasol"} />
           <Tags>
             <span>Kasol</span>
             <span>Trekking</span>
           </Tags>
-          <BlogTitle>
-            Workcation In Kasol? Unwind with Some Nearby Treks
-          </BlogTitle>
-          <SocialShare slug={"panoramic-treks-around-kasol"} />
-          <ImageCon>
-            <Image
-              src="/panoramic-treks-around-kasol/panoramic-treks-around-kasol.jpg"
-              alt="Workcation In Kasol? Unwind with Some Nearby Treks"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             We have one more great idea for you. While in offices, you tend to
             break free from stress by taking small chai breaks. How about you do
@@ -283,9 +281,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"panoramic-treks-around-kasol"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );

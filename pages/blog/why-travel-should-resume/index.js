@@ -8,6 +8,7 @@ import BlogSidebarContent from "../../../components/blog-sidebar-content/blog-si
 
 import {
   BlogContainer,
+  Cover,
   BlogContent,
   BlogSidebar,
   BlogTitle,
@@ -69,22 +70,19 @@ const BlogItem = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <BlogContainer>
+        <Cover
+          style={{
+            backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/why-travel-should-resume/why-travel-should-resume.jpg)`,
+          }}
+        >
+          To Travel, Or Not To Travel: Why Travel Should Resume?
+        </Cover>
         <BlogContent>
+          <SocialShare slug={"why-travel-should-resume"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>
           </Tags>
-          <BlogTitle>
-            To Travel, Or Not To Travel: Why Travel Should Resume?
-          </BlogTitle>
-          <SocialShare slug={"why-travel-should-resume"} />
-          <ImageCon>
-            <Image
-              src="/why-travel-should-resume/why-travel-should-resume.jpg"
-              alt="To Travel, Or Not To Travel: Why Travel Should Resume?"
-            />
-            <Caption></Caption>
-          </ImageCon>
           <Text>
             India has no dearth of beautiful destinations for travellers. No
             wonder, people all across the world specially come here to explore
@@ -261,9 +259,13 @@ const BlogItem = () => {
 
           <SocialShare slug={"why-travel-should-resume"} />
         </BlogContent>
-        <BlogSidebar>
-          <BlogSidebarContent />
-        </BlogSidebar>
+        {loadElements ? (
+          <BlogSidebar>
+            <BlogSidebarContent />
+          </BlogSidebar>
+        ) : (
+          <BlogSidebar></BlogSidebar>
+        )}
       </BlogContainer>
     </Layout>
   );
