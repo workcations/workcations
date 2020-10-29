@@ -520,7 +520,7 @@ const BookNowNew = ({
   const getRoomPrice = (roomIndex, pricingDuration) => {
     if (!!cartDetails && cartDetails.length > 0) {
       return (
-        Math.round(
+        Math.ceil(
           arrAvg(
             cartDetails[roomIndex].pricing.map(
               (pricingItem) => pricingItem.roomOnly[pricingDuration]
@@ -537,7 +537,7 @@ const BookNowNew = ({
       switch (extraBedIndex) {
         case 0:
           return (
-            Math.round(
+            Math.ceil(
               arrAvg(
                 cartDetails[roomIndex].pricing.map(
                   (pricingItem) =>
@@ -549,7 +549,7 @@ const BookNowNew = ({
           );
         case 1:
           return (
-            Math.round(
+            Math.ceil(
               arrAvg(
                 cartDetails[roomIndex].pricing.map(
                   (pricingItem) =>
@@ -562,7 +562,7 @@ const BookNowNew = ({
           );
         case 2:
           return (
-            Math.round(
+            Math.ceil(
               arrAvg(
                 cartDetails[roomIndex].pricing.map(
                   (pricingItem) =>
@@ -576,7 +576,7 @@ const BookNowNew = ({
           );
         case 3:
           return (
-            Math.round(
+            Math.ceil(
               arrAvg(
                 cartDetails[roomIndex].pricing.map(
                   (pricingItem) =>
@@ -591,7 +591,7 @@ const BookNowNew = ({
           );
         case 4:
           return (
-            Math.round(
+            Math.ceil(
               arrAvg(
                 cartDetails[roomIndex].pricing.map(
                   (pricingItem) =>
@@ -607,7 +607,7 @@ const BookNowNew = ({
           );
         case 5:
           return (
-            Math.round(
+            Math.ceil(
               arrAvg(
                 cartDetails[roomIndex].pricing.map(
                   (pricingItem) =>
@@ -991,7 +991,7 @@ const BookNowNew = ({
                             {getRoomPrice(i, pricingDuration) <
                             getRoomPrice(i, "ultraShort") ? (
                               <span>
-                                {Math.round(
+                                {Math.ceil(
                                   ((getRoomPrice(i, "ultraShort") -
                                     getRoomPrice(i, pricingDuration)) *
                                     100) /
@@ -1050,7 +1050,7 @@ const BookNowNew = ({
                               {getExtraBedPrice(i, j, pricingDuration) <
                               getExtraBedPrice(i, j, "ultraShort") ? (
                                 <span>
-                                  {Math.round(
+                                  {Math.ceil(
                                     ((getExtraBedPrice(i, j, "ultraShort") -
                                       getExtraBedPrice(i, j, pricingDuration)) *
                                       100) /
