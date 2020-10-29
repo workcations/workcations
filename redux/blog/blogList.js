@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "workation-to-workcation",
+    title: "Upgrade from Workation to WorkCation",
+    description: `Confused in Workation or Workcation? Give a read to our blog to know, what makes Workcations the perfect remote work option. There are many things that can make life quite unbearable and living in a city during a pandemic sure does top the list. If you're caught in the same metropolitan rut, and want to move to the mountains, beaches and countryside, worry not! WanderOn Travel Community has got you covered.`,
+    date: "29th Oct 2020",
+    tags: ["Workcations", "Remote Office"],
+  },
+  {
     slug: "reasons-to-setup-remote-office",
     title:
       "How Setting Up A Workplace at Remote Location with Employees Is A Good Idea?",
