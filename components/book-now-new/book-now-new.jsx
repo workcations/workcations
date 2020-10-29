@@ -42,6 +42,17 @@ import {
   EmptyCartAlert,
 } from "./book-now-new.style";
 
+const convertDate = (date) =>
+  `${date.split("-")[0]}-${
+    date.split("-")[1].length === 1
+      ? "0" + date.split("-")[1]
+      : date.split("-")[1]
+  }-${
+    date.split("-")[2].length === 1
+      ? "0" + date.split("-")[2]
+      : date.split("-")[2]
+  }`;
+
 const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
 const getNoOfDays = (date1, date2) => {
@@ -62,9 +73,11 @@ const getDatesBetweenPricing = (from, to) => {
 
   while (currentDate < toDate) {
     dateArray.push(
-      `${currentDate.getFullYear()}-${
-        currentDate.getMonth() + 1
-      }-${currentDate.getDate()}`
+      convertDate(
+        `${currentDate.getFullYear()}-${
+          currentDate.getMonth() + 1
+        }-${currentDate.getDate()}`
+      )
     );
     currentDate = addDays(1, currentDate);
   }
@@ -80,9 +93,11 @@ const getDatesBetween = (from, to) => {
 
   while (currentDate <= toDate) {
     dateArray.push(
-      `${currentDate.getFullYear()}-${
-        currentDate.getMonth() + 1
-      }-${currentDate.getDate()}`
+      convertDate(
+        `${currentDate.getFullYear()}-${
+          currentDate.getMonth() + 1
+        }-${currentDate.getDate()}`
+      )
     );
     currentDate = addDays(1, currentDate);
   }
@@ -177,7 +192,9 @@ const BookNowNew = ({
   const [today, setToday] = useState(new Date());
 
   const allDatesData = getDatesBetween(
-    `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,
+    convertDate(
+      `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+    ),
     "2021-03-31"
   )
     .map((item) => {
@@ -185,7 +202,10 @@ const BookNowNew = ({
         date: item,
         pricing: pricingArray.map((pricingItem) => {
           for (let i = 1; i < pricingItem.length; i++) {
-            if (pricingItem[i].dates.indexOf(item) !== -1) {
+            const pricingItemDates = pricingItem[i].dates.map((dateItem) =>
+              convertDate(dateItem)
+            );
+            if (pricingItemDates.indexOf(item) !== -1) {
               return {
                 available: pricingItem[i].available,
                 roomOnly: pricingItem[i].roomOnly,
@@ -324,6 +344,12 @@ const BookNowNew = ({
   const startingRangeWeekly = getStartingRangeWeekly();
   const startingRangeMonthly = getStartingRangeMonthly();
 
+  console.log(startingRangeShort);
+  console.log(startingRangeWeekly);
+  console.log(startingRangeMonthly);
+  console.log(allDatesData);
+  console.log(disabledDates);
+
   const [startingRange, setStartingRange] = useState(
     duration === 0
       ? startingRangeShort
@@ -373,10 +399,14 @@ const BookNowNew = ({
   useEffect(() => {
     if (!!selectedDayRange.from && !!selectedDayRange.to) {
       const startingDate = new Date(
-        `${selectedDayRange.from.year}-${selectedDayRange.from.month}-${selectedDayRange.from.day}`
+        convertDate(
+          `${selectedDayRange.from.year}-${selectedDayRange.from.month}-${selectedDayRange.from.day}`
+        )
       );
       const endingDate = new Date(
-        `${selectedDayRange.to.year}-${selectedDayRange.to.month}-${selectedDayRange.to.day}`
+        convertDate(
+          `${selectedDayRange.to.year}-${selectedDayRange.to.month}-${selectedDayRange.to.day}`
+        )
       );
       const noOfDays = Math.round(getNoOfDays(startingDate, endingDate));
 
@@ -408,10 +438,14 @@ const BookNowNew = ({
   useEffect(() => {
     if (!!selectedDayRange.from && !!selectedDayRange.to) {
       const startingDate = new Date(
-        `${selectedDayRange.from.year}-${selectedDayRange.from.month}-${selectedDayRange.from.day}`
+        convertDate(
+          `${selectedDayRange.from.year}-${selectedDayRange.from.month}-${selectedDayRange.from.day}`
+        )
       );
       const endingDate = new Date(
-        `${selectedDayRange.to.year}-${selectedDayRange.to.month}-${selectedDayRange.to.day}`
+        convertDate(
+          `${selectedDayRange.to.year}-${selectedDayRange.to.month}-${selectedDayRange.to.day}`
+        )
       );
       const datesList = allDatesData.map((item) => item.date);
 
@@ -459,7 +493,9 @@ const BookNowNew = ({
         }, 4000);
 
         const startingDate = new Date(
-          `${selectedDayRange.from.year}-${selectedDayRange.from.month}-${selectedDayRange.from.day}`
+          convertDate(
+            `${selectedDayRange.from.year}-${selectedDayRange.from.month}-${selectedDayRange.from.day}`
+          )
         );
 
         const dateRange = getDatesBetween(
