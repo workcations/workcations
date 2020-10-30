@@ -18,9 +18,9 @@ const Footer = () => (
       <Connect>
         <Heading>Connect with Us</Heading>
         <div>
-          <a href="tel:8814871652" target="_blank" rel="noopener noreferrer">
+          <a href="tel:9599615300" target="_blank" rel="noopener noreferrer">
             <img src="/phone.svg" alt="Call Us" />
-            +91-8814871652
+            +91-9599615300
           </a>
           <a
             href="mailto:workcations@wanderon.in"
@@ -50,13 +50,12 @@ const Footer = () => (
       </Connect>
     </Container>
     <a
-        href="https://www.wanderon.in/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-    <SubFooter>
-        A Unit of WanderOn
-    </SubFooter></a>
+      href="https://www.wanderon.in/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <SubFooter>A Unit of WanderOn</SubFooter>
+    </a>
   </Fragment>
 );
 
