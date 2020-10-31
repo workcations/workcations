@@ -20,6 +20,18 @@ export const Top = styled.div`
   align-items: center;
 `;
 
+export const SubContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media only screen and (max-width: 600px) {
+    height: calc(100vh - 150px);
+    justify-content: space-between;
+  }
+`;
+
 export const Title = styled.div`
   font-size: 2.5vw;
   font-weight: 600;

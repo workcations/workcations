@@ -10,6 +10,7 @@ import {
 import {
   Container,
   Top,
+  SubContainer,
   Title,
   Video,
   Quote,
@@ -134,43 +135,45 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
         <Title>
           Workcations For Teams<div></div>
         </Title>
-        <Video>
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/ubZge1-ZBJw?rel=0&enablejsapi=1&amp;origin=https%3A%2F%2Fwww.workcations.in"
-            frameBorder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </Video>
-        <Quote>
-          “ The power of human brain exists above and beyond the boundaries of a
-          glass cubicle. Yet most employers are busy fixing it in a box“
-        </Quote>
-        <Description>
-          Are you a distinguished leader who constantly thrives to boost the
-          productivity of your team?
-        </Description>
-        <FeaturesContainer>
-          <FeaturesCard>
-            <img src="/workcations-for-teams/wifi.svg" />
-            <span>High Speed WiFi</span>
-          </FeaturesCard>
-          <FeaturesCard>
-            <img src="/workcations-for-teams/puzzle.svg" />
-            <span>Team Building Activities</span>
-          </FeaturesCard>
-          <FeaturesCard>
-            <img src="/workcations-for-teams/bbq.svg" />
-            <span>Homely Meals</span>
-          </FeaturesCard>
-          <FeaturesCard>
-            <img src="/workcations-for-teams/stay.svg" />
-            <span>Comfortable Stays</span>
-          </FeaturesCard>
-        </FeaturesContainer>
-        <ContactUs onClick={scrollToContactForm}>Contact Us</ContactUs>
+        <SubContainer>
+          <Video>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/ubZge1-ZBJw?rel=0&enablejsapi=1&amp;origin=https%3A%2F%2Fwww.workcations.in"
+              frameBorder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </Video>
+          <Quote>
+            “ The power of human brain exists above and beyond the boundaries of
+            a glass cubicle. Yet most employers are busy fixing it in a box“
+          </Quote>
+          <Description>
+            Are you a distinguished leader who constantly thrives to boost the
+            productivity of your team?
+          </Description>
+          <FeaturesContainer>
+            <FeaturesCard>
+              <img src="/workcations-for-teams/wifi.svg" />
+              <span>High Speed WiFi</span>
+            </FeaturesCard>
+            <FeaturesCard>
+              <img src="/workcations-for-teams/puzzle.svg" />
+              <span>Team Building Activities</span>
+            </FeaturesCard>
+            <FeaturesCard>
+              <img src="/workcations-for-teams/bbq.svg" />
+              <span>Homely Meals</span>
+            </FeaturesCard>
+            <FeaturesCard>
+              <img src="/workcations-for-teams/stay.svg" />
+              <span>Comfortable Stays</span>
+            </FeaturesCard>
+          </FeaturesContainer>
+          <ContactUs onClick={scrollToContactForm}>Contact Us</ContactUs>
+        </SubContainer>
         <SlideShow>
           {images.map((item, i) =>
             i === 0 || loadElements ? (
