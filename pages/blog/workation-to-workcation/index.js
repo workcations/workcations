@@ -46,7 +46,10 @@ const BlogItem = () => {
   return (
     <Layout>
       <Head>
-        <title>Upgrade from Workation to WorkCation</title>
+        <title>
+          The Buzz Behind the Word C! WTF is Workation with an Extra C - A
+          upgraded Travel Trend - Workcations
+        </title>
         <meta
           name="description"
           content="Confused in Workation or Workcation? Give a read to our blog to know, what makes Workcations the perfect remote work option."
@@ -65,7 +68,7 @@ const BlogItem = () => {
         />
         <meta
           property="og:title"
-          content="Upgrade from Workation to WorkCation"
+          content="The Buzz Behind the Word C! WTF is Workation with an Extra C - A upgraded Travel Trend - Workcations"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -75,7 +78,8 @@ const BlogItem = () => {
             backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/workation-to-workcation/workation-to-workcation.jpg)`,
           }}
         >
-          Upgrade from Workation to WorkCation
+          The Buzz Behind the Word C! WTF is Workation with an Extra C - A
+          upgraded Travel Trend - Workcations
         </Cover>
         <BlogContent>
           <SocialShare slug={"workation-to-workcation"} />
@@ -198,6 +202,11 @@ const BlogItem = () => {
             that makes your stay efficient and budget friendly. You no longer
             have to worry for groceries and electricity bills! We've got you
             covered!
+            <br />
+            <strong>
+              At WorkCations, you will surely find properties economical than
+              your rented places in the cities you are living.
+            </strong>
           </Text>
 
           <SubHeading>5. Supporting the local culture</SubHeading>
@@ -223,7 +232,7 @@ const BlogItem = () => {
           <Text>
             So, if you’re looking for a place to work from, nestled in the
             mountains, all you need to do is grab your laptop and backpack and
-            drop a message!
+            drop a message, rest team Workcations will handle!
           </Text>
 
           <SocialShare slug={"workation-to-workcation"} />
