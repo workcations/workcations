@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useState, useRef } from "react";
 import { useEffect } from "react";
-import * as emailjs from "emailjs-com";
 import * as gtag from "../../components/ga";
 import {
   FormInput,
@@ -122,31 +121,8 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
 
   const ContactFormRef = useRef(null);
 
-  const [scrollPosition, setPosition] = useState(0);
-
-  const [pictureInPicture, setPictureInPicture] = useState(false);
-
-  useLayoutEffect(() => {
-    function updatePosition() {
-      setPosition(window.pageYOffset);
-    }
-    window.addEventListener("scroll", updatePosition);
-    updatePosition();
-    return () => window.removeEventListener("scroll", updatePosition);
-  }, []);
-
-  useEffect(() => {
-    if (scrollPosition > 150) {
-      if (screenWidth < 600) {
-        setPictureInPicture(true);
-        return;
-      }
-    }
-    setPictureInPicture(false);
-  }, [scrollPosition, screenWidth]);
-
   const scrollToRef = (ref) =>
-    window.scrollTo(0, ref.current.offsetTop - 230, "smooth");
+    window.scrollTo(0, ref.current.offsetTop - 100, "smooth");
 
   const scrollToContactForm = () => {
     scrollToRef(ContactFormRef);
@@ -158,7 +134,7 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
         <Title>
           Workcations For Teams<div></div>
         </Title>
-        <Video pictureInPicture={pictureInPicture}>
+        <Video>
           <iframe
             width="100%"
             height="100%"

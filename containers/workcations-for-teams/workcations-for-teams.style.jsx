@@ -7,10 +7,10 @@ export const Container = styled.div`
   grid-template-columns: 2fr 1fr;
 
   @media only screen and (max-width: 600px) {
-    margin-top: 340px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 90px;
   }
 `;
 
@@ -51,15 +51,13 @@ export const Title = styled.div`
   @media only screen and (max-width: 600px) {
     font-size: 5vw;
     height: 40px;
+    margin-bottom: 0px;
   }
 `;
 
 export const Video = styled.div`
-  width: ${(props) => (props.pictureInPicture ? "20vw" : "50vw")};
-  height: ${(props) => (props.pictureInPicture ? "14vw" : "28vw")};
-  position: ${(props) => (props.pictureInPicture ? "fixed" : "unset")};
-  top: 90px;
-  right: 0px;
+  width: 50vw;
+  height: 28vw;
   box-shadow: 0px 3px 6px #00000029;
   margin-bottom: 35px;
   background-color: #d5d5d5;
@@ -80,13 +78,8 @@ export const Video = styled.div`
   background-size: 800px 1040px;
 
   @media only screen and (max-width: 600px) {
-    position: ${(props) => (props.pictureInPicture ? "fixed" : "fixed")};
-    top: 90px;
-    width: ${(props) => (props.pictureInPicture ? "56vw" : "100vw")};
-    height: ${(props) => (props.pictureInPicture ? "30vw" : "56vw")};
-    margin-bottom: 10px;
-    z-index: 2;
-    transition: all 0.4s ease-in-out;
+    width: 100vw;
+    height: 56vw;
   }
 `;
 
