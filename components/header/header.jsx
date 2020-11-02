@@ -131,7 +131,7 @@ const Header = () => {
           <MenuOption>Workcation For Teams</MenuOption>
         </Link>
         <Link href="/blog" passHref>
-          <MenuOption>Blog</MenuOption>
+          <MenuOption>Blogs</MenuOption>
         </Link>
         <div onClick={() => dispatch(toggleContactPopupHidden())}>Connect</div>
       </Menu>
