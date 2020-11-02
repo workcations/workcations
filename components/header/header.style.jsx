@@ -103,12 +103,18 @@ export const MenuOption = styled.a`
   font-weight: 600;
   margin-left: 55px;
   cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: pre;
 
   @media only screen and (max-width: 768px) {
     margin: 0px;
     padding: 10px 0px 10px 15px;
     border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
     width: 100%;
+    text-overflow: unset;
+    overflow: unset;
+    white-space: unset;
   }
 `;
 

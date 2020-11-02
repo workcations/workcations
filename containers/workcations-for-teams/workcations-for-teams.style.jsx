@@ -27,7 +27,6 @@ export const SubContainer = styled.div`
   align-items: center;
 
   @media only screen and (max-width: 600px) {
-    height: calc(100vh - 150px);
     justify-content: space-between;
   }
 `;

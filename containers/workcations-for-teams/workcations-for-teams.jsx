@@ -133,7 +133,7 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
     <Container>
       <Top>
         <Title>
-          Workcations For Teams<div></div>
+          Workcation For Teams<div></div>
         </Title>
         <SubContainer>
           <Video>
@@ -184,6 +184,18 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
             ) : null
           )}
         </SlideShow>
+        {loadElements ? (
+          <Video>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/mvx1iH4EhdQ?rel=0&enablejsapi=1&amp;origin=https%3A%2F%2Fwww.workcations.in"
+              frameBorder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </Video>
+        ) : null}
       </Top>
       <Bottom>
         <ContactForm ref={ContactFormRef}>
