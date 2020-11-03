@@ -226,7 +226,7 @@ const BookNowNew = ({
         date: item.date,
         pricing: item.pricing,
         availability: item.pricing
-          .map((pricingItem) => pricingItem.available)
+          .map((pricingItem) => Number(pricingItem.available))
           .reduce((total, num) => total + num, 0),
       };
     });
@@ -234,6 +234,8 @@ const BookNowNew = ({
   let disabledDates = allDatesData.filter((item) => item.availability <= 0);
 
   const disabledDatesDates = disabledDates.map((item) => item.date);
+
+  console.log(allDatesData);
 
   for (let i = 0; i < finalDisabledDatesArray.length; i++) {
     if (disabledDatesDates.indexOf(finalDisabledDatesArray[i]) === -1) {
