@@ -162,14 +162,17 @@ export const FeaturesCard = styled.div`
 
   @media only screen and (max-width: 600px) {
     width: 25%;
-    height: 20vw;
-    justify-content: center;
+    height: 15vw;
+    margin: 2vw 0;
+    justify-content: space-between;
 
     img {
       width: 8vw;
     }
 
     span {
+      font-size: 2.4vw;
+      font-weight: 600;
     }
   }
 `;
@@ -321,5 +324,23 @@ export const FormSubmitAlert = styled.div`
   @media only screen and (max-width: 600px) {
     font-size: 2.6vw;
     width: calc(100vw - 50px);
+  }
+`;
+
+export const VideoHeading = styled.div`
+  width: 100%;
+  font-size: 1.7vw;
+  color: #424950;
+  text-align: center;
+  margin-bottom: 0px;
+  padding: 6px 0px 0px 0px;
+  font-weight: 600;
+  text-decoration: underline #ff6c6b wavy;
+  margin-bottom: 24px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    font-size: 5vw;
+    padding: 6px 0px;
   }
 `;

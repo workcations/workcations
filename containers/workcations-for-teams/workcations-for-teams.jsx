@@ -26,6 +26,7 @@ import {
   Form,
   FormGrid,
   FormSubmitAlert,
+  VideoHeading,
 } from "./workcations-for-teams.style";
 
 const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -184,6 +185,7 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
             ) : null
           )}
         </SlideShow>
+        <VideoHeading>Happy Workcationers</VideoHeading>
         {loadElements ? (
           <Video>
             <iframe
