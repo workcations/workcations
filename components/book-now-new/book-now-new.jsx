@@ -235,8 +235,6 @@ const BookNowNew = ({
 
   const disabledDatesDates = disabledDates.map((item) => item.date);
 
-  console.log(allDatesData);
-
   for (let i = 0; i < finalDisabledDatesArray.length; i++) {
     if (disabledDatesDates.indexOf(finalDisabledDatesArray[i]) === -1) {
       disabledDates.push({
