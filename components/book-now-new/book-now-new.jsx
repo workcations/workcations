@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import * as gtag from "../ga";
 
 import Calendar from "../calendar/calendar";
 import AddToCart from "../add-to-cart/add-to-cart";
@@ -172,6 +173,8 @@ const BookNowNew = ({
     month: 3,
     day: 31,
   };
+
+  const [addToCart, setAddToCart] = useState(false);
 
   const pricingArray = inventory.map((item) =>
     item.pricing.map((pricingItem, i) => {
@@ -686,6 +689,25 @@ const BookNowNew = ({
   }, [selectedDayRange]);
 
   const addRoom = (roomIndex, sharingIndex) => {
+    if (!addToCart) {
+      gtag.event({
+        category: "Add To Cart",
+        action: "Add To Cart",
+        label: "Add To Cart",
+      });
+
+      import("react-facebook-pixel")
+        .then((x) => x.default)
+        .then((ReactPixel) => {
+          ReactPixel.init("717219922161498");
+
+          ReactPixel.track("AddToCart", {
+            action: "Add To Cart Button Clicked",
+          });
+        });
+
+      setAddToCart(true);
+    }
     setRoomCount(
       roomCount.map((item, i) =>
         item.map((subItem, j) =>
@@ -805,6 +827,22 @@ const BookNowNew = ({
           setNoOfPaxAlert(false);
         }, 4000);
       } else {
+        gtag.event({
+          category: "CheckOut Initiated Book Now Button Clicked",
+          action: "CheckOut Initiated Book Now Button Clicked",
+          label: "CheckOut Initiated Book Now Button Clicked",
+        });
+
+        import("react-facebook-pixel")
+          .then((x) => x.default)
+          .then((ReactPixel) => {
+            ReactPixel.init("717219922161498");
+
+            ReactPixel.track("InitiateCheckout", {
+              action: "Book Now Button Clicked",
+            });
+          });
+
         setEmptyCartAlert(false);
         setNoOfPaxAlert(false);
         setBookNowPopup(true);
