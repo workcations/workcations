@@ -108,7 +108,7 @@ export const MenuOption = styled.a`
   white-space: pre;
 
   @media only screen and (max-width: 768px) {
-    margin: 0px;
+    margin: 0px 0px 0px 0px;
     padding: 10px 0px 10px 15px;
     border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
     width: 100%;
