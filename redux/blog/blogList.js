@@ -1,5 +1,13 @@
 const BlogsList = [
   {
+    slug: "workcations-story-of-cultural-shift",
+    title:
+      "From WFH to Workcations, Story behind culture shift in work from anywhere",
+    description: `From working in cubicles to WFH to workations, we have seen the cultural shift in the corporate sector. Know about Workcations - the reason for the shift. Many people have always dreamt of working from the mountains. The possibility of the same has always daunted many of us for the same reason we fear change. Shifting, connectivity, family and many other things can seem to become an obstacle to live that perfect mountain life.`,
+    date: "05th Nov 2020",
+    tags: ["Workcations", "Remote Office"],
+  },
+  {
     slug: "workation-to-workcation",
     title:
       "The Buzz Behind the Word C! WTF is Workation with an Extra C - A upgraded Travel Trend - Workcations",
