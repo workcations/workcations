@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "who-can-plan-workcation-for-teams",
+    title: "Enjoy A Gorgeous Workcation With Your Work Buddies",
+    description: `Want to plan Workations with your team? Here's is how you could incorporate this latest trend in your company culture. It is always a good idea to take a vacation, or in busy times, a workcation. A combination of work and vacation, this concept is slowly building its way up in the corporate world and work culture. Big groups and corporates can take their whole team and work together at picturesque locations.`,
+    date: "08th Nov 2020",
+    tags: ["Workcations", "Remote Office"],
+  },
+  {
     slug: "workcations-story-of-cultural-shift",
     title:
       "From WFH to Workcations, Story behind culture shift in work from anywhere",
