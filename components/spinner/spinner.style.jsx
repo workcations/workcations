@@ -6,6 +6,11 @@ export const SpinnerOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  background-color: white;
+  z-index: 151;
 `;
 
 export const SpinnerContainer = styled.div`

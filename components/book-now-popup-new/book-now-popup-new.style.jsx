@@ -262,6 +262,28 @@ export const Button = styled.a`
   }
 `;
 
+export const BookNowButton = styled.div`
+  width: 100%;
+  margin: 10px 0px 0px 0px;
+  background-color: #777777;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.3em;
+  padding: 10px 0px;
+  border-radius: 4px;
+  border: 1.5px solid #333333;
+  transition: 0.4s ease-in-out;
+
+  :hover {
+    background-color: white;
+    color: #777777;
+  }
+
+  @media screen and (max-width: 830px) {
+    font-size: 1em;
+  }
+`;
+
 export const FormSubmitAlert = styled.div`
   position: fixed;
   bottom: ${(props) => (props.active ? "50px" : "-50px")};

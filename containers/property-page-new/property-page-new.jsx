@@ -269,6 +269,7 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
           />
           <BookNowContainer>
             <BookNowNew
+              property={property}
               inventory={inventory}
               slug={slug}
               title={`Workcations ${id} - ${shortTitle}`}

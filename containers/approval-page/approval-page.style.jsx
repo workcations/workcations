@@ -343,8 +343,23 @@ export const RadioButton = styled.div`
 `;
 
 export const Approval = styled.div`
-  background-color: rgba(255, 108, 107, 0.2);
-  border: 2px solid #ff6c6b;
-  padding: 8px 15px;
-  border-radius: 3px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 15px;
+
+  span {
+    background-color: #911313;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    padding: 7px 20px;
+    font-weight: 600;
+    border-radius: 3px;
+    text-align: center;
+
+    &:first-child {
+      background-color: #0c7c0c;
+    }
+  }
 `;

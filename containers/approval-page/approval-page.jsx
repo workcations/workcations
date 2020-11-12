@@ -1,8 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Head from "next/head";
-import * as gtag from "../../components/ga";
-
-import FormInput from "../../components/form-input-text/form-input-text";
 
 import {
   PageContainer,
@@ -20,19 +17,10 @@ import {
   SharingTotal,
   CartTotal,
   Line,
-  Grid,
-  GridTraveler,
-  GridTravelerList,
-  GridTravelerTitle,
-  Submit,
   DownloadContainer,
   DownloadInvoice,
-  RadioGroup,
-  RadioGroupLabel,
-  RadioGroupButtons,
-  RadioButton,
   Approval,
-} from "./booking-page.style";
+} from "./approval-page.style";
 
 const getNoOfDays = (date1, date2) => {
   return (date2.getTime() - date1.getTime()) / 86400000;
@@ -57,7 +45,7 @@ const monthNames = [
   "December",
 ];
 
-const submitUserData = async (data) => {
+const approveBookingAPI = async (data) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -71,7 +59,7 @@ const submitUserData = async (data) => {
   };
 
   return await fetch(
-    "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/submitUserData",
+    "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/approveBooking",
     requestOptions
   )
     .then((response) => response.text())
@@ -79,29 +67,17 @@ const submitUserData = async (data) => {
     .catch((error) => console.log("error", error));
 };
 
-const BookingPage = ({ data, bookingSlug }) => {
+const ApprovalPage = ({ data, bookingSlug }) => {
   const {
-    account,
-    advance,
     amount,
     cart,
-    cartDetails,
     property,
     checkIn,
     checkOut,
-    leadSource,
-    name,
-    phone,
     totalPax,
-    salesPerson,
-    customer,
-    bookingId,
     breakfast,
     lunch,
     dinner,
-    transportation,
-    remarks,
-    websiteBooking,
     approved,
   } = data;
 
@@ -136,159 +112,18 @@ const BookingPage = ({ data, bookingSlug }) => {
     )
     .reduce(getTotal, 0);
 
-  const [userSubmitted, setUserSubmitted] = useState(customer);
-  const [userGender, setUserGender] = useState("m");
-  const [fullName, setFullName] = useState({ value: name, warningMessage: "" });
-  const [phoneNo, setPhoneNo] = useState({
-    value: phone,
-    warningMessage: "",
-  });
-  const [alternatePhoneNo, setAlternatePhoneNo] = useState({
-    value: "",
-    warningMessage: "",
-  });
-  const [address, setAddress] = useState({
-    value: "",
-    warningMessage: "",
-  });
-  const [email, setEmail] = useState({
-    value: "",
-    warningMessage: "",
-  });
-  const [company, setCompany] = useState({
-    value: "",
-    warningMessage: "",
-  });
-  const [post, setPost] = useState({
-    value: "",
-    warningMessage: "",
-  });
+  const [isBookingApproved, setApproved] = useState(approved);
 
-  const [travelersNames, setTravelersNames] = useState([]);
-  const [travelersPhones, setTravelersPhones] = useState([]);
-  const [travelersGenders, setTravelersGenders] = useState([]);
-
-  const handleChange = (event) => {
-    const { value, name } = event.target;
-
-    if (name === "fullName") {
-      setFullName({ ...fullName, value: value });
-    } else if (name === "phoneNo" && value.length !== 11) {
-      setPhoneNo({ ...phoneNo, value: value });
-    } else if (name === "address") {
-      setAddress({ ...address, value: value });
-    } else if (name === "email") {
-      setEmail({ ...email, value: value });
-    } else if (name === "alternatePhoneNo" && value.length !== 11) {
-      setAlternatePhoneNo({ ...alternatePhoneNo, value: value });
-    } else if (name === "company") {
-      setCompany({ ...company, value: value });
-    } else if (name === "post") {
-      setPost({ ...post, value: value });
-    }
-  };
-
-  const handleChangeTravelers = (event) => {
-    const { value, name } = event.target;
-
-    if (name.split(" ")[0] === "travelerName") {
-      const index = Number(name.split(" ")[1]) - 2;
-      let namesArray = new Array(totalPax.value - 1).fill("");
-
-      for (let i = 0; i < namesArray.length; i++) {
-        namesArray[i] = travelersNames[i];
-      }
-
-      namesArray[index] = value;
-      setTravelersNames(namesArray);
-    } else if (name.split(" ")[0] === "travelerPhone" && value.length !== 11) {
-      const index = Number(name.split(" ")[1]) - 2;
-      let phonesArray = new Array(totalPax.value - 1).fill("");
-
-      for (let i = 0; i < phonesArray.length; i++) {
-        phonesArray[i] = travelersPhones[i];
-      }
-
-      phonesArray[index] = value;
-      setTravelersPhones(phonesArray);
-    }
-  };
-
-  const submitDataFinal = (event) => {
-    event.preventDefault();
-
-    gtag.purchase({
-      id: bookingId,
-      revenue: Number(amount),
-      tax: Number((amount * 0.05) / 1.05),
-      propertyId: Number(bookingId.split("-")[1]),
-      propertyTitle: property.title,
-    });
-
-    import("react-facebook-pixel")
-      .then((x) => x.default)
-      .then((ReactPixel) => {
-        ReactPixel.init("717219922161498");
-
-        ReactPixel.track("Purchase", {
-          value: Number(amount),
-          currency: "INR",
-          content_ids: [bookingId, Number(bookingId.split("-")[1])],
-          content_name: property.title,
-        });
-      });
-
-    const data = {
-      bookingSlug,
-      bookingId,
-      account,
-      advance,
-      amount,
-      cart,
-      cartDetails,
-      property,
-      checkIn,
-      checkOut,
-      leadSource,
-      name: fullName.value,
-      gender: userGender,
-      phone: phoneNo.value,
-      salesPerson,
-      customer: true,
-      alternatePhoneNo: alternatePhoneNo.value,
-      address: address.value,
-      email: email.value,
-      company: company.value,
-      post: post.value,
-      totalPax,
-      travelersNames,
-      travelersPhones,
-      travelersGenders,
-      breakfast,
-      lunch,
-      dinner,
-      transportation,
-      remarks,
-      websiteBooking,
-      approved,
+  const approveBooking = (isApproved) => {
+    const newData = {
+      ...data,
+      approved: isApproved,
     };
 
-    submitUserData(data).then((res) => {
-      setUserSubmitted(true);
+    approveBookingAPI(newData).then(() => {
+      setApproved(isApproved);
     });
   };
-
-  useEffect(() => {
-    if (totalPax.value) {
-      setTravelersNames(new Array(totalPax.value - 1).fill(""));
-      setTravelersPhones(new Array(totalPax.value - 1).fill(""));
-      setTravelersGenders(new Array(totalPax.value - 1).fill("m"));
-    } else {
-      setTravelersNames([]);
-      setTravelersPhones([]);
-      setTravelersGenders([]);
-    }
-  }, [totalPax]);
 
   return (
     <Fragment>
@@ -566,247 +401,20 @@ const BookingPage = ({ data, bookingSlug }) => {
             </FlexItem>
           ) : null}
         </div>
-        {!userSubmitted ? (
-          <form onSubmit={submitDataFinal} style={{ textAlign: "center" }}>
-            <FormInput
-              name="bookingId"
-              type="text"
-              value={bookingId}
-              required
-              label="Booking Id"
-              warningMessage=""
-              handleChange={handleChange}
-            />
-            <GridTraveler>
-              <RadioGroup>
-                <RadioGroupLabel>Gender</RadioGroupLabel>
-                <RadioGroupButtons>
-                  <RadioButton>
-                    <input
-                      id="userGenderMale"
-                      onChange={(e) => {
-                        setUserGender(e.target.value);
-                      }}
-                      value="m"
-                      type="radio"
-                      checked={userGender === "m"}
-                    />
-                    <label htmlFor="userGenderMale">Male</label>
-                  </RadioButton>
-                  <RadioButton>
-                    <input
-                      id="userGenderFemale"
-                      onChange={(e) => {
-                        setUserGender(e.target.value);
-                      }}
-                      value="f"
-                      type="radio"
-                      checked={userGender === "f"}
-                    />
-                    <label htmlFor="userGenderFemale">Female</label>
-                  </RadioButton>
-                  <RadioButton>
-                    <input
-                      id="userGenderOther"
-                      onChange={(e) => {
-                        setUserGender(e.target.value);
-                      }}
-                      value="o"
-                      type="radio"
-                      checked={userGender === "o"}
-                    />
-                    <label htmlFor="userGenderOther">Other</label>
-                  </RadioButton>
-                </RadioGroupButtons>
-              </RadioGroup>
-            </GridTraveler>
-            <Grid>
-              <FormInput
-                name="fullName"
-                type="text"
-                value={fullName.value}
-                required
-                label="Full Name"
-                warningMessage={fullName.warningMessage}
-                handleChange={handleChange}
-              />
-              <FormInput
-                name="phoneNo"
-                type="number"
-                value={phoneNo.value}
-                required
-                label="Phone No"
-                warningMessage={phoneNo.warningMessage}
-                handleChange={handleChange}
-              />
-            </Grid>
-            <Grid>
-              <FormInput
-                name="alternatePhoneNo"
-                type="number"
-                value={alternatePhoneNo.value}
-                label="Alternate Phone No"
-                warningMessage={alternatePhoneNo.warningMessage}
-                handleChange={handleChange}
-              />
-              <FormInput
-                name="email"
-                type="email"
-                value={email.value}
-                required
-                label="Email Id"
-                warningMessage={email.warningMessage}
-                handleChange={handleChange}
-              />
-            </Grid>
-            <FormInput
-              name="address"
-              type="text"
-              value={address.value}
-              required
-              label="Full Address"
-              warningMessage={address.warningMessage}
-              handleChange={handleChange}
-            />
-            <Grid>
-              <FormInput
-                name="company"
-                type="text"
-                value={company.value}
-                required
-                label="Company"
-                warningMessage={company.warningMessage}
-                handleChange={handleChange}
-              />
-              <FormInput
-                name="post"
-                type="text"
-                value={post.value}
-                required
-                label="Designation"
-                warningMessage={post.warningMessage}
-                handleChange={handleChange}
-              />
-              <FormInput
-                name="noOfPax"
-                type="number"
-                value={totalPax.value}
-                required
-                label="No Of Pax"
-                warningMessage=""
-                handleChange={handleChange}
-              />
-            </Grid>
-            {travelersNames.map((item, i) => (
-              <GridTravelerList key={"extra traveler" + (i + 1)}>
-                <GridTravelerTitle>Traveler {i + 2} Details</GridTravelerTitle>
-                <RadioGroup>
-                  <RadioGroupLabel>Gender</RadioGroupLabel>
-                  <RadioGroupButtons>
-                    <RadioButton>
-                      <input
-                        id={"userGenderMale" + (i + 2)}
-                        onChange={(e) => {
-                          let gendersArray = new Array(totalPax.value - 1).fill(
-                            "m"
-                          );
-
-                          for (let i = 0; i < gendersArray.length; i++) {
-                            gendersArray[i] = travelersGenders[i];
-                          }
-                          gendersArray[i] = e.target.value;
-                          setTravelersGenders(gendersArray);
-                        }}
-                        value="m"
-                        type="radio"
-                        checked={travelersGenders[i] === "m"}
-                      />
-                      <label htmlFor={"userGenderMale" + (i + 2)}>Male</label>
-                    </RadioButton>
-                    <RadioButton>
-                      <input
-                        id={"userGenderFemale" + (i + 2)}
-                        onChange={(e) => {
-                          let gendersArray = new Array(totalPax.value - 1).fill(
-                            "m"
-                          );
-
-                          for (let i = 0; i < gendersArray.length; i++) {
-                            gendersArray[i] = travelersGenders[i];
-                          }
-
-                          gendersArray[i] = e.target.value;
-                          setTravelersGenders(gendersArray);
-                        }}
-                        value="f"
-                        type="radio"
-                        checked={travelersGenders[i] === "f"}
-                      />
-                      <label htmlFor={"userGenderFemale" + (i + 2)}>
-                        Female
-                      </label>
-                    </RadioButton>
-                    <RadioButton>
-                      <input
-                        id={"userGenderOther" + (i + 2)}
-                        onChange={(e) => {
-                          let gendersArray = new Array(totalPax.value - 1).fill(
-                            "m"
-                          );
-
-                          for (let i = 0; i < gendersArray.length; i++) {
-                            gendersArray[i] = travelersGenders[i];
-                          }
-
-                          gendersArray[i] = e.target.value;
-                          setTravelersGenders(gendersArray);
-                        }}
-                        value="o"
-                        type="radio"
-                        checked={travelersGenders[i] === "o"}
-                      />
-                      <label htmlFor={"userGenderOther" + (i + 2)}>Other</label>
-                    </RadioButton>
-                  </RadioGroupButtons>
-                </RadioGroup>
-                <Grid>
-                  <FormInput
-                    name={"travelerName " + (i + 2)}
-                    type="text"
-                    value={travelersNames[i]}
-                    label={"Name"}
-                    warningMessage=""
-                    handleChange={handleChangeTravelers}
-                    required
-                  />
-                  <FormInput
-                    name={"travelerPhone " + (i + 2)}
-                    type="number"
-                    value={travelersPhones[i]}
-                    label={"Phone"}
-                    warningMessage=""
-                    handleChange={handleChangeTravelers}
-                    required
-                  />
-                </Grid>
-              </GridTravelerList>
-            ))}
-            <Submit type="submit" value="Submit"></Submit>
-          </form>
-        ) : !!websiteBooking && websiteBooking && approved ? (
+        {isBookingApproved ? (
           <DownloadContainer>
             <DownloadInvoice
-              href={`https://data.workcations.in/pdf/${bookingSlug}`}
+              href={`https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/pdf/${bookingSlug}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               Download Booking Voucher
             </DownloadInvoice>
           </DownloadContainer>
-        ) : !websiteBooking ? (
+        ) : isBookingApproved ? (
           <DownloadContainer>
             <DownloadInvoice
-              href={`https://data.workcations.in/pdf/${bookingSlug}`}
+              href={`https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/pdf/${bookingSlug}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -815,7 +423,22 @@ const BookingPage = ({ data, bookingSlug }) => {
           </DownloadContainer>
         ) : (
           <DownloadContainer>
-            <Approval>Please Wait!! We are confirming your booking.</Approval>
+            <Approval>
+              <span
+                onClick={() => {
+                  approveBooking(true);
+                }}
+              >
+                Confirm Booking
+              </span>
+              <span
+                onClick={() => {
+                  approveBooking(false);
+                }}
+              >
+                Cancel Booking
+              </span>
+            </Approval>
           </DownloadContainer>
         )}
       </PageContainer>
@@ -823,4 +446,4 @@ const BookingPage = ({ data, bookingSlug }) => {
   );
 };
 
-export default BookingPage;
+export default ApprovalPage;

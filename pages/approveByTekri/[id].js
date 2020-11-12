@@ -2,7 +2,7 @@ import { useEffect, useState, Fragment } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Spinner from "../../components/spinner/spinner";
-import BookingPage from "../../containers/booking-page/booking-page";
+import ApprovalPage from "../../containers/approval-page/approval-page";
 import Layout from "../../components/layout/layout";
 
 const getBookingId = async (bookingId) => {
@@ -24,7 +24,7 @@ const getBookingId = async (bookingId) => {
     .catch((error) => error);
 };
 
-const Bookings = () => {
+const Approvals = () => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -62,11 +62,11 @@ const Bookings = () => {
         <Spinner />
       ) : (
         <Fragment>
-          <BookingPage data={bookingDetails} bookingSlug={id} />
+          <ApprovalPage data={bookingDetails} bookingSlug={id} />
         </Fragment>
       )}
     </Layout>
   );
 };
 
-export default Bookings;
+export default Approvals;

@@ -156,6 +156,7 @@ const getRoomSharing = (unit, occupancy) => {
 };
 
 const BookNowNew = ({
+  property,
   inventory,
   slug,
   title,
@@ -1224,6 +1225,8 @@ const BookNowNew = ({
         <span>This property can be booked for minimum {minDuration} days.</span>
       </EmptyCartAlert>
       <BookNowPopup
+        property={property}
+        mealsIncluded={mealsIncluded}
         isActive={bookNowPopup}
         closePopup={() => {
           setBookNowPopup(false);
@@ -1239,6 +1242,7 @@ const BookNowNew = ({
         getExtraBedPrice={getExtraBedPrice}
         pricingDuration={pricingDuration}
         totalPrice={totalPrice}
+        noOfPax={noOfPax}
       />
       <RoomPopup {...roomPopup} slug={slug} />
     </Fragment>

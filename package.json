@@ -10,6 +10,7 @@
   "dependencies": {
     "@googlemaps/markerclustererplus": "1.0.3",
     "@zeit/next-css": "1.0.1",
+    "axios": "0.21.0",
     "emailjs-com": "2.6.3",
     "fuse.js": "6.4.1",
     "google-map-react": "2.1.7",
