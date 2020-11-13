@@ -41,6 +41,7 @@ import {
   CostingValue,
   PaymentButton,
   EmptyCartAlert,
+  Disclaimer,
 } from "./book-now-new.style";
 
 const convertDate = (date) =>
@@ -168,6 +169,7 @@ const BookNowNew = ({
   isServer,
   disabledDatesArray,
   finalDisabledDatesArray,
+  newYear,
 }) => {
   const maximumDate = {
     year: 2021,
@@ -913,6 +915,12 @@ const BookNowNew = ({
                 disabledDays={disabledDays}
                 maximumDate={maximumDate}
               />
+              {!!!newYear ? (
+                <Disclaimer>
+                  These Prices are not valid from 15th December 2020 - 15th
+                  January 2021
+                </Disclaimer>
+              ) : null}
               <Line />
               <CinCoutHeading>Select Rooms</CinCoutHeading>
             </Top>

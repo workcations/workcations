@@ -221,6 +221,7 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
     inventory,
     disabledDatesArray,
     finalDisabledDatesArray,
+    newYear,
   } = property;
   const { breakfast, lunchVeg, lunchNonVeg, dinnerVeg, dinnerNonVeg } = meals;
   const {
@@ -281,6 +282,7 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
               isServer={isServer}
               disabledDatesArray={disabledDatesArray}
               finalDisabledDatesArray={finalDisabledDatesArray}
+              newYear={newYear}
             />
           </BookNowContainer>
           <Details>

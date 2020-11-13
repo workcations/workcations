@@ -497,3 +497,21 @@ export const EmptyCartAlert = styled.div`
     }
   }
 `;
+
+export const Disclaimer = styled.span`
+  align-self: flex-start;
+  font-size: 0.8vw;
+  margin-left: 0.5vw;
+  color: #ff6b6c;
+  font-weight: 600;
+  line-height: 2vw;
+
+  @media only screen and (max-width: 900px) {
+    align-self: unset;
+    margin: unset;
+    width: 80vw;
+    font-size: 3vw;
+    line-height: 2em;
+    margin-bottom: 3vw;
+  }
+`;
