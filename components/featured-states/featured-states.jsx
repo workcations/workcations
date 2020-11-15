@@ -17,12 +17,12 @@ const List = [
     image: "goa",
   },
   {
-    title: "karnataka",
-    image: "karnataka",
+    title: "kerala",
+    image: "kerala",
   },
   {
-    title: "maharashtra",
-    image: "maharashtra",
+    title: "karnataka",
+    image: "karnataka",
   },
   {
     title: "rajasthan",
