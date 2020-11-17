@@ -363,7 +363,7 @@ const BookNowPopup = ({
                 ? property.meals.dinnerVeg.value
                 : -1,
               email: property.owner.email,
-              phone: property.owner.contactPerson.phone,
+              phone: property.owner.contactPerson[0].phone,
               slug: slug,
               title: `Workcations ${property.id} - ${property.shortTitle}`,
               titleShort: property.titleShort,
