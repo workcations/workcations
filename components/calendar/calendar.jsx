@@ -55,6 +55,7 @@ const CalendarComponent = ({
         shouldHighlightWeekends
         colorPrimary="#ff6c6b"
         colorPrimaryLight="rgba(255, 108, 107, 0.2)"
+        calendarPopperPosition="bottom"
       />
     </Container>
   );
