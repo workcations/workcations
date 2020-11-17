@@ -177,6 +177,16 @@ const BookNowNew = ({
     day: 31,
   };
 
+  const [pickerPos, setPickerPos] = useState("bottom");
+
+  useEffect(() => {
+    if (!isServer) {
+      if (window.screen.width < 769) {
+        setPickerPos("auto");
+      }
+    }
+  }, [isServer]);
+
   const [addToCart, setAddToCart] = useState(false);
 
   const pricingArray = inventory.map((item) =>
@@ -914,6 +924,7 @@ const BookNowNew = ({
                 setSelectedDayRange={setSelectedDayRange}
                 disabledDays={disabledDays}
                 maximumDate={maximumDate}
+                pickerPos={pickerPos}
               />
               {!!!newYear ? (
                 <Disclaimer>
