@@ -1,5 +1,28 @@
 const BlogsList = [
   {
+    slug: "workcations-future-of-indian-coporate-culture",
+    title:
+      "Why Remote Work Culture and Workcations Will Stay In Indian Corporate Culture?",
+    description: `Workcations was considered imaginary before the pandemic but slowly and steadily it has become the reality of corporate. Reasons why it will stay here. No matter how much we criticize the COVID and the situations that it has brought up for all of us, it has given rise to a few good things also.`,
+    date: "16th Nov 2020",
+    tags: ["Workcations", "Remote Office"],
+  },
+  {
+    slug: "how-workcations-are-better-than-corporate-offsite",
+    title:
+      "Corporate Offsite Got a New Lingo and It is Called Workcations for Teams",
+    description: `Pandemic has affected the scenario of the corporate offsite. Know how Workcations for teams have become the favourite of professionals with time. Meetings are an integral part of all businesses. Whether you own a startup or a rapidly growing multi-national, getting your best brains together every once in a while always helps maintain productivity and work quality.`,
+    date: "12th Nov 2020",
+    tags: ["Workcations", "Remote Office"],
+  },
+  {
+    slug: "workcations-the-newest-trend-of-office-parties",
+    title: "Ditch Office Parties! Here's a new way to celebrate success",
+    description: `Due to the pandemic, we all are missing those office parties! Not anymore, know about Workcations the newest way to celebrate success. Are you a workaholic but also love to party? Do you miss going out on the weekends with your friends and colleague after a long week?`,
+    date: "10th Nov 2020",
+    tags: ["Workcations", "Remote Office"],
+  },
+  {
     slug: "who-can-plan-workcation-for-teams",
     title: "Enjoy A Gorgeous Workcation With Your Work Buddies",
     description: `Want to plan Workations with your team? Here's is how you could incorporate this latest trend in your company culture. It is always a good idea to take a vacation, or in busy times, a workcation. A combination of work and vacation, this concept is slowly building its way up in the corporate world and work culture. Big groups and corporates can take their whole team and work together at picturesque locations.`,

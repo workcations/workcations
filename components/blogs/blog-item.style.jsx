@@ -181,3 +181,46 @@ export const SuggestedRead = styled.div`
     margin-right: 5%;
   }
 `;
+
+export const Table = styled.table`
+  width: 100%;
+  border-spacing: 0;
+  box-shadow: 0px 0px 3px #aaaaaa;
+
+  @media screen and (max-width: 650px) {
+  }
+`;
+
+export const TableRow = styled.tr`
+  &:first-child {
+    background-color: #ff6c6b;
+    color: white;
+    text-align: left;
+
+    @media screen and (max-width: 650px) {
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+`;
+
+export const TableHeading = styled.th`
+  padding: 10px 5px;
+  font-size: 1vw;
+
+  @media screen and (max-width: 650px) {
+    font-size: 3.2vw;
+  }
+`;
+
+export const TableCell = styled.td`
+  padding: 10px 5px;
+  color: #777777;
+  font-size: 0.9vw;
+
+  @media screen and (max-width: 650px) {
+    font-size: 2.9vw;
+  }
+`;
