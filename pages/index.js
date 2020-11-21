@@ -16,6 +16,71 @@ import { selectPropertyList } from "../redux/property/properties.selectors";
 
 import SectionContainer from "../style-components/section-container/section-container.style";
 
+const localBusinessObject = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  name: "workcations",
+  image: "https://www.workcations.in/logo.png",
+  "@id": "https://www.workcations.in/#homepage",
+  url: "https://www.workcations.in/",
+  telephone: "918814871652",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "UJ Tower, DLF City Phase 3, Near Guru Dronacharya, Metro Station, Sector 26",
+    addressLocality: "Gurugram",
+    postalCode: "122002",
+    addressCountry: "IN",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  sameAs: [
+    "https://www.facebook.com/Workcations.in/",
+    "https://www.facebook.com/Workcations.in/",
+    "https://www.youtube.com/c/WanderOn",
+    "https://www.linkedin.com/company/workcations-in",
+    "https://www.workcations.in/",
+  ],
+};
+
+const searchSitelinkObject = {
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  name: "workcations",
+  url: "https://www.workcations.in/",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://www.workcations.in/search?search={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const LocalBusinessSchema = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessObject) }}
+  ></script>
+);
+
+const SearchSitelinkObjectSchema = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(searchSitelinkObject) }}
+  ></script>
+);
+
 const Home = () => {
   const dispatch = useDispatch();
   const propertyList = useSelector(selectPropertyList);
@@ -72,6 +137,18 @@ const Home = () => {
           content="Workcations - Think Remote Work! Think Workcations!"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(searchSitelinkObject),
+          }}
+        ></script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessObject),
+          }}
+        ></script>
       </Head>
       <Hero propertyList={propertyList} />
       <HomePage
