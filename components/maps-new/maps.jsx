@@ -67,7 +67,7 @@ const Maps = ({ latitude, longitude, title, slug }) => {
     points,
     bounds,
     zoom,
-    options: { radius: 75, maxZoom: 20 },
+    options: { radius: 76, maxZoom: 20 },
   });
 
   return (
