@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
     "@googlemaps/markerclustererplus": "1.0.3",
@@ -44,6 +45,7 @@
     "use-supercluster": "0.2.9"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "latest"
+    "babel-plugin-styled-components": "latest",
+    "next-sitemap": "^1.3.2"
   }
 }
