@@ -70,13 +70,42 @@ const Maps = ({ latitude, longitude, title, slug }) => {
     options: { radius: 75, maxZoom: 20 },
   });
 
+  const url = `https://maps.googleapis.com/maps/api/staticmap?center=${
+    Number(latitude) + 0.0005
+  },${
+    Number(longitude) + 0.0005
+  }&zoom=12&size=600x300&maptype=roadmap&markers=color:black%7Clabel:S%7C${
+    Number(latitude) + 0.0005
+  },${Number(longitude) + 0.0005}&key=AIzaSyBAVnqm6RoXqOOBe88VqV5aDaRFgL-YSQc`;
+
   return (
     <Container>
-      <GoogleMapReact
+      <img src={url} />
+    </Container>
+  );
+};
+
+export default Maps;
+
+/*
+
+https://maps.googleapis.com/maps/api/staticmap?
+center=Brooklyn+Bridge,New+York,NY
+&zoom=13
+&size=600x300
+&maptype=roadmap
+&markers=color:black%7Clabel:S%7C40.702147,-74.015794
+&key=YOUR_API_KEY
+
+*/
+
+/*
+
+<GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyBAVnqm6RoXqOOBe88VqV5aDaRFgL-YSQc" }}
         defaultCenter={{
           lat: Number(latitude) + 0.0005,
-          lng: Number(longitude) - 0.0005,
+          lng: Number(longitude) + 0.0005,
         }}
         defaultZoom={12}
         onChange={({ zoom, bounds }) => {
@@ -149,8 +178,5 @@ const Maps = ({ latitude, longitude, title, slug }) => {
           );
         })}
       </GoogleMapReact>
-    </Container>
-  );
-};
 
-export default Maps;
+      */
