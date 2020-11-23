@@ -32,17 +32,22 @@ const Shimmer = css`
 `;
 
 export const Container = styled.div`
-  width: 100%;
+  width: 600px;
   border-radius: 5px;
-  height: 26vw;
+  height: 400px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+  margin: 0px auto 30px auto;
 
   ${Light}
   ${Shimmer}
 
   @media only screen and (max-width: 900px) {
     height: 35vh;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
   }
 `;
 

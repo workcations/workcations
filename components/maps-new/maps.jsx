@@ -70,9 +70,26 @@ const Maps = ({ latitude, longitude, title, slug }) => {
     options: { radius: 76, maxZoom: 20 },
   });
 
+  const url = `https://maps.googleapis.com/maps/api/staticmap?center=${
+    Number(latitude) + 0.0005
+  },${
+    Number(longitude) - 0.0005
+  }&format=png32&zoom=12&size=600x400&maptype=roadmap&markers=icon:https://www.workcations.in/logo-map.png%7C${
+    Number(latitude) + 0.0005
+  },${Number(longitude) - 0.0005}&key=AIzaSyBAVnqm6RoXqOOBe88VqV5aDaRFgL-YSQc`;
+
   return (
     <Container>
-      <GoogleMapReact
+      <img src={url} alt="" />
+    </Container>
+  );
+};
+
+export default Maps;
+
+/*
+
+<GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyBAVnqm6RoXqOOBe88VqV5aDaRFgL-YSQc" }}
         defaultCenter={{
           lat: Number(latitude) + 0.0005,
@@ -149,8 +166,5 @@ const Maps = ({ latitude, longitude, title, slug }) => {
           );
         })}
       </GoogleMapReact>
-    </Container>
-  );
-};
 
-export default Maps;
+      */
