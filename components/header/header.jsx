@@ -128,7 +128,7 @@ const Header = () => {
           <MenuOption>Destinations</MenuOption>
         </Link>
         <Link href="/workcations-for-teams" passHref>
-          <MenuOption>Workcation For Teams</MenuOption>
+          <MenuOption>Workcations For Teams</MenuOption>
         </Link>
         <Link href="/blog" passHref>
           <MenuOption>Blogs</MenuOption>

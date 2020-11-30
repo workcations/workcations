@@ -4,7 +4,7 @@ export const Container = styled.div`
   /* types-container */
   width: 80vw;
   display: grid;
-  grid-template-columns: 1fr 40px;
+  grid-template-columns: 40px 1fr 40px;
   grid-column-gap: 15px;
   margin-top: 20px;
 
@@ -17,8 +17,8 @@ export const Container = styled.div`
 
 export const FlexContainer = styled.div`
   scroll-behavior: smooth;
-  width: calc(80vw - 60px);
-  max-width: calc(80vw - 60px);
+  width: calc(80vw - 120px);
+  max-width: calc(80vw - 120px);
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -134,7 +134,7 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
     <Container>
       <Top>
         <Title>
-          Workcation For Teams<div></div>
+          Workcations For Teams<div></div>
         </Title>
         <SubContainer>
           <Video>

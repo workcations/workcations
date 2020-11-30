@@ -32,8 +32,17 @@ const FeaturedHostels = ({ propertyList }) => {
     cardsContainer.current.scrollLeft += 300;
   };
 
+  const previousCards = () => {
+    cardsContainer.current.scrollLeft -= 300;
+  };
+
   return (
     <Container>
+      <ArrowContainer onClick={previousCards}>
+        <svg viewBox="0 0 32 32" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z" />
+        </svg>
+      </ArrowContainer>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
         {propertyList.length > 0 ? (
           <Fragment>
@@ -105,8 +114,17 @@ const FeaturedVillas = ({ propertyList }) => {
     cardsContainer.current.scrollLeft += 300;
   };
 
+  const previousCards = () => {
+    cardsContainer.current.scrollLeft -= 300;
+  };
+
   return (
     <Container>
+      <ArrowContainer onClick={previousCards}>
+        <svg viewBox="0 0 32 32" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z" />
+        </svg>
+      </ArrowContainer>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
         {propertyList.length > 0 ? (
           <Fragment>
@@ -178,8 +196,17 @@ const FeaturedHotels = ({ propertyList }) => {
     cardsContainer.current.scrollLeft += 300;
   };
 
+  const previousCards = () => {
+    cardsContainer.current.scrollLeft -= 300;
+  };
+
   return (
     <Container>
+      <ArrowContainer onClick={previousCards}>
+        <svg viewBox="0 0 32 32" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z" />
+        </svg>
+      </ArrowContainer>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
         {propertyList.length > 0 ? (
           <Fragment>

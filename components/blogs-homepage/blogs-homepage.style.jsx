@@ -1,17 +1,58 @@
 import styled from "styled-components";
 
+export const CompContainer = styled.div`
+  /* types-container */
+  width: 80vw;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  grid-column-gap: 15px;
+  margin-top: 20px;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+    width: 90vw;
+    margin-top: 4vw;
+  }
+`;
+
 export const Container = styled.div`
   /* blogs-container */
-  width: 80vw;
+  scroll-behavior: smooth;
+  width: calc(80vw - 120px);
+  max-width: calc(80vw - 120px);
   display: flex;
   flex-direction: row;
   align-items: center;
-  overflow: scroll;
-  margin: 2vw 0;
+  overflow-x: scroll;
+  padding: 2vw 0;
 
   @media only screen and (max-width: 600px) {
     width: 90vw;
-    margin: 4vw 0;
+    max-width: 90vw;
+  }
+`;
+
+export const ArrowContainer = styled.div`
+  height: 14.75vw;
+  margin: auto 0px;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2px;
+
+  @media only screen and (max-width: 900px) {
+    height: 7vw;
+    display: none;
+  }
+
+  svg {
+    height: 2.5vw;
+
+    @media only screen and (max-width: 900px) {
+      height: 4vw;
+    }
   }
 `;
 

@@ -335,7 +335,7 @@ export const VideoHeading = styled.div`
   margin-bottom: 0px;
   padding: 6px 0px 0px 0px;
   font-weight: 600;
-  text-decoration: underline #ff6c6b wavy;
+
   margin-bottom: 24px;
 
   @media only screen and (max-width: 600px) {
