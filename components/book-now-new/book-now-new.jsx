@@ -249,10 +249,47 @@ const BookNowNew = ({
 
   let disabledDates = allDatesData.filter((item) => item.availability <= 0);
 
+  const newYearDates = [
+    "2020-12-15",
+    "2020-12-16",
+    "2020-12-17",
+    "2020-12-18",
+    "2020-12-19",
+    "2020-12-20",
+    "2020-12-21",
+    "2020-12-22",
+    "2020-12-23",
+    "2020-12-24",
+    "2020-12-25",
+    "2020-12-26",
+    "2020-12-27",
+    "2020-12-28",
+    "2020-12-29",
+    "2020-12-30",
+    "2020-12-31",
+    "2021-01-01",
+    "2021-01-02",
+    "2021-01-03",
+    "2021-01-04",
+    "2021-01-05",
+  ];
+
   const disabledDatesDates = disabledDates.map((item) => item.date);
 
+  for (let i = 0; i < newYearDates.length; i++) {
+    if (!!!newYear && disabledDatesDates.indexOf(newYearDates[i]) === -1) {
+      disabledDates.push({
+        date: newYearDates[i],
+        availability: 0,
+        pricing: [],
+      });
+    }
+  }
+
+  const disabledDatesDates2 = disabledDates.map((item) => item.date);
+
   for (let i = 0; i < finalDisabledDatesArray.length; i++) {
-    if (disabledDatesDates.indexOf(finalDisabledDatesArray[i]) === -1) {
+    if (disabledDatesDates2.indexOf(finalDisabledDatesArray[i]) === -1) {
       disabledDates.push({
         date: finalDisabledDatesArray[i],
         availability: 0,
@@ -926,12 +963,6 @@ const BookNowNew = ({
                 maximumDate={maximumDate}
                 pickerPos={pickerPos}
               />
-              {!!!newYear ? (
-                <Disclaimer>
-                  These Prices are not valid from 15th December 2020 - 15th
-                  January 2021
-                </Disclaimer>
-              ) : null}
               <Line />
               <CinCoutHeading>Select Rooms</CinCoutHeading>
             </Top>
@@ -1100,7 +1131,7 @@ const BookNowNew = ({
                             {getExtraBedPrice(i, j, pricingDuration) <
                             getExtraBedPrice(i, j, "ultraShort") ? (
                               <Striked>
-                                ₹ {getRoomPrice(i, "ultraShort")}
+                                ₹ {getExtraBedPrice(i, j, "ultraShort")}
                               </Striked>
                             ) : null}
                             <Price>
