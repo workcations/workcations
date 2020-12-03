@@ -75,7 +75,7 @@ const BlogItem = () => {
           Million Dollar Benefits of Working from Mountains
         </Cover>
         <BlogContent>
-          <SocialShare slug={"workation-to-workcation"} />
+          <SocialShare slug={"benefits-from-working-from-mountains"} />
           <Tags>
             <span>Remote Work</span>
             <span>Workcations</span>

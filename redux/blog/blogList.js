@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "work-friendly-cafes-in-manali",
+    title: "7 Work Friendly Cafes in Manali for Workcations",
+    description: `Still wondering what it feels like to work from a cafe in the mountains, then worry not, we have prepared a list of Work Friendly Cafes in Manali. Here we are discussing seven work-friendly cafes in Manali that are fit for workations.`,
+    date: "25th Nov 2020",
+    tags: ["Manali", "Cafes"],
+  },
+  {
     slug: "workcations-future-of-indian-coporate-culture",
     title:
       "Why Remote Work Culture and Workcations Will Stay In Indian Corporate Culture?",
@@ -39,8 +46,7 @@ const BlogsList = [
   },
   {
     slug: "workation-to-workcation",
-    title:
-      "The Buzz Behind the Word C! WTF is Workation with an Extra C - A upgraded Travel Trend - Workcations",
+    title: "The Buzz Behind The Word Workcations - An Upgraded Travel Trend!",
     description: `Confused in Workation or Workcation? Give a read to our blog to know, what makes Workcations the perfect remote work option. There are many things that can make life quite unbearable and living in a city during a pandemic sure does top the list. If you're caught in the same metropolitan rut, and want to move to the mountains, beaches and countryside, worry not! WanderOn Travel Community has got you covered.`,
     date: "29th Oct 2020",
     tags: ["Workcations", "Remote Office"],

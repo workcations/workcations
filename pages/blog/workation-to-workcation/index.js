@@ -47,8 +47,7 @@ const BlogItem = () => {
     <Layout>
       <Head>
         <title>
-          The Buzz Behind the Word C! WTF is Workation with an Extra C - A
-          upgraded Travel Trend - Workcations
+          The Buzz Behind The Word Workcations - An Upgraded Travel Trend!
         </title>
         <meta
           name="description"
@@ -78,8 +77,7 @@ const BlogItem = () => {
             backgroundImage: `linear-gradient(to top,rgba(0,0,0,.4) 00%, rgba(0,0,0,.4) 100%),url(/workation-to-workcation/workation-to-workcation.jpg)`,
           }}
         >
-          The Buzz Behind the Word C! WTF is Workation with an Extra C - A
-          upgraded Travel Trend - Workcations
+          The Buzz Behind The Word Workcations - An Upgraded Travel Trend!
         </Cover>
         <BlogContent>
           <SocialShare slug={"workation-to-workcation"} />
