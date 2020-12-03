@@ -23,12 +23,31 @@ const FeaturedStays = ({ featured, propertyList }) => {
     setTiles(new Array(featured).fill(true));
   }, [featured]);
 
+  /*
+  property.slug.split("-")[0]
+  */
+
+  const featuredIdsList = [
+    "1333",
+    "1347",
+    "2406",
+    "1203",
+    "2301",
+    "1407",
+    "3313",
+    "4401",
+    "1135",
+  ];
+
   return (
     <Container>
       {propertyList.length > 0 ? (
         <Fragment>
           {propertyList
-            .filter((property) => property.featured === "TRUE")
+            .filter(
+              (property) =>
+                featuredIdsList.indexOf(property.slug.split("-")[0]) !== -1
+            )
             .map((property, i) =>
               featured > i ? (
                 <Link
@@ -46,15 +65,12 @@ const FeaturedStays = ({ featured, propertyList }) => {
                         <ImageContainer>
                           <Type type={property.type}>{property.type}</Type>
                           <Price>
-                            {Number(property.short).toLocaleString(
-                              "en-IN",
-                              {
-                                style: "currency",
-                                currency: "INR",
-                                maximumFractionDigits: 0,
-                                minimumFractionDigits: 0,
-                              }
-                            )}
+                            {Number(property.short).toLocaleString("en-IN", {
+                              style: "currency",
+                              currency: "INR",
+                              maximumFractionDigits: 0,
+                              minimumFractionDigits: 0,
+                            })}
                             <span>/night</span>
                           </Price>
                         </ImageContainer>
