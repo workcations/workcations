@@ -515,3 +515,48 @@ export const Disclaimer = styled.span`
     margin-bottom: 3vw;
   }
 `;
+
+export const PromoCode = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 15px;
+  column-gap: 15px;
+  width: 90%;
+`;
+
+export const ApplyPromoCode = styled.div`
+  margin-top: 5px;
+  width: 100%;
+  background-color: #00c4ab;
+  color: white;
+  border: 1px solid#479f99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 1.3vw;
+
+  :hover {
+    background-color: white;
+    color: #00c4ab;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 4vw;
+  }
+`;
+
+export const WarningMessage = styled.div`
+  margin-top: 3px;
+  margin-bottom: 10px;
+  color: red;
+  font-size: 0.4em;
+  width: 80%;
+
+  @media screen and (max-width: 600px) {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+`;

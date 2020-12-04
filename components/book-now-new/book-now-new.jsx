@@ -42,6 +42,9 @@ import {
   PaymentButton,
   EmptyCartAlert,
   Disclaimer,
+  PromoCode,
+  ApplyPromoCode,
+  WarningMessage,
 } from "./book-now-new.style";
 
 const convertDate = (date) =>
@@ -178,6 +181,11 @@ const BookNowNew = ({
   };
 
   const [pickerPos, setPickerPos] = useState("bottom");
+
+  const [promoCode, setPromoCode] = useState("");
+  const [promoCodeWarning, setPromoCodeWarning] = useState("");
+  const [couponDetails, setCouponDetails] = useState(null);
+  const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
     if (!isServer) {
@@ -911,6 +919,50 @@ const BookNowNew = ({
     start: false,
   });
 
+  const applyPromoCode = () => {
+    setPromoCodeWarning("");
+    setCouponDetails(null);
+
+    if (promoCode.length === 0) {
+      setPromoCodeWarning("Invalid Promo Code");
+      setCouponDetails(null);
+    } else {
+      fetch(
+        `https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/coupon/${promoCode}`
+      )
+        .then((codeData) => codeData.json())
+        .then((codeData) => {
+          if (codeData === "invalid") {
+            setPromoCodeWarning("Invalid Promo Code");
+          } else {
+            setCouponDetails(codeData);
+          }
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (!!couponDetails) {
+      const {
+        availableCoupons,
+        bookingIds,
+        code,
+        issuedBy,
+        maxDiscount,
+        minOrder,
+        noOfUsers,
+        offerDescription,
+        offerName,
+        offerTnc,
+        subType,
+        type,
+        value,
+      } = couponDetails;
+
+      setDiscount((totalPrice * value) / 100);
+    }
+  }, [couponDetails, totalPrice]);
+
   return (
     <Fragment>
       <Container>
@@ -1253,10 +1305,25 @@ const BookNowNew = ({
                 label="No Of Pax"
               />
             ) : null}
+            <PromoCode>
+              <FormInput
+                name="promoCode"
+                type="text"
+                value={promoCode}
+                handleChange={(e) => {
+                  setPromoCode(e.target.value);
+                  setPromoCodeWarning("");
+                  setCouponDetails(null);
+                }}
+                label=""
+              />
+              <ApplyPromoCode onClick={applyPromoCode}>Apply</ApplyPromoCode>
+            </PromoCode>
+            <WarningMessage>{promoCodeWarning}</WarningMessage>
             <Costing>
               <CostingContainer>
                 <CostingText>Total Cost</CostingText>
-                <CostingValue>₹ {totalPrice}</CostingValue>
+                <CostingValue>₹ {totalPrice - discount}</CostingValue>
               </CostingContainer>
               <PaymentButton onClick={bookNow}>
                 <span>Book Now</span>
@@ -1281,6 +1348,7 @@ const BookNowNew = ({
         closePopup={() => {
           setBookNowPopup(false);
         }}
+        discount={discount}
         title={title}
         selectedDayRange={selectedDayRange}
         roomCount={roomCount}
