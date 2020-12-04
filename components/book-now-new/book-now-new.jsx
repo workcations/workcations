@@ -1305,6 +1305,7 @@ const BookNowNew = ({
                 label="No Of Pax"
               />
             ) : null}
+            <CinCoutHeading>Have a Promo Code?</CinCoutHeading>
             <PromoCode>
               <FormInput
                 name="promoCode"
