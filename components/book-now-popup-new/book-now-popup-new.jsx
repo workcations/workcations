@@ -650,7 +650,7 @@ const BookNowPopup = ({
                           })}
                         </span>
                       </div>
-                      {discount > 0 ? (
+                      {!!couponDetails && discount > 0 ? (
                         <div>
                           <span>Discount ({couponDetails.value}%)</span>
                           <span>
