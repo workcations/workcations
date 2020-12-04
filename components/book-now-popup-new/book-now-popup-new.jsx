@@ -31,7 +31,11 @@ import {
   Button,
   BookNowButton,
   FormSubmitAlert,
+  PromoCode,
+  ApplyPromoCode,
+  WarningMessage,
 } from "./book-now-popup-new.style";
+import { useEffect } from "react";
 
 const monthNames = [
   "January",
@@ -132,6 +136,11 @@ const BookNowPopup = ({
     phone: "",
     warningMessage: null,
   });
+
+  const [promoCode, setPromoCode] = useState("");
+  const [promoCodeWarning, setPromoCodeWarning] = useState("");
+  const [couponDetails, setCouponDetails] = useState(null);
+  const [discount, setDiscount] = useState(0);
 
   const [spinner, setSpinner] = useState(false);
 
@@ -276,7 +285,7 @@ const BookNowPopup = ({
     );
 
     const data = JSON.stringify({
-      amount: totalPrice * 1.05 * 100,
+      amount: (totalPrice - discount) * 1.05 * 100,
       currency: "INR",
       receipt: paymentId.data,
       notes: {},
@@ -485,6 +494,50 @@ const BookNowPopup = ({
     paymentObject.open();
   }
 
+  const applyPromoCode = () => {
+    setPromoCodeWarning("");
+    setCouponDetails(null);
+
+    if (promoCode.length === 0) {
+      setPromoCodeWarning("Invalid Promo Code");
+      setCouponDetails(null);
+    } else {
+      fetch(
+        `https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/coupon/${promoCode}`
+      )
+        .then((codeData) => codeData.json())
+        .then((codeData) => {
+          if (codeData === "invalid") {
+            setPromoCodeWarning("Invalid Promo Code");
+          } else {
+            setCouponDetails(codeData);
+          }
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (!!couponDetails) {
+      const {
+        availableCoupons,
+        bookingIds,
+        code,
+        issuedBy,
+        maxDiscount,
+        minOrder,
+        noOfUsers,
+        offerDescription,
+        offerName,
+        offerTnc,
+        subType,
+        type,
+        value,
+      } = couponDetails;
+
+      setDiscount((totalPrice * value) / 100);
+    }
+  }, [couponDetails]);
+
   return (
     <Fragment>
       {spinner ? (
@@ -597,29 +650,64 @@ const BookNowPopup = ({
                           })}
                         </span>
                       </div>
+                      {discount > 0 ? (
+                        <div>
+                          <span>Discount ({couponDetails.value}%)</span>
+                          <span>
+                            {discount.toLocaleString("en-IN", {
+                              maximumFractionDigits: 2,
+                              style: "currency",
+                              currency: "INR",
+                            })}
+                          </span>
+                        </div>
+                      ) : null}
                       <div>
                         <span>GST(5%)</span>
                         <span>
-                          {(totalPrice * 0.05).toLocaleString("en-IN", {
-                            maximumFractionDigits: 2,
-                            style: "currency",
-                            currency: "INR",
-                          })}
+                          {((totalPrice - discount) * 0.05).toLocaleString(
+                            "en-IN",
+                            {
+                              maximumFractionDigits: 2,
+                              style: "currency",
+                              currency: "INR",
+                            }
+                          )}
                         </span>
                       </div>
                       <Line />
                       <div>
                         <span>Grand Total</span>
                         <span>
-                          {(totalPrice * 1.05).toLocaleString("en-IN", {
-                            maximumFractionDigits: 2,
-                            style: "currency",
-                            currency: "INR",
-                          })}
+                          {((totalPrice - discount) * 1.05).toLocaleString(
+                            "en-IN",
+                            {
+                              maximumFractionDigits: 2,
+                              style: "currency",
+                              currency: "INR",
+                            }
+                          )}
                         </span>
                       </div>
                       <Line />
                     </CartTotal>
+                    <PromoCode>
+                      <FormInput
+                        name="promoCode"
+                        type="text"
+                        value={promoCode}
+                        handleChange={(e) => {
+                          setPromoCode(e.target.value);
+                          setPromoCodeWarning("");
+                          setCouponDetails(null);
+                        }}
+                        label="Have a Coupon Code?"
+                      />
+                      <ApplyPromoCode onClick={applyPromoCode}>
+                        Apply
+                      </ApplyPromoCode>
+                    </PromoCode>
+                    <WarningMessage>{promoCodeWarning}</WarningMessage>
                   </Summary>
                 </FlexItem>
                 <FlexItem>

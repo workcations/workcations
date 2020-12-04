@@ -312,3 +312,39 @@ export const FormSubmitAlert = styled.div`
     }
   }
 `;
+
+export const PromoCode = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 15px;
+  column-gap: 15px;
+`;
+
+export const ApplyPromoCode = styled.div`
+  width: 100%;
+  background-color: #ff6c6b;
+  color: white;
+  font-size: 1.3em;
+  border: 1px solid #ff6c6b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    background-color: white;
+    color: #ff6c6b;
+  }
+
+  @media screen and (max-width: 830px) {
+    font-size: 1em;
+  }
+`;
+
+export const WarningMessage = styled.div`
+  margin-top: 10px;
+  color: red;
+  font-size: 0.8em;
+`;
