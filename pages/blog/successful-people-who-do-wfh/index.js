@@ -238,6 +238,7 @@ const BlogItem = () => {
               Take A Serious Vacation: A CEO's Advice To All CEOs
             </a>
           </SuggestedRead>
+          <Text></Text>
 
           <SocialShare slug={"successful-people-who-do-wfh"} />
         </BlogContent>
