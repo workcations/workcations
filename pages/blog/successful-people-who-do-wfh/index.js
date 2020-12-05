@@ -229,6 +229,16 @@ const BlogItem = () => {
             wrote on the importance of taking a vacation and escaping burnout!
           </Text>
 
+          <SuggestedRead>
+            &nbsp;&nbsp;
+            <a
+              href="https://www.forbes.com/sites/forbesleadershipforum/2013/06/04/take-a-serious-vacation-a-ceos-advice-to-all-ceos"
+              target="_blank"
+            >
+              Take A Serious Vacation: A CEO's Advice To All CEOs
+            </a>
+          </SuggestedRead>
+
           <SocialShare slug={"successful-people-who-do-wfh"} />
         </BlogContent>
         {loadElements ? (
