@@ -1,5 +1,13 @@
 const BlogsList = [
   {
+    slug: "successful-people-who-do-wfh",
+    title:
+      "Highly Successful People Who Are Advocating Remote Work from a Long Time",
+    description: `Work from Home and Workcation has evolved in the last few months, but here is a list of five highly Successful People Who are Working from Home from long ago. One thing that this ongoing pandemic has popularized is the ‘Work From Home’ culture. Yes, the phenomenon has existed forever. However, it was always underplayed by corporates, conglomerates as well as working professionals. While this has two sides like a coin, we have experienced it a great deal.`,
+    date: "05th Dec 2020",
+    tags: ["Remote Work", "Workcations"],
+  },
+  {
     slug: "work-friendly-cafes-in-manali",
     title: "7 Work Friendly Cafes in Manali for Workcations",
     description: `Still wondering what it feels like to work from a cafe in the mountains, then worry not, we have prepared a list of Work Friendly Cafes in Manali. Here we are discussing seven work-friendly cafes in Manali that are fit for workations.`,
