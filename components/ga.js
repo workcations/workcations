@@ -13,7 +13,7 @@ export const event = ({ action, category, label }) => {
   });
 };
 
-export const purchase = ({id, revenue, tax, propertyId, propertyTitle}) => {
+export const purchase = ({ id, revenue, tax, propertyId, propertyTitle }) => {
   window.gtag("event", "purchase", {
     transaction_id: id,
     value: revenue,
@@ -21,9 +21,13 @@ export const purchase = ({id, revenue, tax, propertyId, propertyTitle}) => {
     tax: tax,
     items: [
       {
-        id: '' + propertyId,
+        id: "" + propertyId,
         name: propertyTitle,
-      }
-    ]
-  })
-}
+      },
+    ],
+  });
+};
+
+export const internalTraffic = () => {
+  window.gtag("set", "dimension1", "employee");
+};
