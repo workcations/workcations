@@ -75,7 +75,7 @@ export const FilterProperties = (
 
   let filterByMin = [];
 
-  if (min && min !== "null") {
+  if (!!min && min !== "null") {
     filterByMin = filterByType.filter(
       (property) => Number(property.long) >= Number(min)
     );

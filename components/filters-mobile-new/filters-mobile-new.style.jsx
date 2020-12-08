@@ -77,8 +77,8 @@ export const ValuesContainer = styled.div`
 export const ValuesSubContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
   width: 100%;
-  height: calc(100vh - 140px);
-  max-height: calc(100vh - 140px);
+  height: calc(100vh - 190px);
+  max-height: calc(100vh - 190px);
   border: 5px solid rgba(0, 0, 0, 0);
   overflow-y: scroll;
 `;
