@@ -93,8 +93,8 @@ const FiltersMobile = ({
 
   useEffect(() => {
     const newPricingLabels = pricingCategories.map((item) =>
-      (minLink > item.min && minLink < item.max) ||
-      (maxLink > item.min && maxLink < item.max)
+      (minLink >= item.min && minLink <= item.max) ||
+      (maxLink >= item.min && maxLink <= item.max)
         ? true
         : false
     );
