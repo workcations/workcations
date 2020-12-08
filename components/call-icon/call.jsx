@@ -143,7 +143,7 @@ const CallIcon = () => {
       <Container
         onClick={() => {
           dispatch(toggleContactPopupHidden());
-          sendContactUsEvent();
+          sendRequestACallBackEvent();
         }}
         hidden={hidden}
         iconPosition={iconPosition}
