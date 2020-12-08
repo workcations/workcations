@@ -222,6 +222,7 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
     disabledDatesArray,
     finalDisabledDatesArray,
     newYear,
+    newYearInclusions,
   } = property;
   const { breakfast, lunchVeg, lunchNonVeg, dinnerVeg, dinnerNonVeg } = meals;
   const {
@@ -372,7 +373,18 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
                   )}
                 />
               </Content>
+              {!!newYearInclusions ? (
+                <InternetNote>
+                  <Heading>New Year Party:</Heading>
+                  <ul>
+                    {newYearInclusions.map((item, i) => (
+                      <li key={`New Year Points no ${i + 1}`}>{item}</li>
+                    ))}
+                  </ul>
+                </InternetNote>
+              ) : null}
             </div>
+
             <div>
               <Content>
                 <Heading>Nearby Attractions</Heading>
