@@ -43,34 +43,34 @@ export const FilterProperties = (
   max,
   cities
 ) => {
-  let filterByState = [];
+  let filterByStatesAndCities = [];
 
-  if (states.length > 0) {
-    filterByState = propertyList.filter(
+  if (states.length > 0 && cities.length > 0) {
+    filterByStatesAndCities = propertyList.filter(
+      (property) =>
+        states.indexOf(property.location.state.toLowerCase()) !== -1 ||
+        cities.indexOf(property.location.city.toLowerCase()) !== -1
+    );
+  } else if (states.length > 0) {
+    filterByStatesAndCities = propertyList.filter(
       (property) => states.indexOf(property.location.state.toLowerCase()) !== -1
     );
-  } else {
-    filterByState = propertyList;
-  }
-
-  let filterByCity = [];
-
-  if (cities.length > 0) {
-    filterByCity = filterByState.filter(
+  } else if (cities.length > 0) {
+    filterByStatesAndCities = propertyList.filter(
       (property) => cities.indexOf(property.location.city.toLowerCase()) !== -1
     );
   } else {
-    filterByCity = filterByState;
+    filterByStatesAndCities = propertyList;
   }
 
   let filterByType = [];
 
   if (types.length > 0) {
-    filterByType = filterByCity.filter(
+    filterByType = filterByStatesAndCities.filter(
       (property) => types.indexOf(property.type.toLowerCase()) !== -1
     );
   } else {
-    filterByType = filterByCity;
+    filterByType = filterByStatesAndCities;
   }
 
   let filterByMin = [];
