@@ -114,29 +114,33 @@ export const FilterMobile = styled.div`
 
   @media only screen and (max-width: 900px) {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 0.8fr;
-    height: 80px;
-    padding: 0px 10px;
+    grid-template-columns: 1fr;
+    height: 60px;
+    padding: 0.5vw 3vw;
     position: fixed;
-    width: 100%;
-    left: 0%;
-    bottom: 0px;
-    background: black;
+    width: 50vw;
+    left: 5vw;
+    bottom: 30px;
+    background: #333333;
     box-shadow: 0px -3px 6px #00000029;
-    border-top: 1.5px solid white;
+    border: 1.5px solid #151515;
+    border-radius: 5px;
   }
 `;
 
 export const FilterItem = styled.a`
-  width: 100%;
-  height: 80px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   cursor: pointer;
+  color: #efefef;
+  font-weight: 600;
+  font-size: 4vw;
+  border-radius: 5px;
 
   img {
-    height: 60%;
+    height: 4.5vw;
+    margin-right: 10px;
   }
 `;
 

@@ -182,19 +182,10 @@ const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
         )}
       </PropertyListContainer>
       <FilterMobile>
-        <Link href={`/filters/type${queryLink}`} passHref>
+        <Link href={`/filters${queryLink}`} passHref>
           <FilterItem>
-            <img src="/type.svg" alt="Property Type" />
-          </FilterItem>
-        </Link>
-        <Link href={`/filters/price${queryLink}`} passHref>
-          <FilterItem>
-            <img src="/price.svg" alt="Property Type" />
-          </FilterItem>
-        </Link>
-        <Link href={`/filters/states${queryLink}`} passHref>
-          <FilterItem>
-            <img src="/states.svg" alt="Property Type" />
+            <img src="/filter.svg" />
+            Filter Properties
           </FilterItem>
         </Link>
       </FilterMobile>

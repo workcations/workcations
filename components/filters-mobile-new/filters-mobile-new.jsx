@@ -27,17 +27,12 @@ import {
   TypeImageContainer,
   AmenitiesContainer,
   Amenities,
+  ApplyFilter,
 } from "./filters-mobile-new.style";
 import { set } from "react-ga";
 
 const FiltersMobile = ({
-  filterType,
-  citiesLink,
-  statesLink,
-  typesLink,
-  minLink,
-  maxLink,
-  handleFilter,
+  queryLink,
   propertiesData,
   properties,
   statesArray,
@@ -49,6 +44,26 @@ const FiltersMobile = ({
   pricingWeekly,
   pricingMonthly,
 }) => {
+  const { states, cities, types, min, max } = queryLink;
+
+  const [statesLink, setStatesLink] = useState(
+    !!states ? states.split("-") : []
+  );
+  const [citiesLink, setCitiesLink] = useState(
+    !!cities ? cities.split("-") : []
+  );
+  const [typesLink, setTypesLink] = useState(!!types ? types.split("-") : []);
+  const [minLink, setMinLink] = useState(!!min ? Number(min) : -1);
+  const [maxLink, setMaxLink] = useState(!!max ? Number(max) : -1);
+
+  useEffect(() => {
+    setStatesLink(!!states ? states.split("-") : []);
+    setCitiesLink(!!cities ? cities.split("-") : []);
+    setTypesLink(!!types ? types.split("-") : []);
+    setMinLink(!!min ? Number(min) : -1);
+    setMaxLink(!!max ? Number(max) : -1);
+  }, [queryLink]);
+
   const [active, setActive] = useState([true, false, false, false]);
   const [activePosition, setActivePosition] = useState(0);
 
@@ -75,6 +90,24 @@ const FiltersMobile = ({
 
     setPropertiesSourceData(newSourceData);
   }, [duration]);
+
+  useEffect(() => {
+    const newPricingLabels = pricingCategories.map((item) =>
+      (minLink > item.min && minLink < item.max) ||
+      (maxLink > item.min && maxLink < item.max)
+        ? true
+        : false
+    );
+
+    const firstTrueIndex = newPricingLabels.indexOf(true);
+    const lastTrueIndex = newPricingLabels.lastIndexOf(true);
+
+    const effectivePricingLabels = newPricingLabels.map((item, i) =>
+      i >= firstTrueIndex && i <= lastTrueIndex ? true : false
+    );
+
+    setPricingLabels(effectivePricingLabels);
+  }, [minLink, maxLink]);
 
   const togglePricingLabel = (index) => {
     const newPricingLabels = pricingLabels.map((item, i) =>
@@ -151,6 +184,14 @@ const FiltersMobile = ({
     setTypesActive(newTypesActive);
   };
 
+  useEffect(() => {
+    const newTypesActive = typesArray.map((item) =>
+      typesLink.indexOf(item.title) !== -1 ? true : false
+    );
+
+    setTypesActive(newTypesActive);
+  }, [typesLink]);
+
   const [minMaxPrice, setMinMaxPrice] = useState({
     min: pricingCategories[0].min,
     max: pricingCategories[pricingCategories.length - 1].max,
@@ -162,11 +203,11 @@ const FiltersMobile = ({
 
     setMinMaxPrice({
       min:
-        minIndex == -1
+        minIndex === -1
           ? pricingCategories[0].min
           : pricingCategories[minIndex].min,
       max:
-        minIndex == -1
+        minIndex === -1
           ? pricingCategories[pricingCategories.length - 1].max
           : pricingCategories[maxIndex].max,
     });
@@ -289,6 +330,24 @@ const FiltersMobile = ({
 
     setStatesFilterData(newStatesFilterData);
   }, [statesActive, citiesActive]);
+
+  useEffect(() => {
+    let newStatesActive = statesArray.map((item) =>
+      statesLink.indexOf(item.title) !== -1 ? true : false
+    );
+
+    setStatesActive(newStatesActive);
+  }, [statesLink]);
+
+  useEffect(() => {
+    let newCitiesActive = statesArray.map((item) =>
+      item.cities.map((subItem) =>
+        citiesLink.indexOf(subItem.title) !== -1 ? true : false
+      )
+    );
+
+    setCitiesActive(newCitiesActive);
+  }, [citiesLink]);
 
   let allProperties = [];
 
@@ -475,9 +534,70 @@ const FiltersMobile = ({
     activeAmenities,
   ]);
 
+  const [filterLink, setFilterLink] = useState("");
+
+  useEffect(() => {
+    let statesText = statesArray
+      .filter((item, i) => statesActive[i])
+      .map((item) => item.title)
+      .join("-");
+
+    let citiesTextArray = [];
+
+    for (let i = 0; i < statesArray.length; i++) {
+      for (let j = 0; j < statesArray[i].cities.length; j++) {
+        if (citiesActive[i][j]) {
+          citiesTextArray.push(statesArray[i].cities[j].title);
+        }
+      }
+    }
+
+    let citiesText = citiesTextArray.join("-");
+
+    let typesText = typesArray
+      .filter((item, i) => typesActive[i])
+      .map((item) => item.title)
+      .join("-");
+
+    let minText = `${minMaxPrice.min}`;
+    let maxText = `${minMaxPrice.max}`;
+
+    statesText = statesText.length > 0 ? `states=${statesText}` : statesText;
+    citiesText = citiesText.length > 0 ? `cities=${citiesText}` : citiesText;
+    typesText = typesText.length > 0 ? `types=${typesText}` : typesText;
+    minText = minText.length > 0 ? `min=${minText}` : minText;
+    maxText = maxText.length > 0 ? `max=${maxText}` : maxText;
+
+    let queriesList = [];
+
+    if (statesText.length > 0) {
+      queriesList.push(statesText);
+    }
+
+    if (citiesText.length > 0) {
+      queriesList.push(citiesText);
+    }
+
+    if (typesText.length > 0) {
+      queriesList.push(typesText);
+    }
+
+    if (minText.length > 0) {
+      queriesList.push(minText);
+    }
+
+    if (maxText.length > 0) {
+      queriesList.push(maxText);
+    }
+
+    const queriesText = encodeURI(queriesList.join("&"));
+
+    setFilterLink(queriesText);
+  }, [statesActive, citiesActive, typesActive, minMaxPrice]);
+
   return (
     <Container>
-      <TopContainer>Filters {filteredProperties.length}</TopContainer>
+      <TopContainer>Filters</TopContainer>
       <FiltersContainer>
         <FilterItemBack activePosition={activePosition} />
         <FilterItem
@@ -504,7 +624,9 @@ const FiltersMobile = ({
         >
           <span>Property Type</span>
         </FilterItem>
-        <FilterItem
+        {/*
+
+          <FilterItem
           isActive={active[3]}
           onClick={() => {
             setActive([false, false, false, true]);
@@ -512,6 +634,8 @@ const FiltersMobile = ({
         >
           <span>Amenities</span>
         </FilterItem>
+
+          */}
       </FiltersContainer>
       <ValuesContainer>
         <ValuesSubContainer>
@@ -520,6 +644,7 @@ const FiltersMobile = ({
               <PriceContainer>
                 {pricingCategories.map((item, i) => (
                   <PriceItem
+                    key={`pricing item ${i + 1}`}
                     isActive={pricingLabels[i]}
                     onClick={() => {
                       togglePricingLabel(i);
@@ -668,6 +793,15 @@ const FiltersMobile = ({
           ) : null}
         </ValuesSubContainer>
       </ValuesContainer>
+      <ApplyFilter>
+        <div>
+          <span>
+            <Link href={`/properties?${filterLink}`} passHref>
+              <a>Show {filteredProperties.length} properties</a>
+            </Link>
+          </span>
+        </div>
+      </ApplyFilter>
     </Container>
   );
 };

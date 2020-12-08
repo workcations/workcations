@@ -2,21 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 50px);
   position: fixed;
   left: 0;
   top: 0;
   z-index: 104;
-  background-color: white;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: grid;
   grid-template-columns: 36vw 64vw;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 50px 1fr 90px;
   grid-template-areas:
     "top top"
-    "filters values";
+    "filters values"
+    "apply apply";
   background-color: #333333;
 `;
 
@@ -77,8 +77,8 @@ export const ValuesContainer = styled.div`
 export const ValuesSubContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
   width: 100%;
-  height: calc(100vh - 105px);
-  max-height: calc(100vh - 105px);
+  height: calc(100vh - 190px);
+  max-height: calc(100vh - 190px);
   border: 5px solid rgba(0, 0, 0, 0);
   overflow-y: scroll;
 `;
@@ -310,4 +310,40 @@ export const Amenities = styled.span`
   border-radius: 5px;
   margin: 10px 0px;
   transition: all 0.3s ease-in-out;
+`;
+
+export const ApplyFilter = styled.div`
+  grid-area: apply;
+  width: 100vw;
+  height: 90px;
+  background-color: #151515;
+
+  div {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 4.4vw;
+    width: 100vw;
+    height: 90px;
+
+    span {
+      background-color: #ff6c6b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2vw 10vw 4vw 10vw;
+      border-radius: 5px;
+      width: 100%;
+
+      a {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
 `;

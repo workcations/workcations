@@ -51,6 +51,7 @@ const FiltersMobile = ({
   minLink,
   maxLink,
   handleFilter,
+  propertiesData,
 }) => {
   const [isOpen, setOpen] = useState(false);
 

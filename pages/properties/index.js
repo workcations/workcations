@@ -26,14 +26,6 @@ const Properties = () => {
   const propertyList = useSelector(selectPropertyList);
 
   useEffect(() => {
-    dispatch(toggleContactPopupPosition(true));
-
-    return () => {
-      dispatch(toggleContactPopupPosition(false));
-    };
-  });
-
-  useEffect(() => {
     if (propertyList.length === 0) {
       dispatch(setPropertyListStart());
     }
