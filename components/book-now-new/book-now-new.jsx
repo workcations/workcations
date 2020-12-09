@@ -176,8 +176,8 @@ const BookNowNew = ({
 }) => {
   const maximumDate = {
     year: 2021,
-    month: 3,
-    day: 31,
+    month: 4,
+    day: 30,
   };
 
   const [pickerPos, setPickerPos] = useState("bottom");
