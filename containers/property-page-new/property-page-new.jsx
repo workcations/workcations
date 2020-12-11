@@ -243,6 +243,60 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
   const { coordinates } = location;
   const { latitude, longitude } = coordinates;
 
+  const thingsToCarry = [
+    {
+      title: "Your Equipment",
+      data: [
+        "Your Laptop, mobiles, earphones and their chargers.",
+        "Extension Chord",
+        "Power Bank",
+      ],
+    },
+    {
+      title: "Regarding your Safety",
+      data: ["Multiple Facemasks (N-95 preferred)", "Hand Sanitizer"],
+    },
+    {
+      title: "Clothes",
+      data: [
+        "A woollen cap",
+        "UV protected sunglasses",
+        "Inner Thermals",
+        "Cotton T-shirts",
+        "Fleece Jacket ",
+        "Down Jacket",
+        "1 Pair of Gloves",
+        "Long Pants",
+        "Sets of Undergarments",
+        "Multiple pair of warm and cotton socks ",
+        "Towel",
+        "A rain jacket or a poncho",
+        "A light blanket/ shawl for transit",
+      ],
+    },
+    {
+      title: "Footwear",
+      data: [
+        "Above-the-ankle waterproof and breathable hiking boots with good grip.",
+        "Bathroom Slippers",
+      ],
+    },
+    {
+      title: "Personal Accessories",
+      data: [
+        "Toothpaste, Toothbrush, Comb and other toileteries.",
+        "Paper Soap/Sanitizer",
+        "An SPF 40+ Sunscreen ,Lip Balm, Coldcreams",
+        "Body Spray",
+        "Led Torch Light",
+      ],
+    },
+    {
+      title: "For Weekend Outbound",
+      data: ["A rucksack and a day pack", "Water Bottle"],
+    },
+  ];
+
   return (
     <Fragment>
       <Head>
@@ -411,6 +465,51 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
               latitude={latitude}
               longitude={longitude}
             />
+            <InternetNote>
+              <p style={{ fontSize: "1.2em" }}>
+                Just a{" "}
+                <strong
+                  style={{
+                    fontSize: "1.2em",
+                    color: "#333333",
+                  }}
+                >
+                  Gentle Reminder
+                </strong>{" "}
+                to our workcationist !
+              </p>
+              <p style={{ fontSize: "1.2em" }}>
+                <strong
+                  style={{
+                    fontSize: "1.2em",
+                    color: "#333333",
+                  }}
+                >
+                  Things to Carry
+                </strong>{" "}
+                for your workcation in mountains
+              </p>
+              {thingsToCarry.map((item, i) => (
+                <Fragment key={`ttc ${i + 1}`}>
+                  <br />
+                  <p style={{ fontSize: "1.2em" }}>
+                    <strong
+                      style={{
+                        fontSize: "1.2em",
+                        color: "#333333",
+                      }}
+                    >
+                      {item.title}
+                    </strong>
+                  </p>
+                  <ul>
+                    {item.data.map((subItem, j) => (
+                      <li key={`${item.title} no ${j + 1}`}>{subItem}</li>
+                    ))}
+                  </ul>
+                </Fragment>
+              ))}
+            </InternetNote>
             <Heading>Important Information</Heading>
             <ImportantInformation />
             <EmptySpace />
