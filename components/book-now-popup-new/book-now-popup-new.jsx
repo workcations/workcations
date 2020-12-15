@@ -310,7 +310,7 @@ const BookNowPopup = ({
       amount: amount.toString(),
       currency: currency,
       name: name,
-      description: "Booking for Workcations-1333",
+      description: `Booking for Workcations-${slug.split("-")[0]}`,
       //image: { logo },
       order_id: order_id,
       handler: async function (response) {
