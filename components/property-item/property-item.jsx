@@ -1,9 +1,12 @@
 import React, { useState, Fragment } from "react";
 import Link from "next/link";
+import Slider from "react-slick";
 
 import {
   Container,
   ImageContainer,
+  ImageContainerMobile,
+  MainImageMobile,
   MainImage,
   MainImageShimmer,
   Type,
@@ -34,14 +37,43 @@ const PropertyItem = ({
   ultralong,
   images,
   location,
-  duration
+  duration,
 }) => {
   const { city, state } = location;
   const [currentImage, setCurrent] = useState(images[0]);
 
+  const settings = {
+    dots: false,
+    arrows: false,
+    lazyLoad: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    speed: 500,
+    cssEase: "ease-in-out",
+    swipeToSlide: true,
+  };
+
   return (
     <Link href={"/property/" + slug} passHref>
       <Container target="_blank">
+        <ImageContainerMobile>
+          <Slider {...settings}>
+            {images.map((image, i) => (
+              <MainImageMobile
+                style={{
+                  backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
+                }}
+              >
+                <img
+                  src={`https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg`}
+                  alt={`${slug} ${image}`}
+                />
+              </MainImageMobile>
+            ))}
+          </Slider>
+        </ImageContainerMobile>
         <ImageContainer>
           <MainImageShimmer>
             <MainImage
@@ -114,47 +146,46 @@ const PropertyItem = ({
               </AmenitiesContainer>
             </DetailsWrapper>
             <Pricing>
-            {
-              duration === 'short' ?
-              <Fragment>
-              <span>
-              {Number(ultrashort).toLocaleString("en-IN", {
-                style: "currency",
-                currency: "INR",
-                maximumFractionDigits: 0,
-                minimumFractionDigits: 0,
-              })}
-              /-
-            </span>
-            per day
-            </Fragment>
-            : duration === 'week' ?
-            <Fragment>
-            <span>
-            {(Number(short) * 7).toLocaleString("en-IN", {
-              style: "currency",
-              currency: "INR",
-              maximumFractionDigits: 0,
-              minimumFractionDigits: 0,
-            })}
-            /-
-          </span>
-          per week
-          </Fragment>
-          :
-          <Fragment>
-          <span>
-          {(Number(ultralong) * 30).toLocaleString("en-IN", {
-            style: "currency",
-            currency: "INR",
-            maximumFractionDigits: 0,
-            minimumFractionDigits: 0,
-          })}
-          /-
-        </span>
-        per month
-        </Fragment>
-            }
+              {duration === "short" ? (
+                <Fragment>
+                  <span>
+                    {Number(ultrashort).toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      maximumFractionDigits: 0,
+                      minimumFractionDigits: 0,
+                    })}
+                    /-
+                  </span>
+                  per day
+                </Fragment>
+              ) : duration === "week" ? (
+                <Fragment>
+                  <span>
+                    {(Number(short) * 7).toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      maximumFractionDigits: 0,
+                      minimumFractionDigits: 0,
+                    })}
+                    /-
+                  </span>
+                  per week
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <span>
+                    {(Number(ultralong) * 30).toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      maximumFractionDigits: 0,
+                      minimumFractionDigits: 0,
+                    })}
+                    /-
+                  </span>
+                  per month
+                </Fragment>
+              )}
             </Pricing>
           </DetailsContainer>
         </Details>

@@ -57,6 +57,37 @@ export const ImageContainer = styled.div`
 
   @media only screen and (max-width: 900px) {
     width: 100%;
+    display: none;
+  }
+`;
+
+export const ImageContainerMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 91vw;
+  height: 49vw;
+  border-radius: 5px;
+
+  @media only screen and (min-width: 900px) {
+    display: none;
+  }
+`;
+
+export const MainImageMobile = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 91vw;
+  height: 49vw;
+
+  img {
+    width: 100%;
+    max-height: 49vw;
+  }
+
+  @media only screen and (min-width: 900px) {
+    display: none;
   }
 `;
 
