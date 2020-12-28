@@ -46,4 +46,3 @@ export const Heading = styled.h2`
     font-weight: 600;
   }
 `;
-

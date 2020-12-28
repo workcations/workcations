@@ -353,6 +353,13 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
                 ) : null}
               </Content>
             </div>
+            {/*
+              <div>
+              <Content>
+                <Heading>Meals:</Heading>
+              </Content>
+            </div>
+            */}
             <div>
               <Content>
                 <Heading>Inclusions:</Heading>

@@ -42,9 +42,6 @@ import {
   PaymentButton,
   EmptyCartAlert,
   Disclaimer,
-  PromoCode,
-  ApplyPromoCode,
-  WarningMessage,
 } from "./book-now-new.style";
 
 const convertDate = (date) =>
@@ -182,11 +179,6 @@ const BookNowNew = ({
 
   const [pickerPos, setPickerPos] = useState("bottom");
 
-  const [promoCode, setPromoCode] = useState("");
-  const [promoCodeWarning, setPromoCodeWarning] = useState("");
-  const [couponDetails, setCouponDetails] = useState(null);
-  const [discount, setDiscount] = useState(0);
-
   useEffect(() => {
     if (!isServer) {
       if (window.screen.width < 769) {
@@ -258,18 +250,6 @@ const BookNowNew = ({
   let disabledDates = allDatesData.filter((item) => item.availability <= 0);
 
   const newYearDates = [
-    "2020-12-15",
-    "2020-12-16",
-    "2020-12-17",
-    "2020-12-18",
-    "2020-12-19",
-    "2020-12-20",
-    "2020-12-21",
-    "2020-12-22",
-    "2020-12-23",
-    "2020-12-24",
-    "2020-12-25",
-    "2020-12-26",
     "2020-12-27",
     "2020-12-28",
     "2020-12-29",
@@ -277,15 +257,12 @@ const BookNowNew = ({
     "2020-12-31",
     "2021-01-01",
     "2021-01-02",
-    "2021-01-03",
-    "2021-01-04",
-    "2021-01-05",
   ];
 
   const disabledDatesDates = disabledDates.map((item) => item.date);
 
   for (let i = 0; i < newYearDates.length; i++) {
-    if (!!!newYear && disabledDatesDates.indexOf(newYearDates[i]) === -1) {
+    if (disabledDatesDates.indexOf(newYearDates[i]) === -1) {
       disabledDates.push({
         date: newYearDates[i],
         availability: 0,
@@ -919,50 +896,6 @@ const BookNowNew = ({
     start: false,
   });
 
-  const applyPromoCode = () => {
-    setPromoCodeWarning("");
-    setCouponDetails(null);
-
-    if (promoCode.length === 0) {
-      setPromoCodeWarning("Invalid Promo Code");
-      setCouponDetails(null);
-    } else {
-      fetch(
-        `https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/coupon/${promoCode}`
-      )
-        .then((codeData) => codeData.json())
-        .then((codeData) => {
-          if (codeData === "invalid") {
-            setPromoCodeWarning("Invalid Promo Code");
-          } else {
-            setCouponDetails(codeData);
-          }
-        });
-    }
-  };
-
-  useEffect(() => {
-    if (!!couponDetails) {
-      const {
-        availableCoupons,
-        bookingIds,
-        code,
-        issuedBy,
-        maxDiscount,
-        minOrder,
-        noOfUsers,
-        offerDescription,
-        offerName,
-        offerTnc,
-        subType,
-        type,
-        value,
-      } = couponDetails;
-
-      setDiscount((totalPrice * value) / 100);
-    }
-  }, [couponDetails, totalPrice]);
-
   return (
     <Fragment>
       <Container>
@@ -1305,26 +1238,10 @@ const BookNowNew = ({
                 label="No Of Pax"
               />
             ) : null}
-            <CinCoutHeading>Have a Promo Code?</CinCoutHeading>
-            <PromoCode>
-              <FormInput
-                name="promoCode"
-                type="text"
-                value={promoCode}
-                handleChange={(e) => {
-                  setPromoCode(e.target.value);
-                  setPromoCodeWarning("");
-                  setCouponDetails(null);
-                }}
-                label=""
-              />
-              <ApplyPromoCode onClick={applyPromoCode}>Apply</ApplyPromoCode>
-            </PromoCode>
-            <WarningMessage>{promoCodeWarning}</WarningMessage>
             <Costing>
               <CostingContainer>
                 <CostingText>Total Cost</CostingText>
-                <CostingValue>₹ {totalPrice - discount}</CostingValue>
+                <CostingValue>₹ {totalPrice}</CostingValue>
               </CostingContainer>
               <PaymentButton onClick={bookNow}>
                 <span>Book Now</span>
@@ -1349,7 +1266,6 @@ const BookNowNew = ({
         closePopup={() => {
           setBookNowPopup(false);
         }}
-        discount={discount}
         title={title}
         selectedDayRange={selectedDayRange}
         roomCount={roomCount}
