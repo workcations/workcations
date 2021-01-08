@@ -33,13 +33,15 @@ const Bookings = () => {
   const [cart, setCart] = useState(null);
 
   useEffect(() => {
-    getBookingId(id)
-      .then((result) => {
-        setBookingDetails(JSON.parse(result));
-      })
-      .then(() => {
-        setFetchingBooking(false);
-      });
+    if (!!id) {
+      getBookingId(id)
+        .then((result) => {
+          setBookingDetails(JSON.parse(result));
+        })
+        .then(() => {
+          setFetchingBooking(false);
+        });
+    }
   }, [id]);
 
   useEffect(() => {
