@@ -34,6 +34,10 @@ import {
   PromoCode,
   ApplyPromoCode,
   WarningMessage,
+  EmailIdPopup,
+  EmailIdPopupContainer,
+  EmailIdContainer,
+  EmailIdButtons,
 } from "./book-now-popup-new.style";
 import { useEffect } from "react";
 
@@ -494,6 +498,11 @@ const BookNowPopup = ({
     paymentObject.open();
   }
 
+  const [emailId, setEmailId] = useState("");
+  const [emailIdPopup, setEmailIdPopup] = useState(false);
+  const [emailIdPlaceHolder, setEmailIdPlaceHolder] = useState("");
+  const [tempCodeDetails, setTempCodeDetails] = useState({});
+
   const applyPromoCode = () => {
     setPromoCodeWarning("");
     setCouponDetails(null);
@@ -510,9 +519,32 @@ const BookNowPopup = ({
           if (codeData === "invalid") {
             setPromoCodeWarning("Invalid Promo Code");
           } else {
-            setCouponDetails(codeData);
+            if (promoCode === "WCCONCENTRIX") {
+              setEmailIdPopup(true);
+              setTempCodeDetails(codeData);
+            } else {
+              setCouponDetails(codeData);
+            }
           }
         });
+    }
+  };
+
+  const submitEmailId = () => {
+    const emailIdsList = [
+      "megha.arora5@concentrix.com",
+      "vivek.verma@concentrix.com",
+      "amit.sharma10@concentrix.com",
+      "govind@wanderon.in",
+      "ravi@wanderon.in",
+    ];
+
+    if (emailIdsList.indexOf(emailId.toLowerCase()) === -1) {
+      setEmailIdPlaceHolder("Invalid Email Id");
+      setEmailId("");
+    } else {
+      setEmailIdPopup(false);
+      setCouponDetails(tempCodeDetails);
     }
   };
 
@@ -802,6 +834,37 @@ const BookNowPopup = ({
               with you soon.
             </span>
           </FormSubmitAlert>
+          <EmailIdPopup isActive={emailIdPopup}>
+            <EmailIdPopupContainer>
+              <span>
+                Please enter your <strong>Concentrix Email Id</strong> to avail
+                the discount
+              </span>
+              <EmailIdContainer>
+                <FormInput
+                  name="emailId"
+                  type="email"
+                  value={emailId}
+                  handleChange={(e) => {
+                    setEmailId(e.target.value);
+                  }}
+                  required
+                  label=""
+                  placeholder={emailIdPlaceHolder}
+                />
+              </EmailIdContainer>
+              <EmailIdButtons>
+                <div onClick={submitEmailId}>Apply Discount</div>
+                <div
+                  onClick={(e) => {
+                    setEmailIdPopup(false);
+                  }}
+                >
+                  Cancel
+                </div>
+              </EmailIdButtons>
+            </EmailIdPopupContainer>
+          </EmailIdPopup>
         </Fragment>
       )}
     </Fragment>

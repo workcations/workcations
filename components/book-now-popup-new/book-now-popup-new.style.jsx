@@ -348,3 +348,71 @@ export const WarningMessage = styled.div`
   color: red;
   font-size: 0.8em;
 `;
+
+export const EmailIdPopup = styled.div`
+  position: fixed;
+  top: 0;
+  left: ${(props) => (props.isActive ? "0" : "110vw")};
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease-in-out;
+  z-index: 905;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const EmailIdPopupContainer = styled.div`
+  background-color: white;
+  width: 40%;
+  height: 300px;
+  border-radius: 15px;
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  span {
+    font-size: 1.3vw;
+    text-align: center;
+  }
+
+  strong {
+    color: #ff6c6b;
+  }
+`;
+
+export const EmailIdContainer = styled.div`
+  width: 60%;
+  font-size: 1.3vw;
+
+  input {
+    text-align: center;
+  }
+`;
+
+export const EmailIdButtons = styled.div`
+  font-size: 1.3vw;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-template-rows: 44px;
+
+  div {
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+
+    :first-child {
+      background-color: #ff6c6b;
+    }
+  }
+`;
