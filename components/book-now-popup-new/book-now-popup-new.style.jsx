@@ -384,12 +384,36 @@ export const EmailIdPopupContainer = styled.div`
   }
 `;
 
+export const InputContainer = styled.div`
+  width: 24vw;
+  overflow-x: hidden;
+`;
+
 export const EmailIdContainer = styled.div`
-  width: 60%;
+  width: 24vw;
   font-size: 1.3vw;
+  position: relative;
+  left: ${(props) => `${props.emailState * 24 * -1}vw`};
+  display: grid;
+  grid-template-columns: 24vw 24vw;
+  transition: left 0.3s ease-in-out;
 
   input {
     text-align: center;
+  }
+
+  div {
+    width: 24vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      font-size: 0.7em;
+      text-align: center;
+      color: #ff6c6b;
+      cursor: pointer;
+    }
   }
 `;
 
