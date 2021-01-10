@@ -71,15 +71,16 @@ const submitUserData = async (data) => {
   };
 
   return await fetch(
-    "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/submitUserData",
+    "https://workcationsbackend.herokuapp.com/userSubmit",
     requestOptions
   )
     .then((response) => response.text())
-    .then((result) => console.log(result))
+    .then((result) => console.log("user data submitted"))
     .catch((error) => console.log("error", error));
 };
 
 const BookingPage = ({ data, bookingSlug }) => {
+  const { bookingId, approval } = data;
   const {
     account,
     advance,
@@ -95,7 +96,6 @@ const BookingPage = ({ data, bookingSlug }) => {
     totalPax,
     salesPerson,
     customer,
-    bookingId,
     breakfast,
     lunch,
     dinner,
@@ -103,7 +103,7 @@ const BookingPage = ({ data, bookingSlug }) => {
     remarks,
     websiteBooking,
     approved,
-  } = data;
+  } = data.data;
 
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
@@ -793,20 +793,10 @@ const BookingPage = ({ data, bookingSlug }) => {
             ))}
             <Submit type="submit" value="Submit"></Submit>
           </form>
-        ) : !!websiteBooking && websiteBooking && approved ? (
+        ) : approval.status ? (
           <DownloadContainer>
             <DownloadInvoice
-              href={`https://data.workcations.in/pdf/${bookingSlug}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download Booking Voucher
-            </DownloadInvoice>
-          </DownloadContainer>
-        ) : !websiteBooking ? (
-          <DownloadContainer>
-            <DownloadInvoice
-              href={`https://data.workcations.in/pdf/${bookingSlug}`}
+              href={`https://workcationsbackend.herokuapp.com/pdf/${bookingSlug}`}
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -46,7 +46,7 @@ const Bookings = () => {
 
   useEffect(() => {
     if (bookingDetails) {
-      setCart(bookingDetails.cart);
+      setCart(bookingDetails.data.cart);
     }
   }, [bookingDetails]);
 

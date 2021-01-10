@@ -90,7 +90,7 @@ const getBookingId = async (data) => {
   };
 
   return await fetch(
-    "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/createBooking",
+    "https://workcationsbackend.herokuapp.com/booking",
     requestOptions
   )
     .then((response) => response.text())
@@ -466,7 +466,15 @@ const BookNowPopup = ({
             approved: false,
           };
 
-          getBookingId(JSON.stringify(data))
+          getBookingId(
+            JSON.stringify({
+              approval: {
+                status: false,
+                approvedBy: null,
+              },
+              data: data,
+            })
+          )
             .then((response) => {
               return JSON.parse(response);
             })
