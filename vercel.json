@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Content-Security-Policy": "frame-ancestors 'none'",
+        "Referrer-Policy": "strict-origin"
+      }
+    }
+  ]
+}
