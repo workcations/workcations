@@ -30,6 +30,17 @@ export const TopContainer = styled.div`
   text-transform: uppercase;
   font-weight: 700;
   font-size: 5vw;
+  position: relative;
+`;
+
+export const CancelButton = styled.a`
+  font-size: 2.5vw;
+  position: absolute;
+  left: 10px;
+  background-color: #efefef;
+  color: #000000;
+  padding: 6px 10px;
+  border-radius: 100px;
 `;
 
 export const FiltersContainer = styled.div`

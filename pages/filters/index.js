@@ -22,6 +22,8 @@ const MobileFilter = ({
 
   const [queryLink, setQueryLink] = useState(router.query);
 
+  const routerPath = router.asPath.split("?")[1];
+
   useEffect(() => {
     setQueryLink(router.query);
   }, [router.query]);
@@ -35,6 +37,7 @@ const MobileFilter = ({
         <meta name="robots" content="noindex" />
       </Head>
       <FiltersMobile
+        routerPath={routerPath}
         queryLink={queryLink}
         propertiesData={propertiesData}
         properties={properties}

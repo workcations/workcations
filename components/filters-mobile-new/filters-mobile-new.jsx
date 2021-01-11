@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   Container,
   TopContainer,
+  CancelButton,
   FiltersContainer,
   FilterItem,
   FilterItemBack,
@@ -32,6 +33,7 @@ import {
 import { set } from "react-ga";
 
 const FiltersMobile = ({
+  routerPath,
   queryLink,
   propertiesData,
   properties,
@@ -597,7 +599,16 @@ const FiltersMobile = ({
 
   return (
     <Container>
-      <TopContainer>Filters</TopContainer>
+      <TopContainer>
+        <Link
+          href={`/properties${
+            !!routerPath && routerPath.length > 0 ? "?" + routerPath : ""
+          }`}
+        >
+          <CancelButton>Cancel</CancelButton>
+        </Link>
+        Filters
+      </TopContainer>
       <FiltersContainer>
         <FilterItemBack activePosition={activePosition} />
         <FilterItem

@@ -20,7 +20,7 @@ export const Container = styled.div`
   /* opacity-film */
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -39,7 +39,7 @@ export const SearchBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 2.5vw 0;
   border-radius: 10px;
   margin: 0 15vw 10vw 15vw;
@@ -53,14 +53,19 @@ export const SearchBox = styled.div`
 
 export const Heading = styled.span`
   /* heading1 */
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-weight: 600;
   align-self: flex-start;
   padding-left: 2.5vw;
+  color: white;
 
   @media only screen and (max-width: 769px) {
-    font-size: 3.6vw;
+    font-size: 4vw;
     padding-left: 5vw;
+  }
+
+  span {
+    text-decoration: line-through 3px solid;
   }
 `;
 
@@ -70,6 +75,7 @@ export const Text = styled.span`
   font-size: 1.5vw;
   padding-left: 2.5vw;
   font-weight: 100;
+  color: white;
 
   @media only screen and (max-width: 769px) {
     display: none;
@@ -80,6 +86,7 @@ export const SearchContainer = styled.form`
   width: 25vw;
   margin: 3.5vw 0 2.5vw 0;
   position: relative;
+  background-color: transparent;
 
   @media only screen and (max-width: 769px) {
     width: 70vw;
@@ -94,6 +101,11 @@ export const Search = styled.input`
   font-weight: 600;
   padding: 1vw 1.2vw;
   margin: 0px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  color: #ffffff;
 
   @media only screen and (max-width: 769px) {
     width: 70vw;
@@ -102,7 +114,7 @@ export const Search = styled.input`
   }
 
   &&::placeholder {
-    color: ${(props) => (props.searchError ? "red" : "#666666")};
+    color: ${(props) => (props.searchError ? "red" : "#dfdfdf")};
     opacity: 1; /* Firefox */
   }
 

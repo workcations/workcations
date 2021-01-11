@@ -56,7 +56,9 @@ const Hero = () => {
     <HeroContainer>
       <Container>
         <SearchBox>
-          <Heading>For life beyond a cubicle</Heading>
+          <Heading>
+            Work From <span>Home</span> Anywhere
+          </Heading>
           <Text>India's most trusted community of Remote Workers!</Text>
           <SearchContainer onSubmit={searchFunction}>
             <Search
