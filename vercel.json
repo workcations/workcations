@@ -5,7 +5,8 @@
       "headers": {
         "X-Content-Type-Options": "nosniff",
         "Content-Security-Policy": "frame-ancestors 'none'",
-        "Referrer-Policy": "strict-origin"
+        "Referrer-Policy": "strict-origin",
+        "Strict-Transport-Security": "max-age=15768000;includeSubdomains"
       }
     }
   ]
