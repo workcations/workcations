@@ -150,6 +150,7 @@ const BookNowPopup = ({
   const [spinner, setSpinner] = useState(false);
 
   const [formSubmitAlert, setFormSubmitAlert] = useState(false);
+  const [isCouponApplied, setCouponApplied] = useState(false);
 
   const { name, phone, warningMessage } = formDetails;
 
@@ -537,6 +538,7 @@ const BookNowPopup = ({
               setTempCodeDetails(codeData);
             } else {
               setCouponDetails(codeData);
+              setCouponApplied(true);
             }
           }
         });
@@ -613,6 +615,7 @@ const BookNowPopup = ({
             setOtp("");
             setOtpPlaceHolder("");
             setCouponDetails(tempCodeDetails);
+            setCouponApplied(true);
             setEmailState(0);
             setEmailIdPopup(false);
           }
@@ -799,23 +802,27 @@ const BookNowPopup = ({
                       </div>
                       <Line />
                     </CartTotal>
-                    <PromoCode>
-                      <FormInput
-                        name="promoCode"
-                        type="text"
-                        value={promoCode}
-                        handleChange={(e) => {
-                          setPromoCode(e.target.value);
-                          setPromoCodeWarning("");
-                          setCouponDetails(null);
-                        }}
-                        label="Have a Coupon Code?"
-                      />
-                      <ApplyPromoCode onClick={applyPromoCode}>
-                        Apply
-                      </ApplyPromoCode>
-                    </PromoCode>
-                    <WarningMessage>{promoCodeWarning}</WarningMessage>
+                    {isCouponApplied ? null : (
+                      <Fragment>
+                        <PromoCode>
+                          <FormInput
+                            name="promoCode"
+                            type="text"
+                            value={promoCode}
+                            handleChange={(e) => {
+                              setPromoCode(e.target.value);
+                              setPromoCodeWarning("");
+                              setCouponDetails(null);
+                            }}
+                            label="Have a Coupon Code?"
+                          />
+                          <ApplyPromoCode onClick={applyPromoCode}>
+                            Apply
+                          </ApplyPromoCode>
+                        </PromoCode>
+                        <WarningMessage>{promoCodeWarning}</WarningMessage>
+                      </Fragment>
+                    )}
                   </Summary>
                 </FlexItem>
                 <FlexItem>
