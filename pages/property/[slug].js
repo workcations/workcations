@@ -7,7 +7,7 @@ import Layout from "../../components/layout/layout";
 import PropertyPage from "../../containers/property-page-new/property-page-new";
 import Spinner from "../../components/spinner/spinner";
 
-const Property = ({ property }) => {
+const Property = ({ property, isAvailability, availability }) => {
   const router = useRouter();
 
   const isServer = typeof window === "undefined";
@@ -45,6 +45,8 @@ const Property = ({ property }) => {
       ) : (
         <PropertyPage
           property={property}
+          isAvailability={isAvailability}
+          availability={availability}
           loadElements={loadElements}
           isServer={isServer}
         />
@@ -81,7 +83,6 @@ export const getStaticPaths = async () => {
       },
     };
   });
-  //.filter(item => item.params.slug !== "4401-hostel-in-varkala");
 
   return {
     paths: pathArray,
@@ -111,8 +112,12 @@ export const getStaticProps = async ({ params }) => {
 
   const propertyData = await getPropertyExcel(params.slug);
 
+  const isAvailability = !!propertyData.availability;
+
+  const availability = isAvailability ? propertyData.availability : [];
+
   return {
-    props: { property: propertyData },
+    props: { property: propertyData, isAvailability, availability },
     revalidate: 1,
   };
 };

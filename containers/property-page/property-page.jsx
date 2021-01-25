@@ -59,17 +59,6 @@ const PropertyPage = ({
   properties,
   loadElements,
 }) => {
-  /*useEffect(() => {
-    if (loadElements) {
-      const imageLinks = inventory.map((room) => room.image);
-      for (let i = 0; i < imageLinks.length; i++) {
-        imageLinks[i].forEach((image) => {
-          fetch(`https://www.wanderon.in/workcations/${slug}/${image}.jpg`);
-        });
-      }
-    }
-  }, [loadElements]);*/
-
   return (
     <Fragment>
       <Head>

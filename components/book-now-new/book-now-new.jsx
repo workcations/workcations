@@ -170,10 +170,12 @@ const BookNowNew = ({
   disabledDatesArray,
   finalDisabledDatesArray,
   newYear,
+  isAvailability,
+  availability,
 }) => {
   const maximumDate = {
     year: 2021,
-    month: 4,
+    month: 11,
     day: 30,
   };
 
@@ -207,11 +209,36 @@ const BookNowNew = ({
 
   const [today, setToday] = useState(new Date());
 
+  const allDatesAvailability = isAvailability
+    ? getDatesBetween(
+        convertDate(
+          `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+        ),
+        "2021-11-30"
+      ).map((item) => {
+        return {
+          date: item,
+          availability: availability.map((subItem, i) => {
+            return {
+              available:
+                subItem.availability.filter(
+                  (subSubItem) =>
+                    subSubItem.from === item ||
+                    subSubItem.to === item ||
+                    (new Date(subSubItem.from) < new Date(item) &&
+                      new Date(subSubItem.to) > new Date(item))
+                )[0].availability + "",
+            };
+          }),
+        };
+      })
+    : [];
+
   const allDatesData = getDatesBetween(
     convertDate(
       `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
     ),
-    "2021-04-30"
+    "2021-11-30"
   )
     .map((item) => {
       return {
@@ -233,6 +260,20 @@ const BookNowNew = ({
             available: pricingItem[0].available,
             roomOnly: pricingItem[0].roomOnly,
             extraBed: pricingItem[0].extraBed,
+          };
+        }),
+      };
+    })
+    .map((item, i) => {
+      return {
+        date: item.date,
+        pricing: item.pricing.map((subItem, j) => {
+          return {
+            roomOnly: subItem.roomOnly,
+            extraBed: subItem.extraBed,
+            available: isAvailability
+              ? Number(allDatesAvailability[i].availability[j].available)
+              : Number(subItem.available),
           };
         }),
       };

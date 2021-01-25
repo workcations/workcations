@@ -196,7 +196,13 @@ const propertyTypes = [
   "villa",
 ];
 
-const PropertyPage = ({ property, loadElements, isServer }) => {
+const PropertyPage = ({
+  property,
+  isAvailability,
+  availability,
+  loadElements,
+  isServer,
+}) => {
   /*useEffect(() => {
     if (loadElements) {
       const imageLinks = inventory.map((room) => room.image);
@@ -272,6 +278,8 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
           <BookNowContainer>
             <BookNowNew
               property={property}
+              isAvailability={isAvailability}
+              availability={availability}
               inventory={inventory}
               slug={slug}
               title={`Workcations ${id} - ${shortTitle}`}
