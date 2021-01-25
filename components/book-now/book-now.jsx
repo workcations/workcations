@@ -562,6 +562,9 @@ const BookNow = ({
             <Line />
             <CinCoutHeading>Select Rooms</CinCoutHeading>
           </Top>
+          {/*
+            test
+            */}
           <RoomsContainer className="rooms-container">
             {inventory.map((room, i) => (
               <RoomCard key={room.type}>
