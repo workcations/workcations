@@ -76,13 +76,20 @@ export const getStaticPaths = async () => {
 
   const properties = await getPropertiesListExcel();
 
-  const pathArray = properties.map((property) => {
-    return {
-      params: {
-        slug: property.slug,
-      },
-    };
-  });
+  const pathArray = properties
+    .map((property) => {
+      return {
+        params: {
+          slug: property.slug,
+        },
+      };
+    })
+    .filter(
+      (item) =>
+        item.params.slug !== "1109-apartment-in-kasauli" ||
+        item.params.slug !== "1147-2bhk-apartment-in-kasauli" ||
+        item.params.slug !== "2114-2bhk-apartment-in-ramgarh"
+    );
 
   return {
     paths: pathArray,
