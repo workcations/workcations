@@ -826,7 +826,10 @@ const BookNowPopup = ({
                   </Summary>
                 </FlexItem>
                 <FlexItem>
-                  <h2>Book Now</h2>
+                  <h2>
+                    Please fill in your details and click on Pay Now to complete
+                    your booking
+                  </h2>
                   <Contact>
                     <Form onSubmit={handleSubmit}>
                       <FormInput
