@@ -826,10 +826,7 @@ const BookNowPopup = ({
                   </Summary>
                 </FlexItem>
                 <FlexItem>
-                  <h2>
-                    Please fill in your details and click on Pay Now to complete
-                    your booking
-                  </h2>
+                  <h2>Fill in the details to make the payment</h2>
                   <Contact>
                     <Form onSubmit={handleSubmit}>
                       <FormInput
@@ -850,6 +847,9 @@ const BookNowPopup = ({
                         warningMessage={warningMessage}
                       />
                       <FormSubmit style={{ width: "90%" }} value="Pay Now" />
+                      <br />
+                      <br />
+                      <h2>For any support</h2>
                       <Buttons>
                         <Button
                           onClick={() => {
