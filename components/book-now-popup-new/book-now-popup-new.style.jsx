@@ -374,9 +374,17 @@ export const EmailIdPopupContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 
+  @media only screen and (max-width: 900px) {
+    width: 90%;
+  }
+
   span {
     font-size: 1.3vw;
     text-align: center;
+
+    @media only screen and (max-width: 900px) {
+      font-size: 3.3vw;
+    }
   }
 
   strong {
@@ -387,6 +395,10 @@ export const EmailIdPopupContainer = styled.div`
 export const InputContainer = styled.div`
   width: 24vw;
   overflow-x: hidden;
+
+  @media only screen and (max-width: 900px) {
+    width: 80vw;
+  }
 `;
 
 export const EmailIdContainer = styled.div`
@@ -415,6 +427,22 @@ export const EmailIdContainer = styled.div`
       cursor: pointer;
     }
   }
+
+  @media only screen and (max-width: 900px) {
+    width: 80vw;
+    font-size: 3.8vw;
+    left: ${(props) => `${props.emailState * 80 * -1}vw`};
+    display: grid;
+    grid-template-columns: 80vw 80vw;
+
+    div {
+      width: 80vw;
+
+      span {
+        font-size: 1em;
+      }
+    }
+  }
 `;
 
 export const EmailIdButtons = styled.div`
@@ -438,5 +466,9 @@ export const EmailIdButtons = styled.div`
     :first-child {
       background-color: #ff6c6b;
     }
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 3.5vw;
   }
 `;
