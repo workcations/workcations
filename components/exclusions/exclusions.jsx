@@ -19,16 +19,19 @@ const Exclusions = ({ exclusions, breakfast, lunch, dinner }) => {
   }
   return (
     <div>
-      {exclusions.concat(exclusionsAll).map((exclusion, i) => (
-        <Exclusion key={i}>
-          <img src="/exclusions/cross.svg" alt="Exclusion" />
-          <div>
-            {exclusion.split("\n").map((item, j) => (
-              <div key={"exclusion" + (i + 1) + "-" + j}>{item}</div>
-            ))}
-          </div>
-        </Exclusion>
-      ))}
+      {exclusions
+        .concat(exclusionsAll)
+        .filter((item) => item.toLowerCase().slice(0, 9) !== "any meals")
+        .map((exclusion, i) => (
+          <Exclusion key={i}>
+            <img src="/exclusions/cross.svg" alt="Exclusion" />
+            <div>
+              {exclusion.split("\n").map((item, j) => (
+                <div key={"exclusion" + (i + 1) + "-" + j}>{item}</div>
+              ))}
+            </div>
+          </Exclusion>
+        ))}
     </div>
   );
 };

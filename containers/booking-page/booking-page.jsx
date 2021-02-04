@@ -290,6 +290,14 @@ const BookingPage = ({ data, bookingSlug }) => {
     }
   }, [totalPax]);
 
+  useEffect(() => {
+    if (userSubmitted) {
+      window.setTimeout(function () {
+        window.location.reload();
+      }, 40000);
+    }
+  }, [userSubmitted]);
+
   return (
     <Fragment>
       <Head>
