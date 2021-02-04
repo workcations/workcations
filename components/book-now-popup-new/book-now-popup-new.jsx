@@ -39,6 +39,12 @@ import {
   InputContainer,
   EmailIdContainer,
   EmailIdButtons,
+  TncContainer,
+  TncPopup,
+  TncHeading,
+  TncHeadingText,
+  TncList,
+  AcceptButton,
 } from "./book-now-popup-new.style";
 import { useEffect } from "react";
 
@@ -76,6 +82,19 @@ const propertyTypes = [
   "hostel",
   "resort",
   "villa",
+];
+
+const cnxTnc = [
+  "Employees are required to seek prior approval from manager",
+  "Management reserves a right to approve/reject the request due to business requirement.",
+  "Employees will be governed by COEBC guidelines",
+  "Entire cost will be borne by employee.",
+  "Employees are expected to take good care of company asset and secure company / client confidential data.",
+  "This is extended benefit to our employees.",
+  "The employees cannot claim this as matter of right.",
+  "This benefit can be withdrawn or cancelled at any point of time.",
+  "CONCENTRIX shall not be accountable for any kind of mishappening/incident/accident that might happen during such travel.",
+  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition",
 ];
 
 const getBookingId = async (data) => {
@@ -516,6 +535,8 @@ const BookNowPopup = ({
   const [tempCodeDetails, setTempCodeDetails] = useState({});
   const [emailState, setEmailState] = useState(0);
   const [emailWarningMessage, setEmailWarningMessage] = useState("");
+  const [tncAccepted, setTncAccepted] = useState(false);
+  const [tncActive, setTncActive] = useState(false);
 
   const applyPromoCode = () => {
     setPromoCodeWarning("");
@@ -614,10 +635,9 @@ const BookNowPopup = ({
           if (response.data.toLowerCase() === "valid otp") {
             setOtp("");
             setOtpPlaceHolder("");
-            setCouponDetails(tempCodeDetails);
-            setCouponApplied(true);
             setEmailState(0);
             setEmailIdPopup(false);
+            setTncActive(true);
           }
         })
         .catch((err) => {
@@ -626,6 +646,14 @@ const BookNowPopup = ({
         });
     }
   };
+
+  useEffect(() => {
+    if (tncAccepted) {
+      setCouponDetails(tempCodeDetails);
+      setCouponApplied(true);
+      setTncActive(false);
+    }
+  }, [tncAccepted]);
 
   useEffect(() => {
     if (!!couponDetails) {
@@ -1009,6 +1037,27 @@ const BookNowPopup = ({
               </EmailIdButtons>
             </EmailIdPopupContainer>
           </EmailIdPopup>
+          <TncPopup isActive={tncActive}>
+            <TncContainer>
+              <TncHeading>Concentrix Terms & Conditions</TncHeading>
+              <TncHeadingText>
+                Please read and accept the following terms & conditions by
+                CONCENTRIX to proceed with your booking
+              </TncHeadingText>
+              <TncList>
+                {cnxTnc.map((item, i) => (
+                  <li key={`cnxTnc ${i + 1}`}>{item}</li>
+                ))}
+              </TncList>
+              <AcceptButton
+                onClick={() => {
+                  setTncAccepted(true);
+                }}
+              >
+                Accept
+              </AcceptButton>
+            </TncContainer>
+          </TncPopup>
         </Fragment>
       )}
     </Fragment>

@@ -472,3 +472,80 @@ export const EmailIdButtons = styled.div`
     font-size: 3.5vw;
   }
 `;
+
+export const TncPopup = styled.div`
+  position: fixed;
+  top: 0;
+  left: ${(props) => (props.isActive ? "0" : "110vw")};
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease-in-out;
+  z-index: 905;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TncContainer = styled.div`
+  background-color: white;
+  font-size: 1.2vw;
+  width: 80vw;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 3.5vw;
+    width: 90vw;
+  }
+`;
+
+export const TncHeading = styled.h2`
+  font-size: 1.8vw;
+  color: #ff6c6b;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 4.5vw;
+  }
+`;
+
+export const TncHeadingText = styled.div`
+  text-align: center;
+  font-size: 1vw;
+  margin-bottom: 15px;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 2.9vw;
+    padding: 0px 3vw;
+  }
+`;
+
+export const TncList = styled.ul`
+  line-height: 1.6em;
+  font-size: 1.1vw;
+  padding-right: 15px;
+  list-style-type: square;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 3.3vw;
+  }
+`;
+
+export const AcceptButton = styled.div`
+  background-color: #ff6c6b;
+  color: white;
+  font-weight: 600;
+  font-size: 2vw;
+  border-radius: 3px;
+  padding: 5px 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 5vw;
+  }
+`;
