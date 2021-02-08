@@ -88,7 +88,8 @@ export const getStaticPaths = async () => {
       (item) =>
         item.params.slug !== "1109-apartment-in-kasauli" &&
         item.params.slug !== "1147-2bhk-apartment-in-kasauli" &&
-        item.params.slug !== "2114-2bhk-apartment-in-ramgarh"
+        item.params.slug !== "2114-2bhk-apartment-in-ramgarh" &&
+        item.params.slug !== "1104-villa-in-dharamshala"
     );
 
   return {
