@@ -291,12 +291,12 @@ const BookingPage = ({ data, bookingSlug }) => {
   }, [totalPax]);
 
   useEffect(() => {
-    if (userSubmitted) {
+    if (userSubmitted && !approved) {
       window.setTimeout(function () {
         window.location.reload();
       }, 40000);
     }
-  }, [userSubmitted]);
+  }, [userSubmitted, approved]);
 
   return (
     <Fragment>
