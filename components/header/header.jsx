@@ -125,7 +125,7 @@ const Header = () => {
       </SearchContainer>
       <Menu open={open}>
         <Link href="/properties" passHref>
-          <MenuOption>Destinations</MenuOption>
+          <MenuOption>Properties</MenuOption>
         </Link>
         <Link href="/workcations-for-teams" passHref>
           <MenuOption>Workcations For Teams</MenuOption>
