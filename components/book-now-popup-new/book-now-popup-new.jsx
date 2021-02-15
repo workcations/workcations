@@ -85,16 +85,16 @@ const propertyTypes = [
 ];
 
 const cnxTnc = [
-  "Employees are required to seek prior approval from manager.",
-  "Management reserves a right to approve/reject the request due to business requirement.",
-  "Employees will be governed by COEBC guidelines.",
-  "Entire cost will be borne by employee.",
-  "Employees are expected to take good care of company asset and secure company / client confidential data.",
-  "This is extended benefit to our employees.",
+  "The arrangement / booking contract will be between traveler and Workcations.",
+  "Workcations is offering discounted rates for Concentrix Employees however employees can choose if they want to travel with Workcations or any other service provider.",
+  "Employees will continue to be governed by COEBC guidelines.",
+  " Entire cost will be borne by employee.",
+  " In case travelling for work - Employees are expected to take good care of company asset and secure company / client confidential data. Any damage to company asset will be recovered from employee’s salary.",
+  "This is extended benefit to CONCENTRIX employees.",
   "The employees cannot claim this as matter of right.",
   "This benefit can be withdrawn or cancelled at any point of time.",
   "CONCENTRIX shall not be accountable for any kind of mishappening/incident/accident that might happen during such travel.",
-  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
+  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition",
 ];
 
 const getBookingId = async (data) => {
@@ -652,6 +652,19 @@ const BookNowPopup = ({
       setCouponDetails(tempCodeDetails);
       setCouponApplied(true);
       setTncActive(false);
+
+      const data = JSON.stringify({ emailId: emailId });
+
+      const config = {
+        method: "post",
+        url: "https://workcationsbackend.herokuapp.com/emailTnc",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config);
     }
   }, [tncAccepted]);
 
