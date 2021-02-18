@@ -172,7 +172,7 @@ const CallIcon = () => {
           <span>Request A Call Back</span>
         </PopupItem>
         <Link
-          href="https://wa.me/919870301533?text=I'm%20interested%20in%20workcations"
+          href="https://wa.me/918814871652?text=I'm%20interested%20in%20workcations"
           passHref
         >
           <PopupItem
@@ -186,7 +186,7 @@ const CallIcon = () => {
             <span>WhatsApp</span>
           </PopupItem>
         </Link>
-        <Link href="tel:9870301533" passHref>
+        <Link href="tel:8814871652" passHref>
           <PopupItem
             target="_blank"
             onClick={() => {
