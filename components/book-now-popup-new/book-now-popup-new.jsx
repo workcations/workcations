@@ -509,7 +509,7 @@ const BookNowPopup = ({
               const dataEmail = JSON.stringify({
                 emailId: emailId,
                 name: formDetails.name,
-                manager: "vivek.verma@concentrix.com",
+                manager: managerEmail,
               });
 
               const config = {
@@ -559,6 +559,7 @@ const BookNowPopup = ({
   }
 
   const [emailId, setEmailId] = useState("");
+  const [managerEmail, setManagerEmail] = useState("");
   const [isWorkcation, setIsWorkcation] = useState({
     value: false,
     popup: true,
@@ -603,47 +604,60 @@ const BookNowPopup = ({
 
   const submitEmailId = () => {
     setEmailWarningMessage("");
-    const emailIdsList = [
-      "megha.arora5@concentrix.com",
-      "vivek.verma@concentrix.com",
-      "amit.sharma10@concentrix.com",
-      "govind@wanderon.in",
-      "ravi@wanderon.in",
-    ];
 
-    if (
-      emailId.split("@")[1] === "concentrix.com" ||
-      emailIdsList.indexOf(emailId) !== -1
-    ) {
-      const data = JSON.stringify({
-        emailId: emailId,
+    const data = JSON.stringify({
+      emailId: emailId,
+    });
+
+    const config = {
+      method: "post",
+      url: "https://workcationsbackend.herokuapp.com/verifyEmail",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then((response) => {
+        if (response.data.exists) {
+          setManagerEmail(response.data.manager);
+
+          const data = JSON.stringify({
+            emailId: emailId,
+          });
+          const config = {
+            method: "post",
+            url: "https://workcationsbackend.herokuapp.com/createOtp",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            data: data,
+          };
+
+          setEmailWarningMessage("Please Wait");
+
+          axios(config)
+            .then((response) => {
+              setEmailState(1);
+              setEmailIdPlaceHolder("");
+              setEmailWarningMessage("");
+            })
+            .catch((err) => {
+              setEmailWarningMessage(
+                "Looks like we encountered a problem! Please Try Again"
+              );
+            });
+        } else {
+          setEmailIdPlaceHolder("Invalid Email Id");
+          setEmailId("");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setEmailIdPlaceHolder("Invalid Email Id");
+        setEmailId("");
       });
-      const config = {
-        method: "post",
-        url: "https://workcationsbackend.herokuapp.com/createOtp",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
-
-      setEmailWarningMessage("Please Wait");
-
-      axios(config)
-        .then((response) => {
-          setEmailState(1);
-          setEmailIdPlaceHolder("");
-          setEmailWarningMessage("");
-        })
-        .catch((err) => {
-          setEmailWarningMessage(
-            "Looks like we encountered a problem! Please Try Again"
-          );
-        });
-    } else {
-      setEmailIdPlaceHolder("Invalid Email Id");
-      setEmailId("");
-    }
   };
 
   const verifyOtp = () => {
