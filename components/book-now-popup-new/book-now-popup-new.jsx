@@ -6,6 +6,7 @@ import Spinner from "../spinner/spinner";
 import { useRouter } from "next/router";
 
 import { FormInput, FormSubmit } from "../form-input/form-input";
+import { CheckBox } from "../checkbox/checkbox";
 
 import {
   Container,
@@ -45,6 +46,8 @@ import {
   TncHeadingText,
   TncList,
   AcceptButton,
+  VacationWorkcation,
+  CheckBoxContainer,
 } from "./book-now-popup-new.style";
 import { useEffect } from "react";
 
@@ -85,16 +88,15 @@ const propertyTypes = [
 ];
 
 const cnxTnc = [
+  "Employee needs to discuss & seek consent from the manager before proceeding for Workcation.",
   "The arrangement / booking contract will be between traveler and Workcations.",
-  "Workcations is offering discounted rates for Concentrix Employees however employees can choose if they want to travel with Workcations or any other service provider.",
-  "Employees will continue to be governed by COEBC guidelines.",
-  " Entire cost will be borne by employee.",
-  " In case travelling for work - Employees are expected to take good care of company asset and secure company / client confidential data. Any damage to company asset will be recovered from employee’s salary.",
-  "This is extended benefit to CONCENTRIX employees.",
-  "The employees cannot claim this as matter of right.",
+  "Workcations is offering discounted rates for Concentrix Employees however employees can choose if they want to travel with Workcations or any other service provider in case they get better rate and / or services.",
+  "Entire cost will be borne by employee.",
+  "Employees are expected to take good care of company asset and secure company / client confidential data. Any damage to company asset will be recovered from employee’s salary.",
+  "This is extended benefit to our employees and therefore employees cannot claim this as matter of right.",
   "This benefit can be withdrawn or cancelled at any point of time.",
   "CONCENTRIX shall not be accountable for any kind of mishappening/incident/accident that might happen during such travel.",
-  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition",
+  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
 ];
 
 const getBookingId = async (data) => {
@@ -364,14 +366,16 @@ const BookNowPopup = ({
           const data = {
             name: name,
             phone: phone,
+            email: emailId,
+            coupon: couponDetails,
             totalPax: {
               value: noOfPax,
               warningMessage: "",
             },
             salesPerson: "website",
-            advance: totalPrice * 1.05,
+            advance: (totalPrice - discount) * 1.05,
             account: "RazorPay",
-            amount: totalPrice * 1.05,
+            amount: (totalPrice - discount) * 1.05,
             leadSource: "website booking",
             transportation: "self",
             checkIn: new Date(
@@ -502,7 +506,34 @@ const BookNowPopup = ({
               const bookingId = bookingDetails.bookingId;
               const bookingLink = bookingDetails.slug;
 
-              router.push(`/bookings/${bookingLink}`);
+              const dataEmail = JSON.stringify({
+                emailId: emailId,
+                name: formDetails.name,
+                manager: "hr@wanderon.in",
+              });
+
+              const config = {
+                method: "post",
+                url: "https://workcationsbackend.herokuapp.com/emailTnc",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                data: dataEmail,
+              };
+
+              if (
+                !!couponDetails &&
+                !!couponDetails.code &&
+                isWorkcation.value &&
+                couponDetails.code.toLowerCase() === "wcconcentrix"
+              ) {
+                axios(config).then((response) => {
+                  router.push(`/bookings/${bookingLink}`);
+                });
+              } else {
+                router.push(`/bookings/${bookingLink}`);
+              }
+
               /*
 
             bookingId: action.payload.bookingId,
@@ -528,6 +559,10 @@ const BookNowPopup = ({
   }
 
   const [emailId, setEmailId] = useState("");
+  const [isWorkcation, setIsWorkcation] = useState({
+    value: false,
+    popup: true,
+  });
   const [otp, setOtp] = useState("");
   const [emailIdPopup, setEmailIdPopup] = useState(false);
   const [emailIdPlaceHolder, setEmailIdPlaceHolder] = useState("");
@@ -653,7 +688,11 @@ const BookNowPopup = ({
       setCouponApplied(true);
       setTncActive(false);
 
-      const data = JSON.stringify({ emailId: emailId });
+      /*const data = JSON.stringify({
+        emailId: emailId,
+        name: formDetails.name,
+        manager: "hr@wanderon.in",
+      });
 
       const config = {
         method: "post",
@@ -664,7 +703,7 @@ const BookNowPopup = ({
         data: data,
       };
 
-      axios(config);
+      axios(config);*/
     }
   }, [tncAccepted]);
 
@@ -1052,23 +1091,74 @@ const BookNowPopup = ({
           </EmailIdPopup>
           <TncPopup isActive={tncActive}>
             <TncContainer>
-              <TncHeading>Concentrix Terms & Conditions</TncHeading>
-              <TncHeadingText>
-                Please read and accept the following terms & conditions by
-                CONCENTRIX to proceed with your booking
-              </TncHeadingText>
-              <TncList>
-                {cnxTnc.map((item, i) => (
-                  <li key={`cnxTnc ${i + 1}`}>{item}</li>
-                ))}
-              </TncList>
-              <AcceptButton
-                onClick={() => {
-                  setTncAccepted(true);
-                }}
-              >
-                Accept
-              </AcceptButton>
+              {isWorkcation.popup ? (
+                <VacationWorkcation>
+                  <TncHeading>
+                    Are you travelling for Vacation or Workcation?
+                  </TncHeading>
+                  <CheckBoxContainer>
+                    <CheckBox
+                      name="vacation"
+                      label="Vacation"
+                      handleChange={() => {
+                        setIsWorkcation({
+                          ...isWorkcation,
+                          value: false,
+                        });
+                      }}
+                      checked={!isWorkcation.value}
+                    />
+                    <CheckBox
+                      name="workcation"
+                      label="Workcation"
+                      handleChange={() => {
+                        setIsWorkcation({
+                          ...isWorkcation,
+                          value: true,
+                        });
+                      }}
+                      checked={isWorkcation.value}
+                    />
+                  </CheckBoxContainer>
+                  <AcceptButton
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      setIsWorkcation({
+                        ...isWorkcation,
+                        popup: false,
+                      });
+
+                      if (!isWorkcation.value) {
+                        setTncAccepted(true);
+                      }
+                    }}
+                    style={{ width: "30%", textAlign: "center" }}
+                  >
+                    Submit
+                  </AcceptButton>
+                </VacationWorkcation>
+              ) : !isWorkcation.popup && isWorkcation.value ? (
+                <Fragment>
+                  <TncHeading>Concentrix Terms & Conditions</TncHeading>
+                  <TncHeadingText>
+                    Please read and accept the following terms & conditions by
+                    CONCENTRIX to proceed with your booking
+                  </TncHeadingText>
+                  <TncList>
+                    {cnxTnc.map((item, i) => (
+                      <li key={`cnxTnc ${i + 1}`}>{item}</li>
+                    ))}
+                  </TncList>
+                  <AcceptButton
+                    onClick={() => {
+                      setTncAccepted(true);
+                    }}
+                  >
+                    Accept
+                  </AcceptButton>
+                </Fragment>
+              ) : null}
             </TncContainer>
           </TncPopup>
         </Fragment>

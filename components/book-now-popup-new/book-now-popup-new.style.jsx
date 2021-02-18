@@ -549,3 +549,30 @@ export const AcceptButton = styled.div`
     font-size: 5vw;
   }
 `;
+
+export const VacationWorkcation = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 45px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    h2 {
+      font-size: 3.6vw;
+    }
+  }
+`;
+
+export const CheckBoxContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin-bottom: 45px;
+
+  @media only screen and (max-width: 900px) {
+    width: 90%;
+  }
+`;

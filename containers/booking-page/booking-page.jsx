@@ -32,6 +32,9 @@ import {
   RadioGroupButtons,
   RadioButton,
   Approval,
+  ContactDetails,
+  ContactDetailsGrid,
+  ContactDetailsItem,
 } from "./booking-page.style";
 
 const getNoOfDays = (date1, date2) => {
@@ -81,6 +84,7 @@ const submitUserData = async (data) => {
 
 const BookingPage = ({ data, bookingSlug }) => {
   const { bookingId, approval } = data;
+  const approved = data.approval.status;
   const {
     account,
     advance,
@@ -102,7 +106,6 @@ const BookingPage = ({ data, bookingSlug }) => {
     transportation,
     remarks,
     websiteBooking,
-    approved,
   } = data.data;
 
   const checkInDate = new Date(checkIn);
@@ -152,13 +155,21 @@ const BookingPage = ({ data, bookingSlug }) => {
     warningMessage: "",
   });
   const [email, setEmail] = useState({
-    value: "",
+    value: !!data.data.email ? data.data.email : "",
     warningMessage: "",
   });
   const [company, setCompany] = useState({
-    value: "",
+    value:
+      !!data.data.coupon &&
+      !!data.data.coupon.code &&
+      data.data.coupon.code.toLowerCase() === "wcconcentrix"
+        ? "Concentrix"
+        : "",
     warningMessage: "",
   });
+  const [couponDetails, setCouponDetails] = useState(
+    !!data.data.coupon ? data.data.coupon : {}
+  );
   const [post, setPost] = useState({
     value: "",
     warningMessage: "",
@@ -245,6 +256,7 @@ const BookingPage = ({ data, bookingSlug }) => {
       advance,
       amount,
       cart,
+      coupon: couponDetails,
       cartDetails,
       property,
       checkIn,
@@ -816,6 +828,27 @@ const BookingPage = ({ data, bookingSlug }) => {
             <Approval>Please Wait!! We are confirming your booking.</Approval>
           </DownloadContainer>
         )}
+        {!!data.data.coupon &&
+        !!data.data.coupon.code &&
+        data.data.coupon.code.toLowerCase() === "wcconcentrix" ? (
+          <ContactDetails>
+            <h2>Contact Details For Assistance</h2>
+            <ContactDetailsGrid>
+              <ContactDetailsItem>
+                1) Varsha Shrivastava - +91-9971114474
+              </ContactDetailsItem>
+              <ContactDetailsItem>
+                2) Gaurav Singh - +91-9996508685
+              </ContactDetailsItem>
+              <ContactDetailsItem>
+                3) Govind Gaur - +91-8814871652
+              </ContactDetailsItem>
+              <ContactDetailsItem>
+                4) Chirag Jain - +91-9050384645
+              </ContactDetailsItem>
+            </ContactDetailsGrid>
+          </ContactDetails>
+        ) : null}
       </PageContainer>
     </Fragment>
   );

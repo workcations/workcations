@@ -348,3 +348,36 @@ export const Approval = styled.div`
   padding: 8px 15px;
   border-radius: 3px;
 `;
+
+export const ContactDetails = styled.div`
+  border: 2px solid #ff6c6b;
+  margin: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+
+  h2 {
+    font-size: 2vw;
+  }
+
+  @media only screen and (max-width: 900px) {
+    h2 {
+      font-size: 3.8vw;
+    }
+  }
+`;
+
+export const ContactDetailsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 25px;
+  grid-column-gap: 25px;
+  margin-bottom: 15px;
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ContactDetailsItem = styled.div``;

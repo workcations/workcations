@@ -22,7 +22,7 @@ const CheckBox = ({ name, label, handleChange, checked }) => (
     </Label>
     <Title>
       {label.split("@")[0]}
-      <span>{"@" + label.split("@")[1]}</span>
+      {!!label.split("@")[1] ? <span>{"@" + label.split("@")[1]}</span> : null}
     </Title>
   </Container>
 );
