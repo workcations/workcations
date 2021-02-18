@@ -509,7 +509,7 @@ const BookNowPopup = ({
               const dataEmail = JSON.stringify({
                 emailId: emailId,
                 name: formDetails.name,
-                manager: "hr@wanderon.in",
+                manager: "vivek.verma@concentrix.com",
               });
 
               const config = {
