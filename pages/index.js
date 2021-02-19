@@ -23,7 +23,7 @@ const localBusinessObject = {
   image: "https://www.workcations.in/logo.png",
   "@id": "https://www.workcations.in/#homepage",
   url: "https://www.workcations.in/",
-  telephone: "918814871652",
+  telephone: "919870301533",
   address: {
     "@type": "PostalAddress",
     streetAddress:
