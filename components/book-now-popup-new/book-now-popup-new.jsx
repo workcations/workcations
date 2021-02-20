@@ -510,6 +510,7 @@ const BookNowPopup = ({
                 emailId: emailId,
                 name: formDetails.name,
                 manager: managerEmail,
+                alternate: alternateEmail,
               });
 
               const config = {
@@ -560,6 +561,7 @@ const BookNowPopup = ({
 
   const [emailId, setEmailId] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
+  const [alternateEmail, setAlternateEmail] = useState("");
   const [isWorkcation, setIsWorkcation] = useState({
     value: false,
     popup: true,
@@ -622,6 +624,7 @@ const BookNowPopup = ({
       .then((response) => {
         if (response.data.exists) {
           setManagerEmail(response.data.manager);
+          setAlternateEmail(response.data.alternate);
 
           const data = JSON.stringify({
             emailId: emailId,
