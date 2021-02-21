@@ -5,16 +5,16 @@ import { Container, Card, Text, Title, Count } from "./featured-states.style";
 
 const List = [
   {
+    title: "goa",
+    image: "goa",
+  },
+  {
     title: "himachal pradesh",
     image: "himachal",
   },
   {
     title: "uttarakhand",
     image: "uttarakhand",
-  },
-  {
-    title: "goa",
-    image: "goa",
   },
   {
     title: "kerala",
