@@ -99,6 +99,17 @@ const cnxTnc = [
   "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
 ];
 
+const cnxTnc2 = [
+  "Please ensure your leaves are approved for vacation.",
+  "The arrangement / booking contract will be between traveler and Workcations.",
+  "Workcations is offering discounted rates for Concentrix Employees however employees can choose if they want to travel with Workcations or any other service provider in case they get better rate and / or services.",
+  "Entire cost will be borne by employee.",
+  "This is extended benefit to our employees and therefore employees cannot claim this as matter of right.",
+  "This benefit can be withdrawn or cancelled at any point of time.",
+  "CONCENTRIX shall not be accountable for any kind of mishappening/incident/accident that might happen during such travel.",
+  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
+];
+
 const getBookingId = async (data) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -511,6 +522,7 @@ const BookNowPopup = ({
                 name: formDetails.name,
                 manager: managerEmail,
                 alternate: alternateEmail,
+                workcation: isWorkcation.value,
               });
 
               const config = {
@@ -525,7 +537,6 @@ const BookNowPopup = ({
               if (
                 !!couponDetails &&
                 !!couponDetails.code &&
-                isWorkcation.value &&
                 couponDetails.code.toLowerCase() === "wcconcentrix"
               ) {
                 axios(config).then((response) => {
@@ -549,6 +560,7 @@ const BookNowPopup = ({
       prefill: {
         name: name,
         contact: phone,
+        email: emailId,
       },
       theme: {
         color: "#ff6c6b",
@@ -1145,10 +1157,6 @@ const BookNowPopup = ({
                         ...isWorkcation,
                         popup: false,
                       });
-
-                      if (!isWorkcation.value) {
-                        setTncAccepted(true);
-                      }
                     }}
                     style={{ width: "30%", textAlign: "center" }}
                   >
@@ -1159,8 +1167,8 @@ const BookNowPopup = ({
                 <Fragment>
                   <TncHeading>Concentrix Terms & Conditions</TncHeading>
                   <TncHeadingText>
-                    Please read and accept the following terms & conditions by
-                    CONCENTRIX to proceed with your booking
+                    Please read and accept the following terms & conditions to
+                    proceed with your booking
                   </TncHeadingText>
                   <TncList>
                     {cnxTnc.map((item, i) => (
@@ -1175,7 +1183,27 @@ const BookNowPopup = ({
                     Accept
                   </AcceptButton>
                 </Fragment>
-              ) : null}
+              ) : (
+                <Fragment>
+                  <TncHeading>Concentrix Terms & Conditions</TncHeading>
+                  <TncHeadingText>
+                    Please read and accept the following terms & conditions to
+                    proceed with your booking
+                  </TncHeadingText>
+                  <TncList>
+                    {cnxTnc2.map((item, i) => (
+                      <li key={`cnxTnc ${i + 1}`}>{item}</li>
+                    ))}
+                  </TncList>
+                  <AcceptButton
+                    onClick={() => {
+                      setTncAccepted(true);
+                    }}
+                  >
+                    Accept
+                  </AcceptButton>
+                </Fragment>
+              )}
             </TncContainer>
           </TncPopup>
         </Fragment>
