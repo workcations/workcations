@@ -88,26 +88,28 @@ const propertyTypes = [
 ];
 
 const cnxTnc = [
-  "Employee needs to discuss & seek consent from the manager before proceeding for Workcation.",
+  "Staff needs to discuss & seek consent from the manager before proceeding for Workcation.",
   "The arrangement / booking contract will be between traveler and Workcations.",
-  "Workcations is offering discounted rates for Concentrix Employees however employees can choose if they want to travel with Workcations or any other service provider in case they get better rate and / or services.",
-  "Entire cost will be borne by employee.",
-  "Employees are expected to take good care of company asset and secure company / client confidential data. Any damage to company asset will be recovered from employee’s salary.",
-  "This is extended benefit to our employees and therefore employees cannot claim this as matter of right.",
-  "This benefit can be withdrawn or cancelled at any point of time.",
-  "CONCENTRIX shall not be accountable for any kind of mishappening/incident/accident that might happen during such travel.",
-  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
+  "Workcations offers special discounted rates for Concentrix.",
+  "Staff must choose the travel service provider at will and risk either Workcation or any other service provider as deemed fit.",
+  "Entire cost will be borne by Staff.",
+  "Staff will be responsible for company asset i.e., laptop etc. and must secure company / client confidential data. Any damage to company asset will be recovered from Staff.",
+  "This is an extended benefit to Concentrix Staff and therefore they cannot claim this as a matter of right.",
+  "This offering can be withdrawn or cancelled at anytime.",
+  "Concentrix is not responsible for any kind of theft / mishappening / incident / accident that might happen during such travel. ",
+  "The Staff will be self-responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
 ];
 
 const cnxTnc2 = [
-  "Please ensure your leaves are approved for vacation.",
+  "Staff must ensure their leaves are approved before they move ahead for vacation.",
   "The arrangement / booking contract will be between traveler and Workcations.",
-  "Workcations is offering discounted rates for Concentrix Employees however employees can choose if they want to travel with Workcations or any other service provider in case they get better rate and / or services.",
-  "Entire cost will be borne by employee.",
-  "This is extended benefit to our employees and therefore employees cannot claim this as matter of right.",
-  "This benefit can be withdrawn or cancelled at any point of time.",
-  "CONCENTRIX shall not be accountable for any kind of mishappening/incident/accident that might happen during such travel.",
-  "The employee shall be solely responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
+  "Workcations offers special discounted rates for Concentrix.",
+  "Staff must choose the travel service provider at will and risk either Workcation or any other service provider as deemed fit.",
+  "Entire cost will be borne by Staff.",
+  "This is an extended benefit to Concentrix Staff and therefore they cannot claim this as a matter of right.",
+  "This offering can be withdrawn or cancelled at anytime.",
+  "Concentrix is not responsible for any kind of theft / mishappening / incident / accident that might happen during such travel. ",
+  "The Staff will be self-responsible for such incidences as this travel plan shall be tantamount as his personal and at his own will and volition.",
 ];
 
 const getBookingId = async (data) => {
