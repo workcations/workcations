@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 export const FiltersTopContainer = styled.div`
   position: sticky;
-  top: 50px;
+  top: 60px;
+  height: calc(100vh - 70px);
   width: 17vw;
   z-index: 1;
   margin: 0px;
-  background-color: white;
+  background-color: #f9f9f9;
+  box-shadow: 1px 1px 2px #dfdfdf, -1px -1px 2px #dfdfdf;
   border-radius: 5px;
+  overflow-y: scroll;
 
   @media only screen and (max-width: 900px) {
     display: none;

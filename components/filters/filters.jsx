@@ -222,7 +222,7 @@ const Filters = ({
   return (
     <Fragment>
       {propertyList.length > 0 ? (
-        <FiltersTopContainer>
+        <FiltersTopContainer className="carousel">
           <Headline>
             find your <span>Workcation</span>
           </Headline>
