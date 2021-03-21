@@ -300,12 +300,20 @@ const BookNowNew = ({
     "2021-01-02",
   ];
 
+  const blockDates = [
+    "2021-03-27",
+    "2021-03-28",
+    "2021-03-29",
+    "2021-04-02",
+    "2021-04-03",
+  ];
+
   const disabledDatesDates = disabledDates.map((item) => item.date);
 
-  for (let i = 0; i < newYearDates.length; i++) {
-    if (disabledDatesDates.indexOf(newYearDates[i]) === -1) {
+  for (let i = 0; i < blockDates.length; i++) {
+    if (disabledDatesDates.indexOf(blockDates[i]) === -1) {
       disabledDates.push({
-        date: newYearDates[i],
+        date: blockDates[i],
         availability: 0,
         pricing: [],
       });
