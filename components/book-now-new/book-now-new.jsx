@@ -208,6 +208,8 @@ const BookNowNew = ({
   );
 
   const [today, setToday] = useState(new Date());
+  /*
+   */
 
   const allDatesAvailability = isAvailability
     ? getDatesBetween(
