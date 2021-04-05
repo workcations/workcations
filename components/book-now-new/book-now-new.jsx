@@ -175,7 +175,7 @@ const BookNowNew = ({
 }) => {
   const maximumDate = {
     year: 2022,
-    month: 01,
+    month: 1,
     day: 31,
   };
 
