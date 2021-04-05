@@ -174,9 +174,9 @@ const BookNowNew = ({
   availability,
 }) => {
   const maximumDate = {
-    year: 2021,
-    month: 11,
-    day: 30,
+    year: 2022,
+    month: 01,
+    day: 31,
   };
 
   const [pickerPos, setPickerPos] = useState("bottom");
@@ -214,7 +214,7 @@ const BookNowNew = ({
         convertDate(
           `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
         ),
-        "2021-11-30"
+        "2022-01-31"
       ).map((item) => {
         return {
           date: item,
@@ -238,7 +238,7 @@ const BookNowNew = ({
     convertDate(
       `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
     ),
-    "2021-11-30"
+    "2022-01-31"
   )
     .map((item) => {
       return {
