@@ -259,7 +259,25 @@ const BookNowPopup = ({
     };
 
     if (phone / 10000000000 > 0.1) {
-      const waLeadText = "Name: " + name + "\nPhone: " + phone + "\n\n" + text;
+      const dataLead = JSON.stringify({
+        name,
+        phone,
+        email: "",
+        message: text,
+        page: window.location.href,
+        website: "workcations",
+        leadNumber: 9870301533,
+        apiKey: "ravi",
+      });
+
+      const configLead = {
+        method: "post",
+        url: "https://api.wanderon.in/submitLead",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: dataLead,
+      };
 
       displayRazorpay(name, phone);
 
@@ -278,10 +296,7 @@ const BookNowPopup = ({
       setFormSubmitAlert(false);
       sendEvent();
 
-      const waLeadUrl =
-        "https://panel.capiwha.com/send_message.php?apikey=L00RQROD2VU0ZOXC25YX&number=919870301533&text=" +
-        encodeURI(waLeadText);
-      fetch(waLeadUrl);
+      axios(configLead);
 
       setTimeout(() => {
         setFormSubmitAlert(false);

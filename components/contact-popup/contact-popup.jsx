@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from "react";
 import * as emailjs from "emailjs-com";
 import * as gtag from "../ga";
+import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleContactPopupHidden } from "../../redux/contact-popup/contact-popup.actions";
@@ -80,17 +81,26 @@ const ContactPopup = () => {
     };
 
     if (phone / 10000000000 > 0.1) {
-      const waLeadText =
-        "Name: " +
-        name +
-        "\nPhone: " +
-        phone +
-        "\nEmail: " +
-        email +
-        "\nMessage: " +
-        message +
-        "\nPage: " +
-        window.location.href;
+      const data = JSON.stringify({
+        name,
+        phone,
+        email,
+        message,
+        page: window.location.href,
+        website: "workcations",
+        leadNumber: 9870301533,
+        apiKey: "ravi",
+      });
+
+      const config = {
+        method: "post",
+        url: "https://api.wanderon.in/submitLead",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
       setDetails({
         name: "",
         phone: "",
@@ -106,10 +116,7 @@ const ContactPopup = () => {
         templateParams,
         "user_aMOzAjaX7UHRvpK7SiiR3"
       );
-      const waLeadUrl =
-        "https://panel.capiwha.com/send_message.php?apikey=L00RQROD2VU0ZOXC25YX&number=919870301533&text=" +
-        encodeURI(waLeadText);
-      fetch(waLeadUrl);
+      axios(config);
       setFormSubmitAlert(true);
 
       setTimeout(() => {
