@@ -171,6 +171,10 @@ const amenitiesTypes = [
     slug: "daily meals",
     title: "Homely Meals",
   },
+  {
+    slug: "bonfire paid",
+    title: "Bonfire (Paid)",
+  },
 ];
 
 const houseRulesTypes = [
