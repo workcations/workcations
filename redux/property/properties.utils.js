@@ -99,7 +99,8 @@ export const FilterProperties = (
 export const getPropertiesList = async () => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  const url = "https://api.wanderon.in/properties";
+  const url =
+    "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/properties";
 
   var requestOptions = {
     method: "GET",
