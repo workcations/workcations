@@ -22,6 +22,28 @@ import {
   SuggestedRead,
 } from "../../../components/blogs/blog-item.style";
 
+const Links = [
+  ["Extension Board", "https://bit.ly/3guoD6R"],
+  ["Reusable Coffee Mugs And Thermos", "https://bit.ly/32BJbSL"],
+  ["Reusable Water Bottles", "https://bit.ly/3dFhZZL"],
+  ["Packing Cubes", "https://amzn.to/3xfj4z9"],
+  ["Inflatable Pillows And Back Support Cushions", "https://amzn.to/3xoEY3d"],
+  ["Notepads And Journals", "https://bit.ly/3tTzCdK"],
+  [
+    "Sanitizer",
+    "https://amzn.to/3n89QjF;",
+    "Hand Wash",
+    "https://amzn.to/3enBzsz",
+  ],
+  [
+    "Noise Cancellation Bluetooth Earphones",
+    "https://amzn.to/3tCnyxw",
+    "https://amzn.to/2PaSAxw",
+  ],
+  ["WIFI Dongles And Power Banks", "https://bit.ly/2QKty8T"],
+  ["Sunscreen And Mosquito Cream", "https://bit.ly/2QGWq1P"],
+];
+
 const BlogItem = () => {
   const isServer = typeof window === "undefined";
 
@@ -113,6 +135,11 @@ const BlogItem = () => {
             Finding multiple charging points can be a difficult at times so we
             recommend that you carry your personal cord for a smooth work
             session.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[0][1]}>
+              {Links[0][0]}
+            </a>
           </Text>
 
           <SubHeading>2. Reusable Coffee Mugs and Thermos</SubHeading>
@@ -130,6 +157,11 @@ const BlogItem = () => {
           <Text>
             Carry your hot beverages in mugs or thermos and set up your work
             ANYWHERE! This way you are also reducing plastic usage.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[1][1]}>
+              {Links[1][0]}
+            </a>
           </Text>
 
           <SubHeading>3. Reusable Water Bottles</SubHeading>
@@ -147,6 +179,11 @@ const BlogItem = () => {
           <Text>
             The most essential of all- a reusable water bottle! Say no to
             plastic and fill up your bottle by any stream.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[2][1]}>
+              {Links[2][0]}
+            </a>
           </Text>
 
           <SubHeading>4. Packing Cubes</SubHeading>
@@ -164,6 +201,11 @@ const BlogItem = () => {
           <Text>
             To keep your space and stuff organized- pack them in small bags and
             label them accordingly to help yourself identifying them easily.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[3][1]}>
+              {Links[3][0]}
+            </a>
           </Text>
 
           <SubHeading>
@@ -184,6 +226,11 @@ const BlogItem = () => {
             Sitting in one position is tiresome especially when you don’t have
             the luxury of beds all the time. Carry your personal inflatable
             pillow or support cushion to ease that back pain!
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[4][1]}>
+              {Links[4][0]}
+            </a>
           </Text>
 
           <SubHeading>6. Notepads and Journals</SubHeading>
@@ -202,6 +249,11 @@ const BlogItem = () => {
             Whether you’re working or thinking, you need a notepad/journal to
             jot down those points! And what’s a better location than journaling
             by a river side or a cafe with magnificent views.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[5][1]}>
+              {Links[5][0]}
+            </a>
           </Text>
 
           <SubHeading>7. Sanitizer and Mini Handwash</SubHeading>
@@ -220,6 +272,15 @@ const BlogItem = () => {
             Don’t forget to carry the most priced item of the universe at the
             moment- sanitizer! You know it works. You can also carry a mini hand
             wash to avoid contact with other people.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[6][1]}>
+              {Links[6][0]}
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a target="__blank" href={Links[6][3]}>
+              {Links[6][2]}
+            </a>
           </Text>
 
           <SubHeading>8. Noise Cancellation Bluetooth Earphones</SubHeading>
@@ -238,6 +299,15 @@ const BlogItem = () => {
             Join meeting from ANYWHERE with the latest technology of noise
             cancelling earphones and avoid the disturbance of your surroundings.
             Nobody will ever suspect your location!
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[7][1]}>
+              {Links[7][0]}
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a target="__blank" href={Links[7][2]}>
+              {Links[7][0]}
+            </a>
           </Text>
 
           <SubHeading>9. WIFI Dongles and Power Banks</SubHeading>
@@ -259,6 +329,11 @@ const BlogItem = () => {
             <br />
             <strong>Pro Tip:</strong> Just do a bit of research about the best
             network provider of that area before buying a dongle.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[8][1]}>
+              {Links[8][0]}
+            </a>
           </Text>
 
           <SubHeading>10. Sunscreen and Mosquito Cream</SubHeading>
@@ -276,6 +351,11 @@ const BlogItem = () => {
           <Text>
             Sun is harsher at high altitude. Carry a sunscreen, a hydrating
             moistures and mosquito creams to protect your skin at all times.
+            <br />
+            <strong>Where to buy: </strong>
+            <a target="__blank" href={Links[9][1]}>
+              {Links[9][0]}
+            </a>
           </Text>
 
           <Text>
