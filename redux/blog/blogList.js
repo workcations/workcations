@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "essentials-for-working-from-a-remote-location",
+    title: "10 Essential Items to Carry While Working from a Remote Location",
+    description: `Essentials for Workcations. From electronics to accessories, we have covered all the essentials items required for working from remote places. Since 2020, we have changed our ways of working. From offices to work from home to workcations.`,
+    date: "22nd Apr 2021",
+    tags: ["Remote Work", "Essentials"],
+  },
+  {
     slug: "successful-people-who-do-wfh",
     title:
       "Highly Successful People Who Are Advocating Remote Work from a Long Time",
