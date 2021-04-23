@@ -22,7 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
 
   const site = "https://www.workcations.in";
-  const canonicalURL = site + useRouter().pathname;
+  const canonicalURL = site + router.asPath;
 
   useEffect(() => {
     if (
