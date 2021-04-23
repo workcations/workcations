@@ -22,7 +22,8 @@ const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
 
   const site = "https://www.workcations.in";
-  const canonicalURL = site + router.asPath;
+  const canonicalURL =
+    site + router.route === "properties" ? "/properties" : router.asPath;
 
   useEffect(() => {
     if (
@@ -32,6 +33,8 @@ const MyApp = ({ Component, pageProps }) => {
       dispatch(resetFilters());
     }
   }, [router]);
+
+  console.log(router);
 
   useEffect(() => {
     const handleRouteChange = (url) => {
