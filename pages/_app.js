@@ -34,8 +34,6 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [router]);
 
-  console.log(router);
-
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
