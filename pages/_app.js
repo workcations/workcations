@@ -21,6 +21,9 @@ const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const site = "https://www.workcations.in";
+  const canonicalURL = site + useRouter().pathname;
+
   useEffect(() => {
     if (
       router.pathname.split("/")[1] !== "properties" &&
@@ -44,6 +47,7 @@ const MyApp = ({ Component, pageProps }) => {
     <ThemeProvider theme={theme}>
       <Head>
         <meta name="viewport" content="viewport-fit=cover" />
+        <link rel="canonical" href={canonicalURL} />
       </Head>
       <Component {...pageProps} />
     </ThemeProvider>
