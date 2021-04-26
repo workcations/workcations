@@ -23,7 +23,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   const site = "https://www.workcations.in";
   const canonicalURL = `${site}${
-    router.route === "properties" ? "/properties" : router.asPath
+    router.route === "/properties" ? "/properties" : router.asPath
   }`;
 
   useEffect(() => {
