@@ -545,9 +545,12 @@ const BookNowNew = ({
               const index = datesList.indexOf(dateItem);
               return {
                 date: dateItem,
-                available: allDatesData[index].pricing[i].available,
-                roomOnly: allDatesData[index].pricing[i].roomOnly,
-                extraBed: allDatesData[index].pricing[i].extraBed,
+                available:
+                  allDatesData[index !== -1 ? index : 0].pricing[i].available,
+                roomOnly:
+                  allDatesData[index !== -1 ? index : 0].pricing[i].roomOnly,
+                extraBed:
+                  allDatesData[index !== -1 ? index : 0].pricing[i].extraBed,
               };
             }
           ),
@@ -557,9 +560,12 @@ const BookNowNew = ({
                 const index = datesList.indexOf(dateItem);
                 return {
                   date: dateItem,
-                  available: allDatesData[index].pricing[i].available,
-                  roomOnly: allDatesData[index].pricing[i].roomOnly,
-                  extraBed: allDatesData[index].pricing[i].extraBed,
+                  available:
+                    allDatesData[index !== -1 ? index : 0].pricing[i].available,
+                  roomOnly:
+                    allDatesData[index !== -1 ? index : 0].pricing[i].roomOnly,
+                  extraBed:
+                    allDatesData[index !== -1 ? index : 0].pricing[i].extraBed,
                 };
               })
               .map((pricingItem) => pricingItem.available)
