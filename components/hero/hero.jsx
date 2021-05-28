@@ -80,5 +80,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-/* <Button>Search</Button> */

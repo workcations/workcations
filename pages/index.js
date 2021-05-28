@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 
 import Layout from "../components/layout/layout";
 
 import Hero from "../components/hero/hero";
 import HomePage from "../containers/homepage/homepage";
-import Outlook from "../components/outlook/outlook";
-import Destinations from "../components/destinations/destinations";
-import Recreational from "../components/recreational/recreational";
-import Faqs from "../components/faq/faq";
 
-import { setPropertyListStart } from "../redux/property/properties.actions";
-import { selectPropertyList } from "../redux/property/properties.selectors";
-
-import SectionContainer from "../style-components/section-container/section-container.style";
+import {
+  getFeaturedProperties,
+  getStatesList,
+  filterByType,
+} from "../utilities/properties";
 
 const localBusinessObject = {
   "@context": "https://schema.org",
@@ -81,15 +77,13 @@ const SearchSitelinkObjectSchema = () => (
   ></script>
 );
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const propertyList = useSelector(selectPropertyList);
-  useEffect(() => {
-    if (propertyList.length === 0) {
-      dispatch(setPropertyListStart());
-    }
-  }, [dispatch, propertyList]);
-
+const Home = ({
+  featuredProperties,
+  statesList,
+  hostelsList,
+  villasList,
+  hotelsList,
+}) => {
   const isServer = typeof window === "undefined";
 
   const [loadElements, setLoadElements] = useState(false);
@@ -150,33 +144,45 @@ const Home = () => {
           }}
         ></script>
       </Head>
-      <Hero propertyList={propertyList} />
+      <Hero />
       <HomePage
         screenWidth={screenWidth}
-        propertyList={propertyList}
         loadElements={loadElements}
+        featuredProperties={featuredProperties}
+        statesList={statesList}
+        hostelsList={hostelsList}
+        villasList={villasList}
+        hotelsList={hotelsList}
       />
     </Layout>
   );
 };
 
 export const getStaticProps = async () => {
+  const featured = await getFeaturedProperties();
+  const featuredProperties = JSON.stringify(featured);
+
+  const states = await getStatesList();
+  const statesList = JSON.stringify(states);
+
+  const hostels = await filterByType("hostel");
+  const hostelsList = JSON.stringify(hostels);
+
+  const villas = await filterByType("villa");
+  const villasList = JSON.stringify(villas);
+
+  const hotels = await filterByType("hotel");
+  const hotelsList = JSON.stringify(hotels);
+
   return {
-    props: {},
+    props: {
+      featuredProperties,
+      statesList,
+      hostelsList,
+      villasList,
+      hotelsList,
+    },
   };
 };
 
 export default Home;
-
-/* <HomePage loadElements={loadElements} /> */
-
-/* <Outlook />
-      {loadElements ? <Destinations /> : null}
-      {loadElements ? <Recreational /> : null}
-      {loadElements ? (
-        <SectionContainer>
-          <Faqs heading={true} />
-        </SectionContainer>
-      ) : null}
-
-      */

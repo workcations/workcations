@@ -20,7 +20,15 @@ import {
   Button,
 } from "./homepage.style";
 
-const HomePage = ({ screenWidth, loadElements, propertyList }) => {
+const HomePage = ({
+  screenWidth,
+  loadElements,
+  featuredProperties,
+  statesList,
+  hostelsList,
+  villasList,
+  hotelsList,
+}) => {
   const [featured, setFeatured] = useState(() => {
     if (screenWidth < 601) {
       return 4;
@@ -45,7 +53,10 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
         <SubContainer>
           <Heading>Featured Stays</Heading>
           <SubHeading>Our Recommendation for Exotic Properties</SubHeading>
-          <FeaturedStays featured={featured} propertyList={propertyList} />
+          <FeaturedStays
+            featured={featured}
+            featuredProperties={featuredProperties}
+          />
           {featured === 6 ? (
             <Button
               onClick={() => {
@@ -73,17 +84,14 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
           <SubHeading>
             Some Amazing Destinations Curated for Your Perfect Vacation
           </SubHeading>
-          {loadElements ? <FeaturedStates propertyList={propertyList} /> : null}
+          {loadElements ? <FeaturedStates statesList={statesList} /> : null}
         </SubContainer>
         <SubContainer>
           <Heading>Hostels To Stop By</Heading>
           <SubHeading>
             Check out these wide range of Hostels for pocket friendly stays!
           </SubHeading>
-          <FeaturedHostels propertyList={propertyList} />
-          {/*loadElements ? (
-            <FeaturedHostels propertyList={propertyList} />
-          ) : null*/}
+          <FeaturedHostels hostelsList={hostelsList} />
           <Link href="/properties?types=hostel" passHref>
             <Button target="_blank">Explore All Hostels</Button>
           </Link>
@@ -94,8 +102,7 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
             Villa Stays to Cater all your Family needs! Group of Friends? Hop
             On!
           </SubHeading>
-          <FeaturedVillas propertyList={propertyList} />
-          {/*loadElements ? <FeaturedVillas propertyList={propertyList} /> : null*/}
+          <FeaturedVillas villasList={villasList} />
           <Link href="/properties?types=villa" passHref>
             <Button target="_blank">Explore All Villas</Button>
           </Link>
@@ -106,8 +113,7 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
             We have got your budgets sorted. Check In to the most Comfortable
             Hotel Properties
           </SubHeading>
-          <FeaturedHotels propertyList={propertyList} />
-          {/*loadElements ? <FeaturedHotels propertyList={propertyList} /> : null*/}
+          <FeaturedHotels hotelsList={hotelsList} />
           <Link href="/properties?types=hotel" passHref>
             <Button target="_blank">Explore All Hotels</Button>
           </Link>

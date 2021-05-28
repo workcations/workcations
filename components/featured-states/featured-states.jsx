@@ -30,40 +30,30 @@ const List = [
   },
 ];
 
-const FeaturedStates = ({ propertyList }) => (
-  <Container className="remove-scrollbar">
-    {List.map((item) => (
-      <Link
-        key={item.title}
-        href={`/properties?states=${encodeURI(item.title)}`}
-        passHref
-      >
-        <Card style={{ backgroundImage: `url(${item.image}.png)` }}>
-          <Text>
-            <Title>{item.title}</Title>
-            <Count>
-              {propertyList.filter(
-                (property) =>
-                  property.location.state === item.title &&
-                  property.visibility === "TRUE"
-              ).length > 0 ? (
-                <Fragment>
-                  {
-                    propertyList.filter(
-                      (property) =>
-                        property.location.state === item.title &&
-                        property.visibility === "TRUE"
-                    ).length
-                  }{" "}
-                  Properties
-                </Fragment>
-              ) : null}
-            </Count>
-          </Text>
-        </Card>
-      </Link>
-    ))}
-  </Container>
-);
+const FeaturedStates = ({ statesList }) => {
+  const states = JSON.parse(statesList);
+  return (
+    <Container className="remove-scrollbar">
+      {List.map((item, i) => (
+        <Link
+          key={item.title}
+          href={`/properties?states=${encodeURI(item.title)}`}
+          passHref
+        >
+          <Card style={{ backgroundImage: `url(${item.image}.png)` }}>
+            <Text>
+              <Title>{item.title}</Title>
+              <Count>
+                {!!states & (states.length > 0) ? (
+                  <Fragment>{states[i].length} Properties</Fragment>
+                ) : null}
+              </Count>
+            </Text>
+          </Card>
+        </Link>
+      ))}
+    </Container>
+  );
+};
 
 export default FeaturedStates;

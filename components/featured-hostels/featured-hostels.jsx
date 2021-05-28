@@ -25,8 +25,10 @@ import {
 
 const List = new Array(6).fill(true);
 
-const FeaturedHostels = ({ propertyList }) => {
+const FeaturedHostels = ({ hostelsList }) => {
   const cardsContainer = useRef(null);
+
+  const hostels = JSON.parse(hostelsList);
 
   const nextCards = () => {
     cardsContainer.current.scrollLeft += 300;
@@ -44,45 +46,41 @@ const FeaturedHostels = ({ propertyList }) => {
         </svg>
       </ArrowContainer>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
-        {propertyList.length > 0 ? (
+        {!!hostels && hostels.length > 0 ? (
           <Fragment>
-            {propertyList
-              .filter((property) => property.visibility === "TRUE")
-              .filter((property) => property.type === "hostel")
-              .filter((property, i) => i < 6)
-              .map((property) => (
-                <Link
-                  key={property.slug}
-                  href={`/property/${property.slug}`}
-                  passHref
-                >
-                  <Card key={property.slug} target="_blank">
-                    <ImageLongShimmer>
-                      <ImageLong
-                        style={{
-                          backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
-                        }}
-                      >
-                        <Price>
-                          {Number(property.short).toLocaleString("en-IN", {
-                            style: "currency",
-                            currency: "INR",
-                            maximumFractionDigits: 0,
-                            minimumFractionDigits: 0,
-                          })}
-                          <span>/night</span>
-                        </Price>
-                      </ImageLong>
-                    </ImageLongShimmer>
-                    <Details>
-                      <Title>{property.title}</Title>
-                      <Location>
-                        {property.location.city}, {property.location.state}
-                      </Location>
-                    </Details>
-                  </Card>
-                </Link>
-              ))}
+            {hostels.map((property) => (
+              <Link
+                key={property.slug}
+                href={`/property/${property.slug}`}
+                passHref
+              >
+                <Card key={property.slug} target="_blank">
+                  <ImageLongShimmer>
+                    <ImageLong
+                      style={{
+                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
+                      }}
+                    >
+                      <Price>
+                        {Number(property.short).toLocaleString("en-IN", {
+                          style: "currency",
+                          currency: "INR",
+                          maximumFractionDigits: 0,
+                          minimumFractionDigits: 0,
+                        })}
+                        <span>/night</span>
+                      </Price>
+                    </ImageLong>
+                  </ImageLongShimmer>
+                  <Details>
+                    <Title>{property.title}</Title>
+                    <Location>
+                      {property.location.city}, {property.location.state}
+                    </Location>
+                  </Details>
+                </Card>
+              </Link>
+            ))}
           </Fragment>
         ) : (
           <Fragment>
@@ -107,8 +105,10 @@ const FeaturedHostels = ({ propertyList }) => {
   );
 };
 
-const FeaturedVillas = ({ propertyList }) => {
+const FeaturedVillas = ({ villasList }) => {
   const cardsContainer = useRef(null);
+
+  const villas = JSON.parse(villasList);
 
   const nextCards = () => {
     cardsContainer.current.scrollLeft += 300;
@@ -126,45 +126,41 @@ const FeaturedVillas = ({ propertyList }) => {
         </svg>
       </ArrowContainer>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
-        {propertyList.length > 0 ? (
+        {!!villas && villas.length > 0 ? (
           <Fragment>
-            {propertyList
-              .filter((property) => property.visibility === "TRUE")
-              .filter((property) => property.type === "villa")
-              .filter((property, i) => i < 6)
-              .map((property) => (
-                <Link
-                  key={property.slug}
-                  href={`/property/${property.slug}`}
-                  passHref
-                >
-                  <Card key={property.slug} target="_blank">
-                    <ImageShimmer>
-                      <Image
-                        style={{
-                          backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
-                        }}
-                      >
-                        <Price>
-                          {Number(property.short).toLocaleString("en-IN", {
-                            style: "currency",
-                            currency: "INR",
-                            maximumFractionDigits: 0,
-                            minimumFractionDigits: 0,
-                          })}
-                          <span>/night</span>
-                        </Price>
-                      </Image>
-                    </ImageShimmer>
-                    <Details>
-                      <Title>{property.title}</Title>
-                      <Location>
-                        {property.location.city}, {property.location.state}
-                      </Location>
-                    </Details>
-                  </Card>
-                </Link>
-              ))}
+            {villas.map((property) => (
+              <Link
+                key={property.slug}
+                href={`/property/${property.slug}`}
+                passHref
+              >
+                <Card key={property.slug} target="_blank">
+                  <ImageShimmer>
+                    <Image
+                      style={{
+                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
+                      }}
+                    >
+                      <Price>
+                        {Number(property.short).toLocaleString("en-IN", {
+                          style: "currency",
+                          currency: "INR",
+                          maximumFractionDigits: 0,
+                          minimumFractionDigits: 0,
+                        })}
+                        <span>/night</span>
+                      </Price>
+                    </Image>
+                  </ImageShimmer>
+                  <Details>
+                    <Title>{property.title}</Title>
+                    <Location>
+                      {property.location.city}, {property.location.state}
+                    </Location>
+                  </Details>
+                </Card>
+              </Link>
+            ))}
           </Fragment>
         ) : (
           <Fragment>
@@ -189,8 +185,10 @@ const FeaturedVillas = ({ propertyList }) => {
   );
 };
 
-const FeaturedHotels = ({ propertyList }) => {
+const FeaturedHotels = ({ hotelsList }) => {
   const cardsContainer = useRef(null);
+
+  const hotels = JSON.parse(hotelsList);
 
   const nextCards = () => {
     cardsContainer.current.scrollLeft += 300;
@@ -208,45 +206,41 @@ const FeaturedHotels = ({ propertyList }) => {
         </svg>
       </ArrowContainer>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
-        {propertyList.length > 0 ? (
+        {!!hotels && hotels.length > 0 ? (
           <Fragment>
-            {propertyList
-              .filter((property) => property.visibility === "TRUE")
-              .filter((property) => property.type === "hotel")
-              .filter((property, i) => i < 6)
-              .map((property) => (
-                <Link
-                  key={property.slug}
-                  href={`/property/${property.slug}`}
-                  passHref
-                >
-                  <Card key={property.slug} target="_blank">
-                    <ImageLongShimmer>
-                      <ImageLong
-                        style={{
-                          backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
-                        }}
-                      >
-                        <Price>
-                          {Number(property.short).toLocaleString("en-IN", {
-                            style: "currency",
-                            currency: "INR",
-                            maximumFractionDigits: 0,
-                            minimumFractionDigits: 0,
-                          })}
-                          <span>/night</span>
-                        </Price>
-                      </ImageLong>
-                    </ImageLongShimmer>
-                    <Details>
-                      <Title>{property.title}</Title>
-                      <Location>
-                        {property.location.city}, {property.location.state}
-                      </Location>
-                    </Details>
-                  </Card>
-                </Link>
-              ))}
+            {hotels.map((property) => (
+              <Link
+                key={property.slug}
+                href={`/property/${property.slug}`}
+                passHref
+              >
+                <Card key={property.slug} target="_blank">
+                  <ImageLongShimmer>
+                    <ImageLong
+                      style={{
+                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
+                      }}
+                    >
+                      <Price>
+                        {Number(property.short).toLocaleString("en-IN", {
+                          style: "currency",
+                          currency: "INR",
+                          maximumFractionDigits: 0,
+                          minimumFractionDigits: 0,
+                        })}
+                        <span>/night</span>
+                      </Price>
+                    </ImageLong>
+                  </ImageLongShimmer>
+                  <Details>
+                    <Title>{property.title}</Title>
+                    <Location>
+                      {property.location.city}, {property.location.state}
+                    </Location>
+                  </Details>
+                </Card>
+              </Link>
+            ))}
           </Fragment>
         ) : (
           <Fragment>

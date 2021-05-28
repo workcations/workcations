@@ -12,6 +12,7 @@
     "@zeit/next-css": "1.0.1",
     "axios": "0.21.0",
     "emailjs-com": "2.6.3",
+    "firebase": "8.6.3",
     "fuse.js": "6.4.1",
     "google-map-react": "2.1.7",
     "google-maps-react": "2.0.6",
