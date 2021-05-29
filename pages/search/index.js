@@ -8,7 +8,7 @@ import { Container, Heading } from "../../styles/properties/style";
 import Layout from "../../components/layout/layout";
 import PropertyListSearch from "../../containers/property-list-search/property-list-search";
 
-const Properties = ({ maxPage, properties, search, urlAddress }) => {
+const Properties = ({ maxPage, properties, search }) => {
   const [page, setPage] = useState(1);
   const [list, setList] = useState([...properties]);
   const [isLoader, setIsLoader] = useState(true);
@@ -28,7 +28,7 @@ const Properties = ({ maxPage, properties, search, urlAddress }) => {
         i === index ? "finished" : item
       );
 
-      const url = `http://${urlAddress}/api/search/${search}/${pageNo}`;
+      const url = `https://api.workcations.in/search/${search}/${pageNo}`;
       const config = {
         method: "get",
         url,
@@ -118,10 +118,6 @@ const Properties = ({ maxPage, properties, search, urlAddress }) => {
 };
 
 export const getServerSideProps = async ({ query: { search } }) => {
-  const urlAddress = !!process.env.VERCEL_URL
-    ? process.env.VERCEL_URL
-    : "localhost:3000";
-
   const url = `https://api.workcations.in/search/${search}/1`;
 
   const config = {
@@ -141,7 +137,6 @@ export const getServerSideProps = async ({ query: { search } }) => {
       maxPage: data.maxPage,
       properties: data.properties,
       search: search,
-      urlAddress: urlAddress,
     },
   };
 };
