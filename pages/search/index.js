@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import axios from "axios";
 
 import { Container, Heading } from "../../styles/properties/style";
 
@@ -28,7 +29,11 @@ const Properties = ({ maxPage, properties, search }) => {
 
       const slugsList = list.map((item) => item.item.slug);
 
-      performSearch(search, pageNo)
+      axios({
+        method: "get",
+        url: `https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/search/${search}/${pageNo}`,
+      })
+        .then((data) => data.data)
         .then((data) => {
           const newList = data.list.filter(
             (item) => slugsList.indexOf(item.item.slug) === -1
@@ -108,7 +113,10 @@ const Properties = ({ maxPage, properties, search }) => {
 };
 
 export const getServerSideProps = async ({ query: { search } }) => {
-  const { maxPage, list } = await performSearch(search, 1);
+  const { maxPage, list } = await axios({
+    method: "get",
+    url: `https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/search/${search}/1`,
+  }).then((data) => data.data);
 
   return {
     props: {
