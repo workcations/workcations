@@ -1,40 +1,63 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import Fuse from "fuse.js";
-
-import { setPropertyListStart } from "../../redux/property/properties.actions";
-import { selectPropertyList } from "../../redux/property/properties.selectors";
+import axios from "axios";
 
 import { Container, Heading } from "../../styles/properties/style";
 
 import Layout from "../../components/layout/layout";
 import PropertyListSearch from "../../containers/property-list-search/property-list-search";
 
-const convertTitleState = (title, state) => {
-  const arr = title.split(" ");
-  let finalString = "" + arr[0] + " ";
-  for (let i = 1; i < arr.length - 1; i++) {
-    finalString += arr[i] + " ";
-  }
-  finalString += state;
+const Properties = ({ maxPage, properties, search }) => {
+  const [page, setPage] = useState(1);
+  const [list, setList] = useState([...properties]);
+  const [isLoader, setIsLoader] = useState(true);
+  const [pagesList, setPagesList] = useState(
+    new Array(maxPage)
+      .fill(true)
+      .map((item, i) => (i === 0 ? "finished" : "not started"))
+  );
 
-  return finalString;
-};
+  useEffect(() => {
+    let newPagesList = [...pagesList];
+    const index = newPagesList.indexOf("ongoing");
 
-const slugToString = (slug) => {
-  const arr = slug.split("-");
-  let finalString = "" + arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    finalString += " " + arr[i];
-  }
-  return finalString;
-};
+    if (index !== -1) {
+      const pageNo = index + 1;
+      newPagesList = newPagesList.map((item, i) =>
+        i === index ? "finished" : item
+      );
 
-const Properties = () => {
-  const router = useRouter();
-  const { search } = router.query;
+      const url = `http://localhost:3000/api/search/${search}/${pageNo}`;
+      const config = {
+        method: "get",
+        url,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const slugsList = list.map((item) => item.item.slug);
+
+      axios(config)
+        .then((data) => {
+          const newList = data.data.list.filter(
+            (item) => slugsList.indexOf(item.item.slug) === -1
+          );
+
+          setList([...list, ...newList]);
+          setPagesList(newPagesList);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      const finishedList = pagesList.filter((item) => item === "finished");
+
+      if (finishedList.length === pagesList.length) {
+        setIsLoader(false);
+      }
+    }
+  }, [pagesList]);
 
   useEffect(() => {
     if (!isServer) {
@@ -42,15 +65,6 @@ const Properties = () => {
       document.documentElement.scrollTop = 0;
     }
   }, [search]);
-
-  const dispatch = useDispatch();
-  const propertyList = useSelector(selectPropertyList);
-
-  useEffect(() => {
-    if (propertyList.length === 0) {
-      dispatch(setPropertyListStart());
-    }
-  }, [dispatch, propertyList]);
 
   const isServer = typeof window === "undefined";
 
@@ -74,87 +88,10 @@ const Properties = () => {
   }, [handleScroll]);
 
   const [pattern, setPattern] = useState(search);
-  const [displayList, setDisplayList] = useState([]);
 
   useEffect(() => {
     setPattern(search);
   }, [search]);
-
-  useEffect(() => {
-    setDisplayList(
-      propertyList.map((property) => {
-        return {
-          titleState: convertTitleState(
-            property.title,
-            property.location.state
-          ),
-          slugString: slugToString(property.slug),
-          slugStringState: convertTitleState(
-            slugToString(property.slug),
-            property.location.state
-          ),
-          ...property,
-        };
-      })
-    );
-  }, [propertyList]);
-
-  const options = {
-    // isCaseSensitive: false,
-    includeScore: true,
-    // shouldSort: true,
-    // includeMatches: false,
-    // findAllMatches: false,
-    // minMatchCharLength: 1,
-    // location: 0,
-    // threshold: 0.6,
-    // distance: 100,
-    // useExtendedSearch: false,
-    // ignoreLocation: false,
-    // ignoreFieldNorm: false,
-    keys: [
-      {
-        name: "titleState",
-        weight: 2,
-      },
-      {
-        name: "slugStringState",
-        weight: 3,
-      },
-      {
-        name: "slugString",
-        weight: 3.1,
-      },
-      {
-        name: "slug",
-        weight: 0.1,
-      },
-      {
-        name: "title",
-        weight: 2.1,
-      },
-      {
-        name: "type",
-        weight: 1.2,
-      },
-      {
-        name: "location.city",
-        weight: 1.3,
-      },
-      {
-        name: "location.state",
-        weight: 1.4,
-      },
-      /*{
-        name: "filtersAll",
-        weight: 2,
-      },*/
-    ],
-  };
-
-  const fuse = new Fuse(displayList, options);
-
-  const FilteredList = fuse.search(pattern);
 
   return (
     <Layout>
@@ -168,18 +105,39 @@ const Properties = () => {
           find your <span>Workcation</span>
         </Heading>
         <PropertyListSearch
-          list={FilteredList}
+          list={list}
           loadElements={loadElements}
           pattern={pattern}
+          pagesList={pagesList}
+          setPagesList={setPagesList}
+          isLoader={isLoader}
         />
       </Container>
     </Layout>
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ query: { search } }) => {
+  const url = `http://localhost:3000/api/search/${search}/1`;
+
+  const config = {
+    method: "get",
+    url,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const data = await axios(config).then((data) => {
+    return { maxPage: data.data.maxPage, properties: data.data.list };
+  });
+
   return {
-    props: {},
+    props: {
+      maxPage: data.maxPage,
+      properties: data.properties,
+      search: search,
+    },
   };
 };
 

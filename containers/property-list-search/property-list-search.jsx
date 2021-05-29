@@ -1,6 +1,7 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import { selectPropertyList } from "../../redux/property/properties.selectors";
 
@@ -21,7 +22,14 @@ import {
 
 const ListArray = new Array(6).fill(true);
 
-const PropertyListSearch = ({ list, loadElements, pattern }) => {
+const PropertyListSearch = ({
+  list,
+  loadElements,
+  pattern,
+  pagesList,
+  setPagesList,
+  isLoader,
+}) => {
   const propertyList = useSelector(selectPropertyList);
   const router = useRouter();
 
@@ -61,6 +69,58 @@ const PropertyListSearch = ({ list, loadElements, pattern }) => {
       : setDurationDays(21);
   }, [duration]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
+  const handleScroll = () => {
+    if (isLoader) {
+      // To get page offset of last user
+      const lastPropertyLoaded = document.querySelector(
+        ".propertyItemList > .propertyItem:last-child"
+      );
+
+      if (lastPropertyLoaded) {
+        const lastPropertyLoadedOffset =
+          lastPropertyLoaded.offsetTop + lastPropertyLoaded.clientHeight;
+        const pageOffset = window.pageYOffset + window.innerHeight;
+        // Detects when user scrolls down till the last user
+        if (pageOffset > lastPropertyLoadedOffset) {
+          // Stops loading
+
+          const ongoingList = pagesList.filter((item) => item === "ongoing");
+
+          if (ongoingList.length === 0) {
+            let newPagesList = [];
+
+            if (pagesList[0] === "initial") {
+              newPagesList = pagesList.map((item) =>
+                item === "initial" ? "finished" : item
+              );
+            } else {
+              let index = 0;
+
+              for (let i = 0; i < pagesList.length; i++) {
+                if (pagesList[i] === "finished") {
+                  index = i;
+                }
+              }
+
+              newPagesList = pagesList.map((item, i) =>
+                i === index + 1 ? "ongoing" : item
+              );
+            }
+
+            setPagesList([...newPagesList]);
+          }
+        }
+      }
+    }
+  };
+
   return (
     <Container>
       <Duration>
@@ -97,52 +157,29 @@ const PropertyListSearch = ({ list, loadElements, pattern }) => {
           </DurationItem>
         </DurationWrapper>
       </Duration>
-      {propertyList.length > 0 ? (
-        <Fragment>
-          {list.length > 0 ? (
-            <PropertyListContainer>
-              {list.map((property, i) =>
-                property.item.visibility === "TRUE" &&
-                property.item.minDuration <= durationDays &&
-                (loadElements || i < 6) ? (
-                  <PropertyItem
-                    duration={duration}
-                    key={property.item.slug}
-                    {...property.item}
-                  />
-                ) : null
-              )}
-            </PropertyListContainer>
-          ) : (
-            <Fragment>
-              <NoResult style={{ textAlign: "center" }}>
-                Sorry! We don't have any properties that match your search
-                <span>
-                  Please try a different search <br /> or <br /> Check Out all
-                  of our properties below
-                </span>
-              </NoResult>
-              <PropertyListContainer>
-                {propertyList.map((property, i) =>
-                  property.visibility === "TRUE" && (loadElements || i < 6) ? (
-                    <PropertyItem
-                      duration={duration}
-                      key={property.slug}
-                      {...property}
-                    />
-                  ) : null
-                )}
-              </PropertyListContainer>
-            </Fragment>
-          )}
-        </Fragment>
-      ) : (
-        <PropertyListContainer>
-          {ListArray.map((item, i) => (
-            <PropertyItemPlaceHolder key={`property${i + 1}`} />
-          ))}
-        </PropertyListContainer>
-      )}
+      <Fragment>
+        {!!list && !!list.length > 0 ? (
+          <PropertyListContainer className="propertyItemList">
+            {list.map((property, i) =>
+              property.item.minDuration <= durationDays &&
+              (loadElements || i < 6) ? (
+                <PropertyItem
+                  duration={duration}
+                  key={property.item.slug}
+                  {...property.item}
+                />
+              ) : null
+            )}
+          </PropertyListContainer>
+        ) : null}
+        {isLoader ? (
+          <PropertyListContainer>
+            {ListArray.map((item, i) => (
+              <PropertyItemPlaceHolder key={`property${i + 1}`} />
+            ))}
+          </PropertyListContainer>
+        ) : null}
+      </Fragment>
     </Container>
   );
 };
@@ -151,58 +188,55 @@ export default PropertyListSearch;
 
 /*
 
- {filteredProperties.length === 0 &&
-            filteredStates.length === 0 &&
-            filteredTypes.length === 0 &&
-            filteredCities.length === 0 &&
-            !filteredMinPrice &&
-            !filteredMaxPrice ? (
-              propertyList.map((property, i) =>
-                property.visibility === "TRUE" && (loadElements || i < 6) ? (
-                  <PropertyItem key={property.slug} {...property} />
-                ) : null
-              )
-            ) : filteredProperties.length === 0 ? (
-              <Fragment>
-                {
-  
-                <NoResult>
-                Sorry! We don't have any properties that match your choices
-                <span>See all of our properties below</span>
-              </NoResult>
-              
-              
-              }
-              {propertyList.map((property, i) =>
-                property.visibility === "TRUE" && (loadElements || i < 6) ? (
-                  <PropertyItem key={property.slug} {...property} />
-                ) : null
-              )}
-            </Fragment>
-          ) : (
-            filteredProperties.map((property, i) =>
-              property.visibility === "TRUE" && (loadElements || i < 6) ? (
-                <PropertyItem key={property.slug} {...property} />
-              ) : null
-            )
-          )}  */
+<PropertyListContainer>
+          {ListArray.map((item, i) => (
+            <PropertyItemPlaceHolder key={`property${i + 1}`} />
+          ))}
+        </PropertyListContainer>
+
+        */
 
 /*
 
+        <Fragment>
+        {list.length > 0 ? (
+          <PropertyListContainer>
+            {list.map((property, i) =>
+              property.item.visibility === "TRUE" &&
+              property.item.minDuration <= durationDays &&
+              (loadElements || i < 6) ? (
+                <PropertyItem
+                  duration={duration}
+                  key={property.item.slug}
+                  {...property.item}
+                />
+              ) : null
+            )}
+          </PropertyListContainer>
+        ) : (
+          <Fragment>
+            <NoResult style={{ textAlign: "center" }}>
+              Sorry! We don't have any properties that match your search
+              <span>
+                Please try a different search <br /> or <br /> Check Out all of
+                our properties below
+              </span>
+            </NoResult>
+            <PropertyListContainer>
+              {propertyList.map((property, i) =>
+                property.visibility === "TRUE" && (loadElements || i < 6) ? (
+                  <PropertyItem
+                    duration={duration}
+                    key={property.slug}
+                    {...property}
+                  />
+                ) : null
+              )}
+            </PropertyListContainer>
+          </Fragment>
+        )}
+      </Fragment>
 
-
-
-          <SearchContainer onSubmit={searchFunction}>
-        <Search
-          type="search"
-          value={searchQuery}
-          placeholder={placeholderText}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-          }}
-          searchError={searchError}
-        />
-        <Button type="submit" value="Search" />
-      </SearchContainer>
+      
 
       */

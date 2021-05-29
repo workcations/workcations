@@ -57,11 +57,12 @@ const PropertyItem = ({
 
   return (
     <Link href={"/property/" + slug} passHref>
-      <Container target="_blank">
+      <Container className="propertyItem" target="_blank">
         <ImageContainerMobile>
           <Slider {...settings}>
             {images.map((image, i) => (
               <MainImageMobile
+                key={`Main Image ${slug} ${i + 1}`}
                 style={{
                   backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
                 }}
