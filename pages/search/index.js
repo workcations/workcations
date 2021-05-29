@@ -122,7 +122,7 @@ export const getServerSideProps = async ({ query: { search } }) => {
     ? process.env.VERCEL_URL
     : "localhost:3000";
 
-  const url = `http://${urlAddress}/api/search/${search}/1`;
+  const url = `https://api.workcations.in/search/${search}/1`;
 
   const config = {
     method: "get",
