@@ -8,9 +8,10 @@ import Layout from "../../components/layout/layout";
 import PropertyListSearch from "../../containers/property-list-search/property-list-search";
 import { performSearch } from "../../utilities/search";
 
-const Properties = ({ maxPage, properties, search }) => {
-  const [list, setList] = useState([...properties]);
+const Properties = ({ search }) => {
+  const [list, setList] = useState([]);
   const [isLoader, setIsLoader] = useState(true);
+  const [maxPage, setMaxPage] = useState(2);
   const [pagesList, setPagesList] = useState(
     new Array(maxPage)
       .fill(true)
@@ -19,7 +20,8 @@ const Properties = ({ maxPage, properties, search }) => {
 
   useEffect(() => {
     let newPagesList = [...pagesList];
-    const index = newPagesList.indexOf("ongoing");
+    const index =
+      pagesList[0] === "initial" ? 0 : newPagesList.indexOf("ongoing");
 
     if (index !== -1) {
       const pageNo = index + 1;
@@ -39,8 +41,18 @@ const Properties = ({ maxPage, properties, search }) => {
             (item) => slugsList.indexOf(item.item.slug) === -1
           );
 
-          setList([...list, ...newList]);
-          setPagesList(newPagesList);
+          if (index === 0) {
+            setMaxPage(data.maxPage);
+            newPagesList = [
+              "finished",
+              ...new Array(data.maxPage - 1).fill("not started"),
+            ];
+            setPagesList(newPagesList);
+            setList([...list, ...newList]);
+          } else {
+            setList([...list, ...newList]);
+            setPagesList(newPagesList);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -113,17 +125,8 @@ const Properties = ({ maxPage, properties, search }) => {
 };
 
 export const getServerSideProps = async ({ query: { search } }) => {
-  const { maxPage, list } = await axios({
-    method: "get",
-    url: `https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/search/${search}/1`,
-  }).then((data) => data.data);
-
   return {
-    props: {
-      maxPage: maxPage,
-      properties: list,
-      search: search,
-    },
+    props: { search: search },
   };
 };
 

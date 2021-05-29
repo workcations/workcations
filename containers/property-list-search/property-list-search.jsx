@@ -98,7 +98,7 @@ const PropertyListSearch = ({
 
             if (pagesList[0] === "initial") {
               newPagesList = pagesList.map((item) =>
-                item === "initial" ? "finished" : item
+                item === "initial" ? "ongoing" : item
               );
             } else {
               let index = 0;
