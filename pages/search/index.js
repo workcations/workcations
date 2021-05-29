@@ -8,14 +8,14 @@ import { Container, Heading } from "../../styles/properties/style";
 import Layout from "../../components/layout/layout";
 import PropertyListSearch from "../../containers/property-list-search/property-list-search";
 
-const Properties = ({ maxPage, properties, search }) => {
+const Properties = ({ maxPage, properties, search, urlAddress }) => {
   const [page, setPage] = useState(1);
   const [list, setList] = useState([...properties]);
   const [isLoader, setIsLoader] = useState(true);
   const [pagesList, setPagesList] = useState(
     new Array(maxPage)
       .fill(true)
-      .map((item, i) => (i === 0 ? "finished" : "not started"))
+      .map((item, i) => (i === 0 ? "initial" : "not started"))
   );
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Properties = ({ maxPage, properties, search }) => {
         i === index ? "finished" : item
       );
 
-      const url = `http://localhost:3000/api/search/${search}/${pageNo}`;
+      const url = `http://${urlAddress}/api/search/${search}/${pageNo}`;
       const config = {
         method: "get",
         url,
@@ -118,7 +118,11 @@ const Properties = ({ maxPage, properties, search }) => {
 };
 
 export const getServerSideProps = async ({ query: { search } }) => {
-  const url = `http://localhost:3000/api/search/${search}/1`;
+  const urlAddress = !!process.env.VERCEL_URL
+    ? process.env.VERCEL_URL
+    : "localhost:3000";
+
+  const url = `http://${urlAddress}/api/search/${search}/1`;
 
   const config = {
     method: "get",
@@ -137,6 +141,7 @@ export const getServerSideProps = async ({ query: { search } }) => {
       maxPage: data.maxPage,
       properties: data.properties,
       search: search,
+      urlAddress: urlAddress,
     },
   };
 };
