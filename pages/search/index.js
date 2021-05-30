@@ -19,6 +19,16 @@ const Properties = ({ search }) => {
   );
 
   useEffect(() => {
+    setList([]);
+    setMaxPage(2);
+    setPagesList(
+      new Array(2)
+        .fill(true)
+        .map((item, i) => (i === 0 ? "initial" : "not started"))
+    );
+  }, [search]);
+
+  useEffect(() => {
     let newPagesList = [...pagesList];
     const index =
       pagesList[0] === "initial" ? 0 : newPagesList.indexOf("ongoing");
