@@ -185,6 +185,7 @@ const BookNowPopup = ({
 
   const [formSubmitAlert, setFormSubmitAlert] = useState(false);
   const [isCouponApplied, setCouponApplied] = useState(false);
+  const [companyName, setCompanyName] = useState("Corporate");
 
   const { name, phone, warningMessage } = formDetails;
 
@@ -625,6 +626,11 @@ const BookNowPopup = ({
             if (promoCode === "WCCONCENTRIX") {
               setEmailIdPopup(true);
               setTempCodeDetails(codeData);
+              setCompanyName("Concentrix");
+            } else if (promoCode === "WCSPRINGWORKS") {
+              setEmailIdPopup(true);
+              setTempCodeDetails(codeData);
+              setCompanyName("Springworks");
             } else {
               setCouponDetails(codeData);
               setCouponApplied(true);
@@ -637,60 +643,105 @@ const BookNowPopup = ({
   const submitEmailId = () => {
     setEmailWarningMessage("");
 
-    const data = JSON.stringify({
-      emailId: emailId,
-    });
+    if (promoCode === "WCCONCENTRIX") {
+      const data = JSON.stringify({
+        emailId: emailId,
+      });
 
-    const config = {
-      method: "post",
-      url: "https://workcationsbackend.herokuapp.com/verifyEmail",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
+      const config = {
+        method: "post",
+        url: "https://workcationsbackend.herokuapp.com/verifyEmail",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
 
-    axios(config)
-      .then((response) => {
-        if (response.data.exists) {
-          setManagerEmail(response.data.manager);
-          setAlternateEmail(response.data.alternate);
+      axios(config)
+        .then((response) => {
+          if (response.data.exists) {
+            setManagerEmail(response.data.manager);
+            setAlternateEmail(response.data.alternate);
 
-          const data = JSON.stringify({
-            emailId: emailId,
-          });
-          const config = {
-            method: "post",
-            url: "https://workcationsbackend.herokuapp.com/createOtp",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            data: data,
-          };
-
-          setEmailWarningMessage("Please Wait");
-
-          axios(config)
-            .then((response) => {
-              setEmailState(1);
-              setEmailIdPlaceHolder("");
-              setEmailWarningMessage("");
-            })
-            .catch((err) => {
-              setEmailWarningMessage(
-                "Looks like we encountered a problem! Please Try Again"
-              );
+            const data = JSON.stringify({
+              emailId: emailId,
+              company: companyName,
             });
-        } else {
+            const config = {
+              method: "post",
+              url: "https://workcationsbackend.herokuapp.com/createOtp",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              data: data,
+            };
+
+            setEmailWarningMessage("Please Wait");
+
+            axios(config)
+              .then((response) => {
+                setEmailState(1);
+                setEmailIdPlaceHolder("");
+                setEmailWarningMessage("");
+              })
+              .catch((err) => {
+                setEmailWarningMessage(
+                  "Looks like we encountered a problem! Please Try Again"
+                );
+              });
+          } else {
+            setEmailIdPlaceHolder("Invalid Email Id");
+            setEmailId("");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
           setEmailIdPlaceHolder("Invalid Email Id");
           setEmailId("");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+        });
+    } else {
+      const emailArray = emailId.toLowerCase().split("@");
+
+      const domain = emailArray[emailArray.length - 1];
+
+      if (
+        domain.toLowerCase() === "springworks.in" ||
+        emailId.toLowerCase() === "ravi@wanderon.in"
+      ) {
+        setManagerEmail("");
+        setAlternateEmail("");
+
+        const data = JSON.stringify({
+          emailId: emailId,
+          company: companyName,
+        });
+        const config = {
+          method: "post",
+          url: "https://workcationsbackend.herokuapp.com/createOtp",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: data,
+        };
+
+        setEmailWarningMessage("Please Wait");
+
+        axios(config)
+          .then((response) => {
+            setEmailState(1);
+            setEmailIdPlaceHolder("");
+            setEmailWarningMessage("");
+          })
+          .catch((err) => {
+            setEmailWarningMessage(
+              "Looks like we encountered a problem! Please Try Again"
+            );
+          });
+      } else {
         setEmailIdPlaceHolder("Invalid Email Id");
         setEmailId("");
-      });
+      }
+    }
   };
 
   const verifyOtp = () => {
@@ -701,7 +752,11 @@ const BookNowPopup = ({
       setOtp("");
       setOtpPlaceHolder("Verifying OTP");
 
-      const data = JSON.stringify({ emailId: emailId, otp: Number(otp) });
+      const data = JSON.stringify({
+        emailId: emailId,
+        otp: Number(otp),
+        company: companyName,
+      });
 
       const config = {
         method: "post",
@@ -715,11 +770,20 @@ const BookNowPopup = ({
       axios(config)
         .then((response) => {
           if (response.data.toLowerCase() === "valid otp") {
-            setOtp("");
-            setOtpPlaceHolder("");
-            setEmailState(0);
-            setEmailIdPopup(false);
-            setTncActive(true);
+            if (promoCode === "WCOCONCENTRIX") {
+              setOtp("");
+              setOtpPlaceHolder("");
+              setEmailState(0);
+              setEmailIdPopup(false);
+              setTncActive(true);
+            } else {
+              setOtp("");
+              setOtpPlaceHolder("");
+              setEmailState(0);
+              setEmailIdPopup(false);
+              setCouponDetails(tempCodeDetails);
+              setCouponApplied(true);
+            }
           }
         })
         .catch((err) => {
@@ -1045,7 +1109,7 @@ const BookNowPopup = ({
                 </span>
               ) : (
                 <span>
-                  Please enter your <strong>Concentrix Email Id</strong> to
+                  Please enter your <strong>{companyName} Email Id</strong> to
                   avail the discount
                 </span>
               )}
