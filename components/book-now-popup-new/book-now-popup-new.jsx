@@ -817,7 +817,7 @@ const BookNowPopup = ({
                         <SummaryItem key={`room no ${i + 1}`}>
                           <Image
                             src={
-                              "https://d1xmqx9e0b6ljd.cloudfront.net/" +
+                              "https://ik.imagekit.io/workcations/tr:f-auto/" +
                               slug +
                               "/" +
                               cartDetails[i].images[0] +
@@ -1090,8 +1090,7 @@ const BookNowPopup = ({
                         });
                         const config = {
                           method: "post",
-                          url:
-                            "https://workcationsbackend.herokuapp.com/createOtp",
+                          url: "https://workcationsbackend.herokuapp.com/createOtp",
                           headers: {
                             "Content-Type": "application/json",
                           },

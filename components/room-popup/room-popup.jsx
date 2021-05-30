@@ -79,7 +79,7 @@ const RoomPopup = ({
           {images.length > 1 ? (
             <Gallery
               style={{
-                backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${images[currentSlide]}.jpg)`,
+                backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${images[currentSlide]}.jpg)`,
               }}
             >
               <GalleryArrow>
@@ -104,7 +104,7 @@ const RoomPopup = ({
           ) : isOpen ? (
             <Gallery
               style={{
-                backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${images[0]}.jpg)`,
+                backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${images[0]}.jpg)`,
               }}
             ></Gallery>
           ) : null}

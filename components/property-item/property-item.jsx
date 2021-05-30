@@ -64,11 +64,11 @@ const PropertyItem = ({
               <MainImageMobile
                 key={`Main Image ${slug} ${i + 1}`}
                 style={{
-                  backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
+                  backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg)`,
                 }}
               >
                 <img
-                  src={`https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg`}
+                  src={`https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg`}
                   alt={`${slug} ${image}`}
                 />
               </MainImageMobile>
@@ -80,7 +80,7 @@ const PropertyItem = ({
             <MainImage
               style={{
                 backgroundImage:
-                  "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
+                  "url(https://ik.imagekit.io/workcations/tr:f-auto/" +
                   slug +
                   "/" +
                   currentImage +
@@ -96,7 +96,7 @@ const PropertyItem = ({
                 <SmallImage
                   style={{
                     backgroundImage:
-                      "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
+                      "url(https://ik.imagekit.io/workcations/tr:f-auto/" +
                       slug +
                       "/" +
                       image +

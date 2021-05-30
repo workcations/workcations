@@ -111,14 +111,14 @@ const Gallery = ({ images, slug, loadElements }) => {
             <HeroImage key={image}>
               <div
                 style={{
-                  backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
+                  backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg)`,
                 }}
               >
                 <span>
                   {i + 1}/{images.length}
                 </span>
                 <img
-                  src={`https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg`}
+                  src={`https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg`}
                   alt={`${slug} ${image}`}
                 />
               </div>
@@ -139,13 +139,13 @@ const Gallery = ({ images, slug, loadElements }) => {
                 {i === currentSlide ? (
                   <div
                     style={{
-                      backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
+                      backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg)`,
                     }}
                   ></div>
                 ) : (
                   <div
                     style={{
-                      backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
+                      backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg)`,
                     }}
                   ></div>
                 )}
@@ -164,7 +164,7 @@ const Gallery = ({ images, slug, loadElements }) => {
     /*<Container>
       <HeroImage
         style={{
-          backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${images[currentSlide]}.jpg)`,
+          backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${images[currentSlide]}.jpg)`,
         }}
       >
         <GalleryArrow>
@@ -199,7 +199,7 @@ const Gallery = ({ images, slug, loadElements }) => {
               <div
                 key={image}
                 style={{
-                  backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
+                  backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg)`,
                 }}
                 onClick={() => {
                   activeSlide(i);
@@ -209,7 +209,7 @@ const Gallery = ({ images, slug, loadElements }) => {
               <div
                 key={image}
                 style={{
-                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${image}.jpg)`,
                 }}
                 onClick={() => {
                   activeSlide(i);

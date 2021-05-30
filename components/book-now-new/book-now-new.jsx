@@ -1014,7 +1014,7 @@ const BookNowNew = ({
                   <ImageContainer>
                     <Image
                       style={{
-                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${room.images[0]}.jpg)`,
+                        backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${slug}/${room.images[0]}.jpg)`,
                       }}
                       onClick={() => {
                         setRoomPopup({

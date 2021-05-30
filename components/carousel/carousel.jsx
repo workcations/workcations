@@ -119,7 +119,7 @@ const Carousel = ({ slug, type, city, state }) => {
                   <Image
                     style={{
                       backgroundImage:
-                        "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
+                        "url(https://ik.imagekit.io/workcations/tr:f-auto/" +
                         property.slug +
                         "/" +
                         property.images[0] +
@@ -155,7 +155,7 @@ const Carousel = ({ slug, type, city, state }) => {
                   <Image
                     style={{
                       backgroundImage:
-                        "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
+                        "url(https://ik.imagekit.io/workcations/tr:f-auto/" +
                         property.slug +
                         "/" +
                         property.images[0] +

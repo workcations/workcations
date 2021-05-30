@@ -58,7 +58,7 @@ const FeaturedHostels = ({ hostelsList }) => {
                   <ImageLongShimmer>
                     <ImageLong
                       style={{
-                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
+                        backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${property.slug}/${property.images[0]}.jpg)`,
                       }}
                     >
                       <Price>
@@ -138,7 +138,7 @@ const FeaturedVillas = ({ villasList }) => {
                   <ImageShimmer>
                     <Image
                       style={{
-                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
+                        backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${property.slug}/${property.images[0]}.jpg)`,
                       }}
                     >
                       <Price>
@@ -218,7 +218,7 @@ const FeaturedHotels = ({ hotelsList }) => {
                   <ImageLongShimmer>
                     <ImageLong
                       style={{
-                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
+                        backgroundImage: `url(https://ik.imagekit.io/workcations/tr:f-auto/${property.slug}/${property.images[0]}.jpg)`,
                       }}
                     >
                       <Price>

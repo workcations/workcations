@@ -161,7 +161,7 @@ const ApprovalPage = ({ data, bookingSlug }) => {
                   <SummaryItem key={i}>
                     <Image
                       src={
-                        "https://d1xmqx9e0b6ljd.cloudfront.net/" +
+                        "https://ik.imagekit.io/workcations/tr:f-auto/" +
                         property.slug +
                         "/" +
                         cartItem.image +
