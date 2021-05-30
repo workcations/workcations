@@ -47,11 +47,6 @@ export default class MyDocument extends Document {
       `,
             }}
           />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function() {window.__insp = window.__insp || [];__insp.push(['wid', 1236824723]);var ldinsp = function(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1236824723&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };setTimeout(ldinsp, 0);})();`,
-            }}
-          />
           <meta charSet="utf-8" />
           <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
@@ -67,14 +62,8 @@ export default class MyDocument extends Document {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
-          <link
-            rel="preconnect"
-            href="https://ik.imagekit.io/workcations/tr:f-auto"
-          />
-          <link
-            rel="dns-prefetch"
-            href="https://ik.imagekit.io/workcations/tr:f-auto"
-          />
+          <link rel="preconnect" href="https://ik.imagekit.io/" />
+          <link rel="dns-prefetch" href="https://ik.imagekit.io/" />
         </Head>
         <body>
           <Main className="root" />
@@ -84,3 +73,13 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+/*
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function() {window.__insp = window.__insp || [];__insp.push(['wid', 1236824723]);var ldinsp = function(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1236824723&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };setTimeout(ldinsp, 0);})();`,
+            }}
+          />
+
+          */

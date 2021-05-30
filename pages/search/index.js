@@ -6,7 +6,6 @@ import { Container, Heading } from "../../styles/properties/style";
 
 import Layout from "../../components/layout/layout";
 import PropertyListSearch from "../../containers/property-list-search/property-list-search";
-import { performSearch } from "../../utilities/search";
 
 const Properties = ({ search }) => {
   const [list, setList] = useState([]);
