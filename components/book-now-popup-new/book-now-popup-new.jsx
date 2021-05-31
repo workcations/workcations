@@ -881,7 +881,7 @@ const BookNowPopup = ({
                         <SummaryItem key={`room no ${i + 1}`}>
                           <Image
                             src={
-                              "https://ik.imagekit.io/workcations/tr:f-auto/" +
+                              "https://d1xmqx9e0b6ljd.cloudfront.net/" +
                               slug +
                               "/" +
                               cartDetails[i].images[0] +

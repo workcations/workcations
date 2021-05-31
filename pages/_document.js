@@ -62,8 +62,11 @@ export default class MyDocument extends Document {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
-          <link rel="preconnect" href="https://ik.imagekit.io/" />
-          <link rel="dns-prefetch" href="https://ik.imagekit.io/" />
+          <link rel="preconnect" href="https://d1xmqx9e0b6ljd.cloudfront.net" />
+          <link
+            rel="dns-prefetch"
+            href="https://d1xmqx9e0b6ljd.cloudfront.net"
+          />
         </Head>
         <body>
           <Main className="root" />

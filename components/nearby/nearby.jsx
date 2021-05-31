@@ -17,7 +17,7 @@ const Nearby = ({ nearby }) => (
           <GridImage
             style={{
               backgroundImage:
-                "url(https://ik.imagekit.io/workcations/tr:f-auto/nearby/" +
+                "url(https://d1xmqx9e0b6ljd.cloudfront.net/nearby/" +
                 item.image +
                 ".jpg)",
             }}

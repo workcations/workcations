@@ -40,7 +40,7 @@ const FeaturedStays = ({ featured, featuredProperties }) => {
                   <ImageShimmer>
                     <Image
                       style={{
-                        backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 35%),url(https://ik.imagekit.io/workcations/tr:f-auto/${property.slug}/${property.images[0]}.jpg)`,
+                        backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 35%),url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
                       }}
                     >
                       <ImageContainer>
