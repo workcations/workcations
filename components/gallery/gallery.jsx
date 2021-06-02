@@ -37,7 +37,7 @@ const Gallery = ({ images, slug, loadElements }) => {
     dots: false,
     arrows: true,
     lazyLoad: true,
-    infinite: true,
+    infinite: images.length > 6,
     slidesToShow: 7,
     slidesToScroll: 1,
     swipeToSlide: true,
