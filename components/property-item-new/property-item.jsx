@@ -81,12 +81,12 @@ const PropertyItem = ({
             {images.map((image, i) => (
               <MainImageMobile
                 key={`Main Image ${slug} ${i + 1}`}
-                style={{
+                /*style={{
                   backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
-                }}
+                }}*/
               >
                 <img
-                  src={`https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg`}
+                  /*src={`https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg`}*/
                   alt={`${slug} ${image}`}
                 />
               </MainImageMobile>
@@ -96,14 +96,14 @@ const PropertyItem = ({
         <ImageContainer>
           <MainImageShimmer>
             <MainImage
-              style={{
+            /*style={{
                 backgroundImage:
                   "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
                   slug +
                   "/" +
                   currentImage +
                   ".jpg)",
-              }}
+              }}*/
             >
               <Type tag={type}>{type}</Type>
             </MainImage>
@@ -112,14 +112,14 @@ const PropertyItem = ({
             {images.map((image, i) => (
               <SmallImageShimmer key={`${slug}-image-${i + 1}`}>
                 <SmallImage
-                  style={{
+                  /*style={{
                     backgroundImage:
                       "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
                       slug +
                       "/" +
                       image +
                       ".jpg)",
-                  }}
+                  }}*/
                   onMouseEnter={() => {
                     setCurrent(image);
                   }}
