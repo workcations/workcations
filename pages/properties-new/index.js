@@ -41,7 +41,7 @@ const Properties = ({
     })
   );
   const [types, setTypes] = useState(
-    citiesList.map((item) => {
+    typesList.map((item) => {
       return {
         title: item.title,
         count: item.count,
@@ -150,8 +150,7 @@ export const getStaticProps = async () => {
     url: "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/filterInitial",
   });
 
-  const { min, max, duration, statesList, citiesList, typesList, maxPage } =
-    data.data;
+  const { min, max, statesList, citiesList, typesList, maxPage } = data.data;
   return {
     props: {
       minPrice: min,

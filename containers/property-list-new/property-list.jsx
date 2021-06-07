@@ -74,7 +74,14 @@ const PropertyList = ({
 
   return (
     <Container>
-      <Filters />
+      <Filters
+        min={min}
+        max={max}
+        duration={duration}
+        states={states}
+        cities={cities}
+        types={types}
+      />
       <ListContainer>
         {!!list && !!list.length > 0 ? (
           <ListGrid className="propertyItemList">
