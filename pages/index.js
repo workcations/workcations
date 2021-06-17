@@ -182,6 +182,7 @@ export const getStaticProps = async () => {
       villasList,
       hotelsList,
     },
+    revalidate: 1,
   };
 };
 

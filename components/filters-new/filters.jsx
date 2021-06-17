@@ -18,6 +18,32 @@ const Filters = ({ min, max, duration, states, cities, types }) => {
     { title: "Cities" },
   ];
   const content = [[min, max], [duration], states, types, cities];
+  const pricingGroups = [
+    {
+      min: min,
+      max: 999,
+    },
+    {
+      min: 1000,
+      max: 2499,
+    },
+    {
+      min: 2500,
+      max: 4999,
+    },
+    {
+      min: 10000,
+      max: 19999,
+    },
+    {
+      min: 20000,
+      max: 29999,
+    },
+    {
+      min: 30000,
+      max: max,
+    },
+  ];
 
   return (
     <Container>
