@@ -76,7 +76,10 @@ export const getStaticPaths = async () => {
 
   const properties = await getPropertiesListExcel();
 
-  const filteredSlugsList = ["3176-apartment-in-southgoa"];
+  const filteredSlugsList = [
+    "3176-apartment-in-southgoa",
+    "11139 -3bhk-apartment-in-shimla",
+  ];
 
   const pathArray = properties
     .filter((item) => filteredSlugsList.indexOf(item.slug) === -1)
