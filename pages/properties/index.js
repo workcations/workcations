@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
@@ -6,6 +7,7 @@ import { useRouter } from "next/router";
 import {
   setPropertyListStart,
   resetFilters,
+  setPropertyListSuccess,
 } from "../../redux/property/properties.actions";
 import { selectPropertyList } from "../../redux/property/properties.selectors";
 
@@ -18,7 +20,7 @@ import { Container, Heading } from "../../styles/properties/style";
 
 import Layout from "../../components/layout/layout";
 
-const Properties = () => {
+const Properties = ({ propertiesList }) => {
   const router = useRouter();
   const { cities, max, min, states, types } = router.query;
 
@@ -27,7 +29,8 @@ const Properties = () => {
 
   useEffect(() => {
     if (propertyList.length === 0) {
-      dispatch(setPropertyListStart());
+      dispatch(setPropertyListSuccess(propertiesList));
+      //dispatch(setPropertyListStart());
     }
   }, [dispatch, propertyList]);
 
@@ -120,9 +123,16 @@ const Properties = () => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  const data = await axios({
+    method: "get",
+    url: "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/properties",
+  });
+
+  const propertiesList = data.data;
+
   return {
-    props: {},
+    props: { propertiesList: propertiesList },
   };
 };
 
