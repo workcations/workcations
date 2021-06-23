@@ -85,6 +85,8 @@ const submitUserData = async (data) => {
 const BookingPage = ({ data, bookingSlug }) => {
   const { bookingId, approval } = data;
   const approved = data.approval.status;
+  const isApproved = data.approval.isApproved;
+  
   const {
     account,
     advance,
@@ -315,7 +317,8 @@ const BookingPage = ({ data, bookingSlug }) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <PageContainer>
+      {
+        !!isApproved && !approval.status ? <PageContainer>This booking is Cancelled</PageContainer> : <PageContainer>
         <div>
           {cart ? (
             <FlexItem className="carousel">
@@ -850,6 +853,7 @@ const BookingPage = ({ data, bookingSlug }) => {
           </ContactDetails>
         ) : null}
       </PageContainer>
+      }
     </Fragment>
   );
 };
