@@ -124,7 +124,7 @@ const BookNowPopup = ({
     text += "\n";
   }
 
-  const whatsAppLink = "https://wa.me/919870301533?text=" + encodeURI(text);
+  const whatsAppLink = "https://wa.me/918928337347?text=" + encodeURI(text);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -155,7 +155,7 @@ const BookNowPopup = ({
       sendEvent();
 
       const waLeadUrl =
-        "https://panel.capiwha.com/send_message.php?apikey=L00RQROD2VU0ZOXC25YX&number=919870301533&text=" +
+        "https://panel.capiwha.com/send_message.php?apikey=L00RQROD2VU0ZOXC25YX&number=918928337347&text=" +
         encodeURI(waLeadText);
       fetch(waLeadUrl);
 
@@ -409,7 +409,7 @@ const BookNowPopup = ({
                           });
                         });
                     }}
-                    href="tel:9870301533"
+                    href="tel:8928337347"
                     buttonColor={"#000000"}
                   >
                     Call Now
