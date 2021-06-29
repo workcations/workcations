@@ -22,6 +22,7 @@
     "node-sass": "4.14.1",
     "nouislider": "14.6.1",
     "nouislider-react": "3.3.8",
+    "public-ip": "4.0.4",
     "razorpay": "2.0.6",
     "react": "16.13.1",
     "react-datepicker": "3.1.3",

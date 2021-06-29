@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import Head from "next/head";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+//import publicIp from "public-ip";
 
 import { resetFilters } from "../redux/property/properties.actions";
 
@@ -17,7 +18,20 @@ const theme = {
   },
 };
 
+/*const getClientIp = async () =>
+  await publicIp.v4({
+    fallbackUrls: ["https://ifconfig.co/ip"],
+  });*/
+
 const MyApp = ({ Component, pageProps }) => {
+  /*getClientIp()
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log("error");
+      console.log(err);
+    });*/
   const router = useRouter();
   const dispatch = useDispatch();
 

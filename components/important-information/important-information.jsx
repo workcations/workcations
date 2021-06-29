@@ -4,14 +4,16 @@ import { Flex, FlexItem, Ques, Ans } from "./important-information.style";
 
 const Info = [
   {
+    Q: "Cancellation Policy",
+    A: "1. Less than 15 days from Check In Date: Full Value will be charged as cancellation fees. \n2. 15-30 days from Check In Date: 50% of the total amount will be charged as cancellation fees. \n3. 30-45 days from Check In Date: 25% of the total amount will be charged as cancellation fees. \n4. 45+ days from Check In Date: 10% of the total amount will be charged as cancellation fees.",
+  },
+  {
     Q: "Guidelines for Travellers",
-    A:
-      "1. Carry a valid Govt Id along with your address proof( Passport, Aadhar card, Driving License, Voter ID or any other valid ID). \n2. Download Aarogya Setu application on your mobile device. \n3. Carry hand sanitizer, N-95 mask and hand gloves.",
+    A: "1. Carry a valid Govt Id along with your address proof( Passport, Aadhar card, Driving License, Voter ID or any other valid ID). \n2. Download Aarogya Setu application on your mobile device. \n3. Carry hand sanitizer, N-95 mask and hand gloves.",
   },
   {
     Q: "Terms & Conditions",
-    A:
-      "1. We expect you to strictly adhere to the above guidelines for your own safety and for the safety of others.",
+    A: "1. We expect you to strictly adhere to the above guidelines for your own safety and for the safety of others.",
   },
 ];
 
