@@ -1,6 +1,14 @@
 import React, { Fragment } from "react";
+import Link from "next/link";
 
-import { Container, About, Connect, Heading, SubFooter } from "./footer.style";
+import {
+  Container,
+  About,
+  Connect,
+  QuickLinks,
+  Heading,
+  SubFooter,
+} from "./footer.style";
 
 const Footer = () => (
   <Fragment>
@@ -48,6 +56,29 @@ const Footer = () => (
           </a>
         </div>
       </Connect>
+      <QuickLinks>
+        <Heading>Quick Links</Heading>
+        <div>
+          <Link href="privacy-policy" passHref>
+            <a>Privacy Policy</a>
+          </Link>
+        </div>
+        <div>
+          <Link href="cancellation" passHref>
+            <a>Cancellation Policy</a>
+          </Link>
+        </div>
+        <div>
+          <Link href="tnc" passHref>
+            <a>Terms & Conditions</a>
+          </Link>
+        </div>
+        <div>
+          <Link href="disclaimer" passHref>
+            <a>Disclaimer</a>
+          </Link>
+        </div>
+      </QuickLinks>
     </Container>
     <a
       href="https://www.wanderon.in/"

@@ -7,8 +7,8 @@ export const Container = styled.div`
   padding: 15px 10vw;
   grid-gap: 15px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "about connect";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "about connect quick";
 
   @media only screen and (max-width: 768px) {
     padding: 15px 5vw;
@@ -81,6 +81,28 @@ export const Connect = styled.div`
   }
 `;
 
+export const QuickLinks = styled.div`
+  grid-area: quick;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    color: white;
+
+    img {
+      height: 1.5em;
+      width: auto;
+      margin-right: 20px;
+    }
+  }
+`;
+
 export const Heading = styled.div`
   font-weight: 700;
   text-transform: uppercase;
@@ -103,4 +125,3 @@ export const SubFooter = styled.div`
     color: white;
   }
 `;
-
