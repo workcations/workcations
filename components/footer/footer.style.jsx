@@ -8,7 +8,7 @@ export const Container = styled.div`
   grid-gap: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "about connect quick";
+  grid-template-areas: "about connect quicks";
 
   @media only screen and (max-width: 768px) {
     padding: 15px 5vw;
@@ -16,7 +16,7 @@ export const Container = styled.div`
     grid-template-areas:
       "about"
       "connect"
-      "quick";
+      "quicks";
   }
 `;
 
@@ -83,7 +83,7 @@ export const Connect = styled.div`
 `;
 
 export const QuickLinks = styled.div`
-  grid-area: quick;
+  grid-area: quicks;
 
   div {
     display: flex;
