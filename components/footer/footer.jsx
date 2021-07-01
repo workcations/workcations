@@ -59,22 +59,16 @@ const Footer = () => (
       <QuickLinks>
         <Heading>Quick Links</Heading>
         <div>
-          <Link href="privacy-policy" passHref>
+          <Link href="/privacy-policy" passHref>
             <a>Privacy Policy</a>
           </Link>
-        </div>
-        <div>
-          <Link href="cancellation" passHref>
+          <Link href="/cancellation" passHref>
             <a>Cancellation Policy</a>
           </Link>
-        </div>
-        <div>
-          <Link href="tnc" passHref>
+          <Link href="/tnc" passHref>
             <a>Terms & Conditions</a>
           </Link>
-        </div>
-        <div>
-          <Link href="disclaimer" passHref>
+          <Link href="/disclaimer" passHref>
             <a>Disclaimer</a>
           </Link>
         </div>
