@@ -15,7 +15,8 @@ export const Container = styled.div`
     grid-template-columns: 1fr;
     grid-template-areas:
       "about"
-      "connect";
+      "connect"
+      "quick";
   }
 `;
 
