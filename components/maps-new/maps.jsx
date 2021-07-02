@@ -1,19 +1,22 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+// import React, { useEffect, useState, useRef } from "react";
+/* import { useDispatch, useSelector } from "react-redux";
 import useSupercluster from "use-supercluster";
 import Link from "next/link";
 
 import { setPropertyListStart } from "../../redux/property/properties.actions";
-import { selectPropertyList } from "../../redux/property/properties.selectors";
+import { selectPropertyList } from "../../redux/property/properties.selectors"; */
 
-import { Container, MainMarker, AuxMarker, ClusterMarker } from "./maps.style";
-
+import {
+  Container /* , MainMarker, AuxMarker, ClusterMarker  */,
+} from "./maps.style";
+/* 
 import GoogleMapReact from "google-map-react";
 
-const MarkerNew = ({ children }) => children;
+const MarkerNew = ({ children }) => children; */
 
 const Maps = ({ latitude, longitude, title, slug }) => {
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch();
   const propertyList = useSelector(selectPropertyList);
 
   const [filteredList, setFilteredList] = useState([]);
@@ -35,9 +38,9 @@ const Maps = ({ latitude, longitude, title, slug }) => {
         (item) => item.slug !== slug && item.visibility === "TRUE"
       )
     );
-  }, [propertyList]);
+  }, [propertyList]); */
 
-  const [points, setPoints] = useState([]);
+  /* const [points, setPoints] = useState([]);
 
   useEffect(() => {
     if (filteredList && filteredList.length > 1) {
@@ -61,14 +64,14 @@ const Maps = ({ latitude, longitude, title, slug }) => {
       });
       setPoints(pointsArray);
     }
-  }, [filteredList]);
+  }, [filteredList]); */
 
-  const { clusters, supercluster } = useSupercluster({
+  /* const { clusters, supercluster } = useSupercluster({
     points,
     bounds,
     zoom,
     options: { radius: 76, maxZoom: 20 },
-  });
+  }); */
 
   const url = `https://maps.googleapis.com/maps/api/staticmap?center=${
     Number(latitude) + 0.0005

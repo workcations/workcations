@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
     const main = sheet.collectStyles(<Main />);
     const styleTags = sheet.getStyleElement();*/
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           {this.props.styleTags}
           {/* Global Site Tag (gtag.js) - Google Analytics */}
@@ -72,7 +72,7 @@ export default class MyDocument extends Document {
           <Main className="root" />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
