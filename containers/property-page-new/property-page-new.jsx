@@ -13,7 +13,7 @@ import SimilarProperties from "../../components/similar-properties/similar-prope
 import Essentials from "../../components/essentials-new/essentials";
 import Faqs from "../../components/faq/faq";
 import ImportantInformation from "../../components/important-information/important-information";
-import BookNow from "../../components/book-now/book-now";
+//import BookNow from "../../components/book-now/book-now";
 import Maps from "../../components/maps-new/maps";
 import Calendar from "../../components/calendar/calendar";
 import BookNowNew from "../../components/book-now-new/book-now-new";

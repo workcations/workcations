@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import InfiniteScroll from "react-infinite-scroll-component";
+//import InfiniteScroll from "react-infinite-scroll-component";
 
 import { selectPropertyList } from "../../redux/property/properties.selectors";
 

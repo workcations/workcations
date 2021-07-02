@@ -14,13 +14,13 @@ const BlogsList = [
     date: "05th Dec 2020",
     tags: ["Remote Work", "Workcations"],
   },
-  {
+  /* {
     slug: "work-friendly-cafes-in-manali",
     title: "7 Work Friendly Cafes in Manali for Workcations",
     description: `Still wondering what it feels like to work from a cafe in the mountains, then worry not, we have prepared a list of Work Friendly Cafes in Manali. Here we are discussing seven work-friendly cafes in Manali that are fit for workations.`,
     date: "25th Nov 2020",
     tags: ["Manali", "Cafes"],
-  },
+  }, */
   {
     slug: "workcations-future-of-indian-coporate-culture",
     title:

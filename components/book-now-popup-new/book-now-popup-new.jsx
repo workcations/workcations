@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import * as emailjs from "emailjs-com";
+//import * as emailjs from "emailjs-com";
 import * as gtag from "../ga";
 import axios from "axios";
 import Spinner from "../spinner/spinner";
@@ -252,12 +252,12 @@ const BookNowPopup = ({
 
     setSpinner(true);
 
-    let templateParams = {
+    /*let templateParams = {
       from_name: name,
       to_name: "WanderOn",
       subject: "Booking Query",
       message_html: text,
-    };
+    };*/
 
     if (phone / 10000000000 > 0.1) {
       const dataLead = JSON.stringify({
@@ -289,12 +289,12 @@ const BookNowPopup = ({
         warningMessage: null,
       });
       closePopup();
-      emailjs.send(
+      /*emailjs.send(
         "gmail",
         "template_yxj2s5YB",
         templateParams,
         "user_aMOzAjaX7UHRvpK7SiiR3"
-      );
+      );*/
       setFormSubmitAlert(false);
       sendEvent();
 

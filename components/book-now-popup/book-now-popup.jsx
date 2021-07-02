@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { useDispatch } from "react-redux";
-import * as emailjs from "emailjs-com";
+//import * as emailjs from "emailjs-com";
 import * as gtag from "../ga";
 
 import { hideBookingPopup } from "../../redux/property/properties.actions";
@@ -129,12 +129,12 @@ const BookNowPopup = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let templateParams = {
+    /*let templateParams = {
       from_name: name,
       to_name: "WanderOn",
       subject: "Booking Query",
       message_html: text,
-    };
+    };*/
 
     if (phone / 10000000000 > 0.1) {
       const waLeadText = "Name: " + name + "\nPhone: " + phone + "\n\n" + text;
@@ -145,12 +145,12 @@ const BookNowPopup = ({
         warningMessage: null,
       });
       dispatch(hideBookingPopup());
-      emailjs.send(
+      /*emailjs.send(
         "gmail",
         "template_yxj2s5YB",
         templateParams,
         "user_aMOzAjaX7UHRvpK7SiiR3"
-      );
+      );*/
       setFormSubmitAlert(true);
       sendEvent();
 
