@@ -43,7 +43,7 @@ const PropertyItem = ({
   const [currentImage, setCurrent] = useState(images[0]);
 
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     lazyLoad: true,
     infinite: true,

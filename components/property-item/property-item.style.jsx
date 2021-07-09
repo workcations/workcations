@@ -65,7 +65,7 @@ export const ImageContainerMobile = styled.div`
   display: flex;
   flex-direction: column;
   width: 91vw;
-  height: 49vw;
+  height: 55vw;
   border-radius: 5px;
 
   @media only screen and (min-width: 900px) {
