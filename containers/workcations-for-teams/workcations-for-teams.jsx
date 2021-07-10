@@ -41,6 +41,8 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
     destination: "",
   });
 
+  console.log(screenWidth);
+
   const sendEvent = () => {
     gtag.event({
       category: "Workcations For Teams Contact Form Submitted",
