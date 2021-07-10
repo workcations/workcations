@@ -31,7 +31,7 @@ export const getStaticProps = async () => {
     url: "https://api.workcations.in/getPrimes",
   });
 
-  const propertiesList = data;
+  const propertiesList = data.data;
 
   return {
     props: { propertiesList: propertiesList },
