@@ -28,7 +28,7 @@ const Properties = ({ propertiesList }) => {
 export const getStaticProps = async () => {
   const data = await axios({
     method: "get",
-    url: "https://api.workcations.in/getPrimes",
+    url: "https://api.workcations.in/getStaycations",
   });
 
   const propertiesList = data.data;
