@@ -155,7 +155,7 @@ const BookNowPopup = ({
       sendEvent();
 
       const waLeadUrl =
-        "https://panel.capiwha.com/send_message.php?apikey=L00RQROD2VU0ZOXC25YX&number=918928337347&text=" +
+        "https://panel.capiwha.com/send_message.php?apikey=5OW3MVUL5Q59AJEY178D&number=918928337347&text=" +
         encodeURI(waLeadText);
       fetch(waLeadUrl);
 
