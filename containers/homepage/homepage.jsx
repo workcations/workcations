@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 import FeaturedStays from "../../components/featured-stays/featured-stays";
+import Banners from "../../components/banners/banners";
 import FeaturedStates from "../../components/featured-states/featured-states";
 import {
   FeaturedHostels,
@@ -78,6 +79,13 @@ const HomePage = ({
               <Button target="_blank">Explore All</Button>
             </Link>
           )}
+        </SubContainer>
+        <SubContainer>
+          <Heading>Traditional Marketplace v/s Workcations</Heading>
+          {/* <SubHeading>
+            Some Amazing Destinations Curated for Your Perfect Vacation
+          </SubHeading> */}
+          {loadElements ? <Banners /> : null}
         </SubContainer>
         <SubContainer>
           <Heading>Browse By States</Heading>
