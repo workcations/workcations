@@ -85,7 +85,7 @@ const HomePage = ({
           {/* <SubHeading>
             Some Amazing Destinations Curated for Your Perfect Vacation
           </SubHeading> */}
-          {loadElements ? <Banners /> : null}
+          {loadElements ? <Banners screenWidth={screenWidth} /> : null}
         </SubContainer>
         <SubContainer>
           <Heading>Browse By States</Heading>

@@ -1,18 +1,22 @@
-import React, { Fragment, useState } from "react";
-import Link from "next/link";
+import React from "react";
+
+import { useDispatch } from "react-redux";
+import { toggleContactPopupHidden } from "../../redux/contact-popup/contact-popup.actions";
 
 import { Container, Card, CardImage } from "./banners.style";
 
-const Banners = () => {
+const Banners = ({ screenWidth }) => {
   const images = [
     "why-workcations-1",
     "why-workcations-2",
     "why-workcations-3",
   ];
 
-  const [searchInputElement, setSearchInputElement] = useState(
+  /* const [searchInputElement, setSearchInputElement] = useState(
     document.getElementsByClassName("headerstyle__SearchInput-sc-ofc8s5-12")[0]
-  );
+  ); */
+
+  const dispatch = useDispatch();
 
   return (
     <Container className="remove-scrollbar">
@@ -21,10 +25,16 @@ const Banners = () => {
           key={`Why Workcations ${item}`}
           onClick={(e) => {
             e.preventDefault();
-            searchInputElement.focus();
+            //searchInputElement.focus();
+            dispatch(toggleContactPopupHidden());
           }}
         >
-          <CardImage src={`/banners/${item}.jpg`} alt={item} />
+          <CardImage
+            src={`/banners/why-workcations-${screenWidth < 601 ? "min-" : ""}${
+              i + 1
+            }.jpg`}
+            alt={item}
+          />
         </Card>
       ))}
     </Container>

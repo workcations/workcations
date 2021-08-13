@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   /* states-card */
-  width: 46vw;
+  width: 550px;
   display: flex;
   flex-direction: column;
   align-items: center;
