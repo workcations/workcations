@@ -41,7 +41,7 @@ export const getFeaturedProperties = async () => {
     redirect: "follow",
   };
 
-  const dataRaw = await eadDataFromSheet(url).then((list) =>
+  const dataRaw = await readDataFromSheet(url).then((list) =>
     list.map((item) => item.gsx$id.$t)
   );
 
