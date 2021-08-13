@@ -13,6 +13,21 @@ export const getProperties = async () => {
   return list.filter((item) => item.visibility === "TRUE");
 };
 
+const readDataFromSheet = async (url) => {
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+
+  try {
+    return await fetch(url, requestOptions)
+      .then((response) => response.text())
+      .then((response) => JSON.parse(response).feed.entry);
+  } catch (err) {
+    return await readDataFromSheet(url);
+  }
+};
+
 export const getFeaturedProperties = async () => {
   const list = await getProperties();
 
@@ -26,10 +41,9 @@ export const getFeaturedProperties = async () => {
     redirect: "follow",
   };
 
-  const dataRaw = await fetch(url, requestOptions)
-    .then((res) => res.text())
-    .then((res) => JSON.parse(res).feed.entry)
-    .then((list) => list.map((item) => item.gsx$id.$t));
+  const dataRaw = await eadDataFromSheet(url).then((list) =>
+    list.map((item) => item.gsx$id.$t)
+  );
 
   const data = dataRaw.filter((item) => idsList.indexOf(item) !== -1);
 
