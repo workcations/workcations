@@ -1,4 +1,5 @@
 import React from "react";
+import * as gtag from "../ga";
 
 import { useDispatch } from "react-redux";
 import { toggleContactPopupHidden } from "../../redux/contact-popup/contact-popup.actions";
@@ -18,6 +19,24 @@ const Banners = ({ screenWidth }) => {
 
   const dispatch = useDispatch();
 
+  const slideClickEvent = () => {
+    gtag.event({
+      category: "Slider Slide Clicked",
+      action: "Slider Slide Clicked",
+      label: "Slider Slide Clicked",
+    });
+
+    import("react-facebook-pixel")
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init("717219922161498");
+
+        ReactPixel.trackCustom("Slider Slide Clicked", {
+          action: "Slider Slide Clicked",
+        });
+      });
+  };
+
   return (
     <Container className="remove-scrollbar">
       {images.map((item, i) => (
@@ -26,6 +45,7 @@ const Banners = ({ screenWidth }) => {
           onClick={(e) => {
             e.preventDefault();
             //searchInputElement.focus();
+            slideClickEvent();
             dispatch(toggleContactPopupHidden());
           }}
         >
