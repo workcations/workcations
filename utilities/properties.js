@@ -33,16 +33,14 @@ export const getFeaturedProperties = async () => {
 
   const idsList = list.map((item) => item.slug.split("-")[0]);
 
-  const url =
-    "https://spreadsheets.google.com/feeds/list/1S_p5EHH1yX-07c9G5nxBIuw0FyYzxnrWQo2G_U28wow/1/public/values?alt=json";
-
   const requestOptions = {
     method: "GET",
     redirect: "follow",
   };
 
-  const dataRaw = await readDataFromSheet(url).then((list) =>
-    list.map((item) => item.gsx$id.$t)
+  const url = `https://api.wanderon.in/featuredStays`;
+  const dataRaw = await fetch(url, requestOptions).then((response) =>
+    response.json()
   );
 
   const data = dataRaw.filter((item) => idsList.indexOf(item) !== -1);
