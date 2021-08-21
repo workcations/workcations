@@ -17,6 +17,7 @@ import ImportantInformation from "../../components/important-information/importa
 import Maps from "../../components/maps-new/maps";
 import Calendar from "../../components/calendar/calendar";
 import BookNowNew from "../../components/book-now-new/book-now-new";
+import Banners from "../../components/banners/banners";
 
 import PropertyDetailsContainer from "../../style-components/property-page-container/property-page-container.style";
 
@@ -206,6 +207,7 @@ const PropertyPage = ({
   availability,
   loadElements,
   isServer,
+  screenWidth,
 }) => {
   /*useEffect(() => {
     if (loadElements) {
@@ -403,6 +405,16 @@ const PropertyPage = ({
                 </InternetNote>
               ) : null}
             </div>
+
+            <Heading>Traditional Marketplace v/s Workcations</Heading>
+            <Banners screenWidth={screenWidth} />
+
+            {/* <div>
+              <Content>
+                <Heading>Traditional Marketplace v/s Workcations</Heading>
+                <Banners screenWidth={screenWidth} />
+              </Content>
+            </div> */}
 
             <div>
               <Content>

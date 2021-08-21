@@ -13,11 +13,18 @@ const Property = ({ property, isAvailability, availability }) => {
   const isServer = typeof window === "undefined";
 
   const [loadElements, setLoadElements] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(0);
 
   const handleScroll = () => {
     if (isServer || loadElements) return;
     setLoadElements(true);
   };
+
+  useEffect(() => {
+    if (!isServer) {
+      setScreenWidth(window.screen.width);
+    }
+  }, [isServer]);
 
   useEffect(() => {
     if (!isServer) {
@@ -49,6 +56,7 @@ const Property = ({ property, isAvailability, availability }) => {
           availability={availability}
           loadElements={loadElements}
           isServer={isServer}
+          screenWidth={screenWidth}
         />
       )}
     </Layout>
