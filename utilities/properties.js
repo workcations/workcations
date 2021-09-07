@@ -1,19 +1,16 @@
-import firestore from "./firestore";
-
 export const getProperties = async () => {
-  const list = await firestore
-    .doc(`propertiesList/data`)
-    .get()
-    .then((snap) => snap.data().data)
-    .catch((err) => {
-      console.log(err);
-      return [];
-    });
+  const url = `https://wanderon-transactions.herokuapp.com/propertiesList`;
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
 
-  return list.filter((item) => item.visibility === "TRUE");
+  const list = await fetch(url, requestOptions).then((res) => res.json());
+
+  return list;
 };
 
-const readDataFromSheet = async (url) => {
+/* const readDataFromSheet = async (url) => {
   const requestOptions = {
     method: "GET",
     redirect: "follow",
@@ -26,7 +23,7 @@ const readDataFromSheet = async (url) => {
   } catch (err) {
     return await readDataFromSheet(url);
   }
-};
+}; */
 
 export const getFeaturedProperties = async () => {
   const list = await getProperties();
