@@ -43,7 +43,6 @@ const ContactPopup = () => {
       action: "Contact Form Submitted",
       label: "Contact Form Submitted",
     });
-    gtag.pageview(`/contact-form-submitted`);
 
     import("react-facebook-pixel")
       .then((x) => x.default)
