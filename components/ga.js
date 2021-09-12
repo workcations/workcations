@@ -11,7 +11,7 @@ export const event = ({ action, category, label }) => {
     event_category: category,
     event_label: label,
   });
-  pageview(`/virtual-${label.toLowerCase().split(" ").join("-")}`);
+  //pageview(`/virtual-${label.toLowerCase().split(" ").join("-")}`);
 };
 
 export const purchase = ({ id, revenue, tax, propertyId, propertyTitle }) => {
