@@ -138,12 +138,17 @@ const CallIcon = () => {
       });
   };
 
+  const sendVirtualPageView = (url) => {
+    gtag.pageview(`/${url}`);
+  };
+
   return (
     <Fragment>
       <Container
         onClick={() => {
           dispatch(toggleContactPopupHidden());
           sendRequestACallBackEvent();
+          sendVirtualPageView(`request-a-callback-button-clicked`);
         }}
         hidden={hidden}
         iconPosition={iconPosition}
@@ -154,6 +159,7 @@ const CallIcon = () => {
         onClick={() => {
           setMobilePopup(!showMobilePopup);
           sendContactUsEvent();
+          sendVirtualPageView(`contact-us-button-clicked`);
         }}
         hidden={hidden}
         iconPosition={iconPosition}
@@ -166,6 +172,7 @@ const CallIcon = () => {
             setMobilePopup(!showMobilePopup);
             dispatch(toggleContactPopupHidden());
             sendRequestACallBackEvent();
+            sendVirtualPageView(`request-a-callback-button-clicked`);
           }}
         >
           <img src="/call-back.svg" alt="request a call back" />
@@ -180,6 +187,7 @@ const CallIcon = () => {
             onClick={() => {
               setMobilePopup(!showMobilePopup);
               sendWhatsAppEvent();
+              sendVirtualPageView(`whatsapp-button-clicked`);
             }}
           >
             <img src="/whatsapp.svg" alt="whatsapp" />
@@ -192,6 +200,7 @@ const CallIcon = () => {
             onClick={() => {
               setMobilePopup(!showMobilePopup);
               sendCallNowEvent();
+              sendVirtualPageView(`call-now-button-clicked`);
             }}
           >
             <img src="/call-now.svg" alt="call now" />

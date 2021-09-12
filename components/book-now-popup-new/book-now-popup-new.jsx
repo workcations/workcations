@@ -156,6 +156,7 @@ const BookNowPopup = ({
       action: "Book Now Contact Form Submitted",
       label: "Book Now Contact Form Submitted",
     });
+    gtag.pageview(`/book-now-contact-from-submitted`);
 
     import("react-facebook-pixel")
       .then((x) => x.default)
