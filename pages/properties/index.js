@@ -132,7 +132,11 @@ export const getStaticProps = async () => {
   const propertiesList = data.data;
 
   return {
-    props: { propertiesList: propertiesList },
+    props: {
+      propertiesList: propertiesList.filter(
+        (item) => item.visibility === "TRUE"
+      ),
+    },
   };
 };
 
