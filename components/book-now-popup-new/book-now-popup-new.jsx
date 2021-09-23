@@ -245,7 +245,7 @@ const BookNowPopup = ({
     text += "\n";
   }
 
-  const whatsAppLink = "https://wa.me/919821596917?text=" + encodeURI(text);
+  const whatsAppLink = "https://wa.me/917983065150?text=" + encodeURI(text);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -267,7 +267,7 @@ const BookNowPopup = ({
         message: text,
         page: window.location.href,
         website: "workcations",
-        leadNumber: 9821596917,
+        leadNumber: 7983065150,
         apiKey: "ravi",
         source: "book now",
       });
@@ -1083,7 +1083,7 @@ const BookNowPopup = ({
                                 });
                               });
                           }}
-                          href="tel:9821596917"
+                          href="tel:7983065150"
                           buttonColor={"#000000"}
                         >
                           Call Now

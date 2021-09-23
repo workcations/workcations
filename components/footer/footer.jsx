@@ -26,9 +26,9 @@ const Footer = () => (
       <Connect>
         <Heading>Connect with Us</Heading>
         <div>
-          <a href="tel:9821596917" target="_blank" rel="noopener noreferrer">
+          <a href="tel:7983065150" target="_blank" rel="noopener noreferrer">
             <img src="/phone.svg" alt="Call Us" />
-            +91-9821596917
+            +91-7983065150
           </a>
           <a
             href="mailto:workcations@wanderon.in"

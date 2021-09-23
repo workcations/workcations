@@ -882,7 +882,7 @@ const BookingPage = ({ data, bookingSlug }) => {
                   2) Gaurav Singh - +91-9996508685
                 </ContactDetailsItem>
                 <ContactDetailsItem>
-                  3) Govind Gaur - +91-9821596917
+                  3) Govind Gaur - +91-7983065150
                 </ContactDetailsItem>
                 <ContactDetailsItem>
                   4) Chirag Jain - +91-9050384645
