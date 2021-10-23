@@ -61,7 +61,7 @@ export const Button = styled.a`
   border-radius: 5px;
   font-size: 1.2vw;
   width: 12vw;
-  margin: 5vw 0 2vw 0;
+  margin: 0vw 0 2vw 0;
   cursor: pointer;
 
   @media only screen and (max-width: 600px) {
