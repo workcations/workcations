@@ -105,17 +105,6 @@ const HomePage = ({
           </Link>
         </SubContainer>
         <SubContainer>
-          <Heading>Entire Villas</Heading>
-          <SubHeading>
-            Villa Stays to Cater all your Family needs! Group of Friends? Hop
-            On!
-          </SubHeading>
-          <FeaturedVillas villasList={villasList} />
-          <Link href="/properties?types=villa" passHref>
-            <Button target="_blank">Explore All Villas</Button>
-          </Link>
-        </SubContainer>
-        <SubContainer>
           <Heading>Economic Hotel Stays</Heading>
           <SubHeading>
             We have got your budgets sorted. Check In to the most Comfortable
@@ -152,3 +141,15 @@ export default HomePage;
         </SubContainer>
 
         */
+
+/*   <SubContainer>
+          <Heading>Entire Villas</Heading>
+          <SubHeading>
+            Villa Stays to Cater all your Family needs! Group of Friends? Hop
+            On!
+          </SubHeading>
+          <FeaturedVillas villasList={villasList} />
+          <Link href="/properties?types=villa" passHref>
+            <Button target="_blank">Explore All Villas</Button>
+          </Link>
+        </SubContainer>; */
