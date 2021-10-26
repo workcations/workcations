@@ -34,24 +34,26 @@ const FeaturedStates = ({ statesList }) => {
   const states = JSON.parse(statesList);
   return (
     <Container className="remove-scrollbar">
-      {List.map((item, i) => (
-        <Link
-          key={item.title}
-          href={`/properties?states=${encodeURI(item.title)}`}
-          passHref
-        >
-          <Card style={{ backgroundImage: `url(${item.image}.png)` }}>
-            <Text>
-              <Title>{item.title}</Title>
-              <Count>
-                {!!states & (states.length > 0) ? (
-                  <Fragment>{states[i].length} Properties</Fragment>
-                ) : null}
-              </Count>
-            </Text>
-          </Card>
-        </Link>
-      ))}
+      {List.map((item, i) =>
+        i < 3 ? (
+          <Link
+            key={item.title}
+            href={`/properties?states=${encodeURI(item.title)}`}
+            passHref
+          >
+            <Card style={{ backgroundImage: `url(${item.image}.png)` }}>
+              <Text>
+                <Title>{item.title}</Title>
+                <Count>
+                  {!!states & (states.length > 0) ? (
+                    <Fragment>{states[i].length} Properties</Fragment>
+                  ) : null}
+                </Count>
+              </Text>
+            </Card>
+          </Link>
+        ) : null
+      )}
     </Container>
   );
 };

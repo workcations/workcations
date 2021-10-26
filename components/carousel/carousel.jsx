@@ -34,6 +34,13 @@ const Carousel = ({ slug, type, city, state }) => {
       city.length !== 0 &&
       state.length !== 0
     ) {
+      const newPropertyList = propertyList.filter(
+        (item) =>
+          item.visibility.toLowerCase() === "true" &&
+          item.slug !== slug &&
+          item.type === type
+      );
+      /*       console.log(newPropertyList);
       let list = [];
       let sluglist = [];
 
@@ -96,9 +103,9 @@ const Carousel = ({ slug, type, city, state }) => {
           list.push(property);
           sluglist.push(property.slug);
         }
-      });
+      }); */
 
-      setSimilarProperties(list);
+      setSimilarProperties(newPropertyList);
     }
   }, [propertyList]);
 
