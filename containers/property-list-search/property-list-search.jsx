@@ -183,7 +183,7 @@ const PropertyListSearch = ({
 
                 return {
                   ...property,
-                  item: updatePrice(item, 1.3),
+                  item: updatePrice(item, 1.15),
                 };
               })
               .map((property, i) =>

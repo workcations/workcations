@@ -152,7 +152,7 @@ export const getStaticProps = async () => {
     props: {
       propertiesList: propertiesList
         .filter((item) => item.visibility === "TRUE")
-        .map((item) => updatePrice(item, 1.3)),
+        .map((item) => updatePrice(item, 1.15)),
     },
   };
 };
