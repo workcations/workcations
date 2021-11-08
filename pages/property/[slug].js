@@ -90,7 +90,11 @@ export const getStaticPaths = async () => {
   ];
 
   const pathArray = properties
-    .filter((item) => filteredSlugsList.indexOf(item.slug) === -1)
+    .filter(
+      (item) =>
+        filteredSlugsList.indexOf(item.slug) === -1 &&
+        item.visibility.toLowerCase() === "true"
+    )
     .map((property) => {
       return {
         params: {
