@@ -8,7 +8,6 @@ import PropertyPage from "../../containers/property-page-new/property-page-new";
 import Spinner from "../../components/spinner/spinner";
 
 const Property = ({ property, isAvailability, availability }) => {
-  console.log(property);
   const router = useRouter();
 
   const isServer = typeof window === "undefined";
