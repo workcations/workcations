@@ -8,6 +8,23 @@ import { selectPropertyList } from "../../redux/property/properties.selectors";
 import PropertyItem from "../../components/property-item/property-item";
 import PropertyItemPlaceHolder from "../../components/property-item-placeholder/property-item-placeholder";
 
+const updateCost = (cost, multiplier) =>
+  Math.ceil((cost * multiplier) / 50) * 50;
+
+const updatePrice = (property, multiplier) => {
+  const { ultrashort, short, normal, long, ultralong, monthly } = property;
+
+  return {
+    ...property,
+    ultrashort: updateCost(ultrashort, multiplier),
+    short: updateCost(short, multiplier),
+    normal: updateCost(normal, multiplier),
+    long: updateCost(long, multiplier),
+    ultralong: updateCost(ultralong, multiplier),
+    monthly: updateCost(monthly, multiplier),
+  };
+};
+
 import {
   PropertyListContainer,
   Container,
@@ -160,16 +177,25 @@ const PropertyListSearch = ({
       <Fragment>
         {!!list && !!list.length > 0 ? (
           <PropertyListContainer className="propertyItemList">
-            {list.map((property, i) =>
-              property.item.minDuration <= durationDays &&
-              (loadElements || i < 6) ? (
-                <PropertyItem
-                  duration={duration}
-                  key={property.item.slug}
-                  {...property.item}
-                />
-              ) : null
-            )}
+            {list
+              .map((property) => {
+                const { item } = property;
+
+                return {
+                  ...property,
+                  item: updatePrice(item, 1.3),
+                };
+              })
+              .map((property, i) =>
+                property.item.minDuration <= durationDays &&
+                (loadElements || i < 6) ? (
+                  <PropertyItem
+                    duration={duration}
+                    key={property.item.slug}
+                    {...property.item}
+                  />
+                ) : null
+              )}
           </PropertyListContainer>
         ) : null}
         {isLoader ? (

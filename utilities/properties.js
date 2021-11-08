@@ -1,3 +1,20 @@
+const updateCost = (cost, multiplier) =>
+  Math.ceil((cost * multiplier) / 50) * 50;
+
+const updatePrice = (property, multiplier) => {
+  const { ultrashort, short, normal, long, ultralong, monthly } = property;
+
+  return {
+    ...property,
+    ultrashort: updateCost(ultrashort, multiplier),
+    short: updateCost(short, multiplier),
+    normal: updateCost(normal, multiplier),
+    long: updateCost(long, multiplier),
+    ultralong: updateCost(ultralong, multiplier),
+    monthly: updateCost(monthly, multiplier),
+  };
+};
+
 export const getProperties = async () => {
   const url = `https://wanderon-transactions.herokuapp.com/propertiesList`;
   const requestOptions = {
@@ -7,7 +24,7 @@ export const getProperties = async () => {
 
   const list = await fetch(url, requestOptions).then((res) => res.json());
 
-  return list;
+  return list.map((item) => updatePrice(item, 1.3));
 };
 
 /* const readDataFromSheet = async (url) => {

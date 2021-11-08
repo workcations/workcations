@@ -8,6 +8,7 @@ import PropertyPage from "../../containers/property-page-new/property-page-new";
 import Spinner from "../../components/spinner/spinner";
 
 const Property = ({ property, isAvailability, availability }) => {
+  console.log(property);
   const router = useRouter();
 
   const isServer = typeof window === "undefined";
@@ -110,6 +111,45 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
+  const updateCost = (cost, multiplier) =>
+    Math.ceil((cost * multiplier) / 50) * 50;
+
+  const updatePricingObject = (data, multiplier) => {
+    const { ultraShort, short, normal, long, ultraLong, monthly } = data;
+
+    return {
+      ultraShort: updateCost(ultraShort, multiplier),
+      short: updateCost(short, multiplier),
+      normal: updateCost(normal, multiplier),
+      long: updateCost(long, multiplier),
+      ultraLong: updateCost(ultraLong, multiplier),
+      monthly: updateCost(monthly, multiplier),
+    };
+  };
+
+  const updatePrice = (property, multiplier) => {
+    const { inventory } = property;
+    const newInventory = inventory.map((item, i) => {
+      const { pricing } = item;
+
+      const newPricing = pricing.map((subItem) => {
+        const { roomOnly, extraBed } = subItem;
+
+        return {
+          ...subItem,
+          roomOnly: updatePricingObject(roomOnly, 1.3),
+          extraBed: extraBed.map((subSubItem) =>
+            updatePricingObject(subSubItem, 1.3)
+          ),
+        };
+      });
+
+      return { ...item, pricing: newPricing };
+    });
+
+    return { ...property, inventory: newInventory };
+  };
+
   const getPropertyExcel = async (slug) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -136,7 +176,11 @@ export const getStaticProps = async ({ params }) => {
   const availability = isAvailability ? propertyData.availability : [];
 
   return {
-    props: { property: propertyData, isAvailability, availability },
+    props: {
+      property: updatePrice(propertyData),
+      isAvailability,
+      availability,
+    },
     revalidate: 1,
   };
 };

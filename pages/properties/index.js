@@ -124,6 +124,23 @@ const Properties = ({ propertiesList }) => {
 };
 
 export const getStaticProps = async () => {
+  const updateCost = (cost, multiplier) =>
+    Math.ceil((cost * multiplier) / 50) * 50;
+
+  const updatePrice = (property, multiplier) => {
+    const { ultrashort, short, normal, long, ultralong, monthly } = property;
+
+    return {
+      ...property,
+      ultrashort: updateCost(ultrashort, multiplier),
+      short: updateCost(short, multiplier),
+      normal: updateCost(normal, multiplier),
+      long: updateCost(long, multiplier),
+      ultralong: updateCost(ultralong, multiplier),
+      monthly: updateCost(monthly, multiplier),
+    };
+  };
+
   const data = await axios({
     method: "get",
     url: "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/properties",
@@ -133,9 +150,9 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      propertiesList: propertiesList.filter(
-        (item) => item.visibility === "TRUE"
-      ),
+      propertiesList: propertiesList
+        .filter((item) => item.visibility === "TRUE")
+        .map((item) => updatePrice(item, 1.3)),
     },
   };
 };
