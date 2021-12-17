@@ -175,7 +175,7 @@ const BookNowNew = ({
 }) => {
   const maximumDate = {
     year: 2022,
-    month: 1,
+    month: 12,
     day: 31,
   };
 
@@ -216,7 +216,7 @@ const BookNowNew = ({
         convertDate(
           `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
         ),
-        "2022-01-31"
+        "2022-12-31"
       ).map((item) => {
         return {
           date: item,
@@ -240,7 +240,7 @@ const BookNowNew = ({
     convertDate(
       `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
     ),
-    "2022-01-31"
+    "2022-12-31"
   )
     .map((item) => {
       return {
