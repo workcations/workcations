@@ -16,7 +16,7 @@ const updatePrice = (property, multiplier) => {
 };
 
 export const getProperties = async () => {
-  const url = `https://wanderon-transactions.herokuapp.com/propertiesList`;
+  const url = `https://api.workcations.in/propertiesList`;
   const requestOptions = {
     method: "GET",
     redirect: "follow",
