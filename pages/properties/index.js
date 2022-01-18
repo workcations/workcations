@@ -154,6 +154,7 @@ export const getStaticProps = async () => {
         .filter((item) => item.visibility === "TRUE")
         .map((item) => updatePrice(item, 1.15)),
     },
+    revalidate: 1200,
   };
 };
 
