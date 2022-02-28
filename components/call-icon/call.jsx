@@ -152,8 +152,10 @@ const CallIcon = () => {
       </Container>
       <ContainerMobile
         onClick={() => {
-          setMobilePopup(!showMobilePopup);
-          sendContactUsEvent();
+          //setMobilePopup(!showMobilePopup);
+          //sendContactUsEvent();
+          dispatch(toggleContactPopupHidden());
+          sendRequestACallBackEvent();
         }}
         hidden={hidden}
         iconPosition={iconPosition}

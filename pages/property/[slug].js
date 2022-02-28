@@ -136,9 +136,9 @@ export const getStaticProps = async ({ params }) => {
 
         return {
           ...subItem,
-          roomOnly: updatePricingObject(roomOnly, 1.15),
+          roomOnly: updatePricingObject(roomOnly, 1.5),
           extraBed: extraBed.map((subSubItem) =>
-            updatePricingObject(subSubItem, 1.15)
+            updatePricingObject(subSubItem, 1.5)
           ),
         };
       });

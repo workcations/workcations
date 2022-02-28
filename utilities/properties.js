@@ -24,7 +24,7 @@ export const getProperties = async () => {
 
   const list = await fetch(url, requestOptions).then((res) => res.json());
 
-  return list.map((item) => updatePrice(item, 1.15));
+  return list.map((item) => updatePrice(item, 1.5));
 };
 
 /* const readDataFromSheet = async (url) => {
