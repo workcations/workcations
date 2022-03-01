@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useState, useRef } from "react";
+import axios from "axios";
 import { useEffect } from "react";
 import * as gtag from "../../components/ga";
 import {
@@ -96,6 +97,28 @@ const WorkcationsForTeams = ({ loadElements, screenWidth }) => {
         body: raw,
         redirect: "follow",
       };
+
+      const data = JSON.stringify({
+        name,
+        phone,
+        email,
+        message: `No of Pax: ${pax}, Company: ${company}, Destination: ${destination}`,
+        page: window.location.href,
+        website: "workcations",
+        leadNumber: 9580835488,
+        apiKey: "ravi",
+        source: "popup",
+      });
+
+      const config = {
+        method: "post",
+        url: "https://api.wanderon.in/submitLead",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+      axios(config);
 
       fetch(
         "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/submitLeadTeams",
