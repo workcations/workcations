@@ -350,7 +350,7 @@ const BookNowPopup = ({
 
     const config = {
       method: "post",
-      url: "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/order",
+      url: "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/orderWanderOn",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Basic Og==",
@@ -370,7 +370,7 @@ const BookNowPopup = ({
     const { amount, id: order_id, currency } = result.data;
 
     const options = {
-      key: "rzp_live_93qKOtoFrp4Vnl", // Enter the Key ID generated from the Dashboard
+      key: "rzp_live_Q2coY3XQRmbJGM", // Enter the Key ID generated from the Dashboard
       amount: amount.toString(),
       currency: currency,
       name: name,
@@ -386,7 +386,7 @@ const BookNowPopup = ({
         };
 
         const result = await axios.post(
-          "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/success",
+          "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/successWanderOn",
           data
         );
 
