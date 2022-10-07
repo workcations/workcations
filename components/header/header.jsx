@@ -124,15 +124,18 @@ const Header = () => {
         </Search>
       </SearchContainer>
       <Menu open={open}>
-        <Link href="/properties" passHref>
+        {/* <Link href="/properties" passHref>
           <MenuOption>Properties</MenuOption>
+        </Link> */}
+        <Link href="https://www.wanderon.in" passHref>
+          <MenuOption>Join our Community Trips</MenuOption>
         </Link>
         <Link href="/workcations-for-teams" passHref>
           <MenuOption>Workcations For Teams</MenuOption>
         </Link>
-        <Link href="/blog" passHref>
+        {/* <Link href="/blog" passHref>
           <MenuOption>Blogs</MenuOption>
-        </Link>
+        </Link> */}
         <div onClick={() => dispatch(toggleContactPopupHidden())}>Connect</div>
       </Menu>
       <Hamburger>

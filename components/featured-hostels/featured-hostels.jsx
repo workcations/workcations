@@ -61,7 +61,7 @@ const FeaturedHostels = ({ hostelsList }) => {
                         backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
                       }}
                     >
-                      <Price>
+                      {/* <Price>
                         {Number(property.ultrashort).toLocaleString("en-IN", {
                           style: "currency",
                           currency: "INR",
@@ -69,7 +69,7 @@ const FeaturedHostels = ({ hostelsList }) => {
                           minimumFractionDigits: 0,
                         })}
                         <span>/night</span>
-                      </Price>
+                      </Price> */}
                     </ImageLong>
                   </ImageLongShimmer>
                   <Details>
@@ -221,7 +221,7 @@ const FeaturedHotels = ({ hotelsList }) => {
                         backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
                       }}
                     >
-                      <Price>
+                      {/* <Price>
                         {Number(property.ultrashort).toLocaleString("en-IN", {
                           style: "currency",
                           currency: "INR",
@@ -229,7 +229,7 @@ const FeaturedHotels = ({ hotelsList }) => {
                           minimumFractionDigits: 0,
                         })}
                         <span>/night</span>
-                      </Price>
+                      </Price> */}
                     </ImageLong>
                   </ImageLongShimmer>
                   <Details>

@@ -146,7 +146,7 @@ const PropertyItem = ({
                 </AmenitiesItem>
               </AmenitiesContainer>
             </DetailsWrapper>
-            <Pricing>
+            {/*  <Pricing>
               {duration === "short" ? (
                 <Fragment>
                   <span>
@@ -187,7 +187,7 @@ const PropertyItem = ({
                   per month
                 </Fragment>
               )}
-            </Pricing>
+            </Pricing> */}
           </DetailsContainer>
         </Details>
       </Container>

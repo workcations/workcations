@@ -282,23 +282,7 @@ const PropertyPage = ({
             )}
           />
           <BookNowContainer>
-            <BookNowNew
-              property={property}
-              isAvailability={isAvailability}
-              availability={availability}
-              inventory={inventory}
-              slug={slug}
-              title={`Workcations ${id} - ${shortTitle}`}
-              minDuration={Number(minDuration)}
-              breakfast={breakfast}
-              lunch={lunchVeg}
-              dinner={dinnerVeg}
-              type={propertyTypes[type]}
-              isServer={isServer}
-              disabledDatesArray={disabledDatesArray}
-              finalDisabledDatesArray={finalDisabledDatesArray}
-              newYear={newYear}
-            />
+            <BookNowNew location={property.location} owner={property.owner} />
           </BookNowContainer>
           <Details>
             <div>
